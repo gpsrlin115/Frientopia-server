@@ -1,4 +1,4 @@
-package com.hnu.capstone.domain.posts;
+package com.hnu.capstone.domain;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Posts {
+public class Posts extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

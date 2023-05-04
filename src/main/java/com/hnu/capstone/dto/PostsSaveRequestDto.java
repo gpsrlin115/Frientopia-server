@@ -1,6 +1,6 @@
 package com.hnu.capstone.dto;
 
-import com.hnu.capstone.domain.posts.Posts;
+import com.hnu.capstone.domain.Posts;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

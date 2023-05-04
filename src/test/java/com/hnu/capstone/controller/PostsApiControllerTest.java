@@ -1,7 +1,7 @@
 package com.hnu.capstone.controller;
 
-import com.hnu.capstone.domain.posts.Posts;
-import com.hnu.capstone.domain.posts.PostsRepository;
+import com.hnu.capstone.domain.Posts;
+import com.hnu.capstone.domain.PostsRepository;
 import com.hnu.capstone.dto.PostsSaveRequestDto;
 import com.hnu.capstone.dto.PostsUpdateRequestDto;
 import org.junit.jupiter.api.AfterEach;
