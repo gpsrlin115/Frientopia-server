@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>프렌토피아</title>
+
+    <link th:href="@{/css/main1.css}" rel="stylesheet">
+    <!--font-->
+    <link th:href="@{/img/favicon.png}" rel="shortcut icon">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">프렌토피아</a>
+        <nav>
+            <ul class="gnb">
+                <li><a href="member_find.html">멘토 찾기</a></li>
+                <li><a href="member_find2.html">커뮤니티</a></li>
+                <li><a href="my-wishlist.html">내 멘토링</a></li>
+                <li> | </li>
+                <li th:if="${userName} == null"><a th:href="@{/oauth2/authorization/google}">로그인</a></li>
+                <li th:if="${userName} != null" th:text="${userName} + '님, 환영합니다!'"></li>
+                <li th:if="${userName} != null"><a th:href="@{/logout}">로그아웃</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="wrap">
+        <section class="visual">
+            <div class="img">
+                <img th:src="@{/img/main_visual.png}" alt="">
+                <span class="mask a"></span>
+                <span class="mask b"></span>
+                <span class="mask c"></span>
+                <span class="mask d"></span>
+            </div>
+            <div class="title">
+                <h2>For Your Mentor & Mentee</h2>
+                <p>당신 옆의 멘토, 프렌토피아</p> 
+            </div>
+            <ul class="menu">
+                <li>
+                    <a href="member_find.html">
+                        <p><span>현재 모집중인 멘토링 보기</span>멘토 찾기</p>
+                        <span class="arrow"><img th:src="@{/img/arrow_btn.png}" alt=""></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <p><span>모든 사용자의 자유로운 소통공간</span>커뮤니티</p>
+                        <span class="arrow"><img th:src="@{img/arrow_btn.png}" alt=""></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <p><span>나의 멘토링 현황</span>내 멘토링</p>
+                        <span class="arrow"><img th:src="@{img/arrow_btn.png}" alt=""></span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <!--section.about-->
+        <section class="about">
+            <img th:src="@{img/main2_bg.jpg}" alt="">
+            <div class="inner">
+                <h2>멘토링 매칭 서비스와 함께 하세요.</h2>
+                <div class="line">
+                    <span></span>
+                    <ul>
+                        <li class="a"></li>
+                        <li class="b"></li>
+                        <li class="c"></li>
+                    </ul>
+                </div>
+                <ul>
+                    <li>
+                        <h3>Our Solutions</h3>
+                        <p>
+                            교내 멘토링 매칭 플랫폼으로 <br>
+                            기간, 분야를 불문하고 자유로운<br>
+                            멘토링 서비스를 제공합니다.
+                        </p>
+                    </li>
+                    <li>
+                        <h3>Our Strengths</h3>
+                        <p>
+                            학업성취도 향상!<br>
+                            선 후배간 교류 증가!<br>
+                        </p>
+                    </li>
+                    <li>
+                        <h3>Our Visions</h3>
+                        <p>
+                            대학 멘토링 매칭 서비스, '프렌토피아'는<br>
+                            선 후배간 유대감 형성 및<br>
+                            능동적인 학습 분위기 조성을 지향합니다.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!--footer-->
+        <footer>
+            <h2 class="footerLogo">프렌토피아</h2>
+            <div class="box">
+                <h2>
+                    당신 옆의 멘토, 프렌토피아<br>
+                    For Your Mentor, Frientopia
+                </h2>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
