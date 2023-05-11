@@ -1,0 +1,88 @@
+<!--회원가입 페이지-->
+<!DOCTYPE html>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>프렌토피아 회원가입</title>
+    <link th:href="@{/css/main1.css}" rel="stylesheet">
+    <!--font-->
+    <link th:href="@{/img/favicon.png}" rel="shortcut icon">
+</head>
+<body>
+    <header>
+        <a th:href="@{/}" class="logo">프렌토피아</a>
+        <nav>
+            <ul class="gnb">
+                <li><a href="member_find.html">멘토 찾기</a></li>
+                <li><a href="member_find2.html">커뮤니티</a></li>
+                <li><a href="my-wishlist.html">내 멘토링</a></li>
+                <li th:if="${userName} != null"><a href="@{/myPage}">마이페이지</a></li>
+                <li> | </li>
+                <li th:if="${userName} == null"><a th:href="@{/oauth2/authorization/google}">로그인</a></li>
+                <li th:if="${userName} != null" th:text="${userName} + '님, 환영합니다!'"></li>
+                <li th:if="${userName} != null"><a th:href="@{/logout}">로그아웃</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <div id="main_content">
+            <div id="join_box">
+                <form method="post" action="/signUp">
+                    <div class="container" id="user_form" style="padding-top:8%">
+                        <div><h2>회원가입</h2></div>
+                        &nbsp;&nbsp;
+                        <div class="form-group">
+                            <label for="Email">이메일</label>
+                            <li id="Email" th:if="${userName} != null" th:text="${userEmail}"></li>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Name">이름</label>
+                            <li id="Name" th:if="${userName} != null" th:text="${userName}"></li>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputMajor">학과</label>
+                            <input type="text" class="form-control" id="inputMajor" name="major" placeholder="학과">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputGender">성별</label>
+                            <select class="form-select" id="inputGender" name="gender">
+                                <option value="남성">남성</option>
+                                <option value="여성">여성</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAge">나이</label>
+                            <input type="int" class="form-control" id="inputAge" name="age" placeholder="나이">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPhoneNum">전화번호</label>
+                            <input type="int" class="form-control" id="inputPhoneNum" name="phoneNum" placeholder="전화번호">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputIntroduce">자기소개</label>
+                            <input type="int" class="form-control" id="inputIntroduce" name="introduce" placeholder="자기소개">
+                        </div>
+                        <button type="submit" class="btn btn-primary">가입 완료</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h2 class="footerLogo">프렌토피아</h2>
+        <div class="box">
+            <h2>
+                당신 옆의 멘토, 프렌토피아<br>
+                For Your Mentor, Frientopia
+            </h2>
+        </div>
+    </footer>
+</body>
+</html>
