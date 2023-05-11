@@ -18,7 +18,7 @@
                 <li><a href="member_find.html">멘토 찾기</a></li>
                 <li><a href="member_find2.html">커뮤니티</a></li>
                 <li><a href="my-wishlist.html">내 멘토링</a></li>
-                <li th:if="${userName} != null"><a href="@{/myPage}">마이페이지</a></li>
+                <li th:if="${userName} != null"><a th:href="@{/myPage}">마이페이지</a></li>
                 <li> | </li>
                 <li th:if="${userName} == null"><a th:href="@{/oauth2/authorization/google}">로그인</a></li>
                 <li th:if="${userName} != null" th:text="${userName} + '님, 환영합니다!'"></li>
