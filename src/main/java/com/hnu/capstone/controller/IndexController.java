@@ -70,18 +70,16 @@ public class IndexController {
 
     @GetMapping("/myPage")
     public String myPageForm(Model model){
-        model.addAttribute("posts", postsService.findAllDesc());
+        //model.addAttribute("posts", postsService.findAllDesc());
         SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
-        if(sessionUser != null) {
-            User user = userService.SelectUser(sessionUser.getEmail());
-            model.addAttribute("userName", user.getName());
-            model.addAttribute("userEmail", user.getEmail());
-            model.addAttribute("userGen", user.getGen());
-            model.addAttribute("userAge", user.getAge());
-            model.addAttribute("userMajor", user.getMajor());
-            model.addAttribute("userPhoneNum", user.getPhoneNum());
-            model.addAttribute("userIntroduce", user.getIntroduce());
-        }
+        User user = userService.SelectUser(sessionUser.getEmail());
+        model.addAttribute("userName", user.getName());
+        model.addAttribute("userEmail", user.getEmail());
+        model.addAttribute("userGen", user.getGen());
+        model.addAttribute("userAge", user.getAge());
+        model.addAttribute("userMajor", user.getMajor());
+        model.addAttribute("userPhoneNum", user.getPhoneNum());
+        model.addAttribute("userIntroduce", user.getIntroduce());
         return "myPage";
     }
 
