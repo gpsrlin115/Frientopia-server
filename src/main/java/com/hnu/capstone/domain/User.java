@@ -29,22 +29,22 @@ public class User extends BaseTimeEntity {
     @Column(nullable = false)
     private Role role;
 
-    @Column(nullable = true)
+    @Column
     private String gen;
 
-    @Column(nullable = true)
+    @Column
     private int age;
 
-    @Column(nullable = true)
+    @Column
     private String major;
 
-    @Column(nullable = true)
+    @Column
     private long phoneNum;
 
-    @Column(nullable = true)
+    @Column
     private String introduce;
 
-    @Column(nullable = true)
+    @Column
     private double rating_score;
 
 
