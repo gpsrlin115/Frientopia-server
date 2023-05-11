@@ -23,8 +23,6 @@ public class IndexController {
     private final HttpSession httpSession;
     @Autowired
     UserService userService;
-    @Autowired
-    UserRepository userRepository;
 
     @GetMapping("/")
     public String index(Model model) {
