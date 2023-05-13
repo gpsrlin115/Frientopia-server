@@ -1,4 +1,4 @@
-package com.hnu.capstone.config;
+package com.hnu.capstone.service;
 
 import com.hnu.capstone.domain.User;
 import com.hnu.capstone.domain.UserRepository;
