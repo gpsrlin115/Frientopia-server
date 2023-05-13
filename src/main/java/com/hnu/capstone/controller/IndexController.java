@@ -2,7 +2,7 @@ package com.hnu.capstone.controller;
 
 
 import com.hnu.capstone.config.SessionUser;
-import com.hnu.capstone.config.UserService;
+import com.hnu.capstone.service.UserService;
 import com.hnu.capstone.domain.*;
 import com.hnu.capstone.dto.PostsResponseDto;
 import com.hnu.capstone.service.PostsService;
