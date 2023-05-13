@@ -34,6 +34,16 @@ public class IndexController {
         return "index";
     }
 
+    // 게시글 기능 추가 후에 수정 할 것
+    @GetMapping("/mentor-find")
+    public String mentorFind(Model model) {
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        if(user != null) {
+            model.addAttribute("userName", user.getName());
+        }
+        return "mentor-find";
+    }
+
     @GetMapping("/signUp")
     public String signUpForm(Model model){
         model.addAttribute("posts", postsService.findAllDesc());
