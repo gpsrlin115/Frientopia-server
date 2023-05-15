@@ -45,7 +45,7 @@ public class User extends BaseTimeEntity {
     private String introduce;
 
     @Column
-    private double rating_score;
+    private double ratingScore;
 
 
     @Builder

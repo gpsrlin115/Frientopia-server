@@ -120,8 +120,6 @@ public class IndexController {
         return "redirect:/";
     }
 
-
-
     @GetMapping("/posts/save")
     public String postsSave() {
         return "posts-save";
