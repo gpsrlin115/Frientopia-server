@@ -124,7 +124,7 @@ public class IndexController {
 
     @GetMapping("/posts/save")
     public String postsSave() {
-        return "posts-save";
+        return "post";
     }
 
     @GetMapping("/posts/update/{id}")
@@ -132,6 +132,6 @@ public class IndexController {
         PostsResponseDto dto = postsService.findById(id);
         model.addAttribute("post", dto);
 
-        return "posts-update";
+        return "modifytemp";
     }
 }
