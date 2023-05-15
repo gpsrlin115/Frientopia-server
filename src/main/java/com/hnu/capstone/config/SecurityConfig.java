@@ -31,7 +31,7 @@ public class SecurityConfig {
                         .logoutSuccessUrl("/")
                 .and()
                     .oauth2Login()
-                    .defaultSuccessUrl("/signUp")
+                        .defaultSuccessUrl("/signUp", true)
                         .userInfoEndpoint()
                             .userService(customOAuth2UserService);
 

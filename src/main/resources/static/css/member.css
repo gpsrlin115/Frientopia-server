@@ -1,5 +1,5 @@
 /* 메인 콘텐트 */
-#main_content { position: relative; width: 1000px; height: 600px; margin: 0 auto; }
+#main_content { position: relative; width: 1300px; height: 600px; margin: 0 auto; }
 
 /* 가입 양식 폼 */
 #join_box {	width: 600px;	margin: 0 auto; }

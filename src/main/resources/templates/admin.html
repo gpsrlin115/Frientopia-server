@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<head>
+    <meta charset="UTF-8">
+    <title>프렌토피아 관리자 페이지</title>
+    <link th:href="@{/css/main1.css}" rel="stylesheet">
+    <!--font-->
+    <link th:href="@{/img/favicon.png}" rel="shortcut icon">
+    <link rel="stylesheet" th:href="@{./css/common.css}">
+    <link rel="stylesheet" th:href="@{./css/member.css}">
+    <link rel="shortcut icon" th:href=="@{img/favicon.png}">
+    <link th:href="@{/css/mentor-find.css}" rel="stylesheet">
+    <link th:href="@{/css/admin.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <a th:href="@{/}" class="logo">프렌토피아</a>
+            <nav>
+                <ul class="gnb">
+                    <li><a th:href="@{mentor-find}">멘토 찾기</a></li>
+                    <li><a href="member_find2.html">커뮤니티</a></li>
+                    <li><a href="my-wishlist.html">내 멘토링</a></li>
+                    <li th:if="${userName} != null"><a th:href="@{/myPage}">마이페이지</a></li>
+                    <li> | </li>
+                    <li th:if="${userName} == null"><a th:href="@{/oauth2/authorization/google}">로그인</a></li>
+                    <li th:if="${userName} != null" th:text="${userName} + '님, 환영합니다!'"></li>
+                    <li th:if="${userName} != null"><a th:href="@{/logout}">로그아웃</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="admin-container">
+            <div><h2>회원 관리</h2></div>
+            &nbsp;&nbsp;
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>이름</th>
+                        <th>email</th>
+                        <th>유저 권한</th>
+                        <th>수정</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="user : ${users}">
+                        <td th:text="${user.id}"></td>
+                        <td th:text="${user.name}"></td>
+                        <td th:text="${user.email}"></td>
+                        <td th:text="${user.role.getTitle()}"></td>
+                        <td><a th:href="@{/admin/{email}(email=${user.email})}"><button class="btn btn-primary">수정</button></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--footer-->
+        <footer>
+            <h2 class="footerLogo">프렌토피아</h2>
+            <div class="box">
+                <h2>
+                    당신 옆의 멘토, 프렌토피아<br>
+                    For Your Mentor, Frientopia
+                </h2>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
