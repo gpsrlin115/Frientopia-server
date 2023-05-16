@@ -2,6 +2,7 @@ package com.hnu.capstone.controller;
 
 
 import com.hnu.capstone.config.SessionUser;
+import com.hnu.capstone.dto.PostsSaveRequestDto;
 import com.hnu.capstone.service.UserService;
 import com.hnu.capstone.domain.*;
 import com.hnu.capstone.dto.PostsResponseDto;
@@ -123,7 +124,9 @@ public class IndexController {
 
 
     @GetMapping("/posts/save")
-    public String postsSave() {
+    public String postsSave(Model model)
+    {
+        model.addAttribute("post", new PostsSaveRequestDto());
         return "post";
     }
 
