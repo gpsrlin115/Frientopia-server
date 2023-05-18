@@ -4,6 +4,7 @@ import com.hnu.capstone.domain.User;
 import com.hnu.capstone.domain.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,7 +12,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class UserService {
+public class UserService{
     @Autowired
     UserRepository userRepo;
     @Transactional
@@ -23,7 +24,9 @@ public class UserService {
         return userRepo.findByEmail(email).get();
     }
 
-    public void UpdateUser(User user){userRepo.save(user);}
+    public void UpdateUser(User user){
+        userRepo.save(user);
+    }
 
     @Transactional
     public void DeleteUser(String email){
