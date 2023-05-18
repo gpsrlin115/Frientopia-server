@@ -11,7 +11,7 @@
 <h1>게시글 등록</h1>
 <div class="col-md-12">
     <div class="col-md-4">
-        <form method="post" action="/api/v1/posts" th:object="${post}"> <!---->
+        <form id="postForm" method="post" action="/api/v1/posts" th:object="${post}"> <!-- 이부분의 id = postForm -->
             <div class="form-group">
                 <label for="title">제목</label>
                 <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요" th:field="*{title}"><!---->
@@ -31,5 +31,39 @@
         <!--<button type="button" class="btn btn-primary" th:onclick="'save()'" >등록</button>-->
     </div>
 </div>
+<!-- JavaScript 코드 추가 -->
+<script>
+    // form 요소를 선택합니다.
+    var form = document.querySelector('#postForm');
+
+    // form 요소에 submit 이벤트 리스너를 추가합니다.
+    form.addEventListener('submit', function(event) {
+        // 기본 이벤트를 취소합니다.
+        event.preventDefault();
+
+        // XMLHttpRequest 객체를 생성합니다.
+        var xhr = new XMLHttpRequest();
+
+        // 요청을 초기화합니다.
+        xhr.open('POST', '/api/v1/posts');
+
+        // 요청이 완료되면 실행될 콜백 함수를 지정합니다.
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                // 요청이 성공하면 /mentor-find로 리다이렉션합니다.
+                window.location.href = '/mentor-find';
+            } else {
+                // 요청이 실패하면 오류 메시지를 표시합니다.
+                alert('An error occurred: ' + xhr.responseText);
+            }
+        };
+
+        // form 데이터를 가져옵니다.
+        var formData = new FormData(form);
+
+        // 요청을 전송합니다.
+        xhr.send(formData);
+    });
+</script>
 </body>
 </html>
