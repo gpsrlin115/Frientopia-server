@@ -1,5 +1,6 @@
 package com.hnu.capstone.controller;
 
+import com.hnu.capstone.config.SessionUser;
 import com.hnu.capstone.domain.Role;
 import com.hnu.capstone.domain.User;
 import com.hnu.capstone.service.PostsService;
@@ -24,13 +25,6 @@ public class AdminController {
     private final HttpSession httpSession;
     @Autowired
     UserService userService;
-
-    @GetMapping("/admin")
-    public String adminForm(Model model) {
-        List<User> users = userService.SelectAll();
-        model.addAttribute("users", users);
-        return "admin";
-    }
 
     @GetMapping("/admin/{email}")
     public String adminUser(@PathVariable("email") String email, Model model){

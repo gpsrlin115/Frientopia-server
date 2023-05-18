@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Controller
@@ -51,6 +52,11 @@ public class IndexController {
         if(user != null) {
             model.addAttribute("userName", user.getName());
             model.addAttribute("userEmail", user.getEmail());
+            if(userService.SelectUser(user.getEmail()).getId() == 1){
+                User admin = userService.SelectUser(user.getEmail());
+                admin.roleUpdate(Role.ADMIN);
+                userService.UpdateUser(admin);
+            }
             if (userService.SelectUser(user.getEmail()).getRole() == Role.GUEST){
                 return "signUp";
             }
@@ -77,6 +83,7 @@ public class IndexController {
 
         return "redirect:/";
     }
+
 
     @GetMapping("/myPage")
     public String myPageForm(Model model){
@@ -118,6 +125,18 @@ public class IndexController {
             session.invalidate();
         }
         return "redirect:/";
+    }
+
+    @GetMapping("/admin")
+    public String adminForm(Model model) {
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        if(user != null) {
+            model.addAttribute("userName", user.getName());
+            model.addAttribute("userEmail", user.getEmail());
+        }
+        List<User> users = userService.SelectAll();
+        model.addAttribute("users", users);
+        return "admin";
     }
 
     @GetMapping("/posts/save")
