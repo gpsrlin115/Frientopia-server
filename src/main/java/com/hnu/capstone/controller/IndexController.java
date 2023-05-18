@@ -3,6 +3,7 @@ package com.hnu.capstone.controller;
 
 import com.hnu.capstone.config.SessionUser;
 import com.hnu.capstone.dto.PostsSaveRequestDto;
+import com.hnu.capstone.dto.PostsUpdateRequestDto;
 import com.hnu.capstone.service.UserService;
 import com.hnu.capstone.domain.*;
 import com.hnu.capstone.dto.PostsResponseDto;
@@ -134,6 +135,8 @@ public class IndexController {
     public String postsUpdate(@PathVariable Long id, Model model) {
         PostsResponseDto dto = postsService.findById(id);
         model.addAttribute("post", dto);
+        PostsUpdateRequestDto update = new PostsUpdateRequestDto(dto.getTitle(), dto.getContent());
+        model.addAttribute("update", update);
 
         return "modifytemp";
     }
