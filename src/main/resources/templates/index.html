@@ -10,21 +10,22 @@
 </head>
 <body>
         <div class="wrap">
-            <header>
-                <a th:href="@{/}" class="logo">프렌토피아</a>
-                <nav>
-                    <ul class="gnb">
-                        <li><a th:href="@{mentor-find}">멘토 찾기</a></li>
-                        <li><a href="member_find2.html">커뮤니티</a></li>
-                        <li><a href="my-wishlist.html">내 멘토링</a></li>
-                        <li th:if="${userName} != null"><a th:href="@{/myPage}">마이페이지</a></li>
-                        <li> | </li>
-                        <li th:if="${userName} == null"><a th:href="@{/oauth2/authorization/google}">로그인</a></li>
-                        <li th:if="${userName} != null" th:text="${userName} + '님, 환영합니다!'"></li>
-                        <li th:if="${userName} != null"><a th:href="@{/logout}">로그아웃</a></li>
-                    </ul>
-                </nav>
-            </header>
+            <div id="header-load" th:replace="layout/header.html :: header"></div>
+<!--            <header>-->
+<!--                <a th:href="@{/}" class="logo">프렌토피아</a>-->
+<!--                <nav>-->
+<!--                    <ul class="gnb">-->
+<!--                        <li><a th:href="@{mentor-find}">멘토 찾기</a></li>-->
+<!--                        <li><a href="member_find2.html">커뮤니티</a></li>-->
+<!--                        <li><a href="my-wishlist.html">내 멘토링</a></li>-->
+<!--                        <li th:if="${userName} != null"><a th:href="@{/myPage}">마이페이지</a></li>-->
+<!--                        <li> | </li>-->
+<!--                        <li th:if="${userName} == null"><a th:href="@{/oauth2/authorization/google}">로그인</a></li>-->
+<!--                        <li th:if="${userName} != null" th:text="${userName} + '님, 환영합니다!'"></li>-->
+<!--                        <li th:if="${userName} != null"><a th:href="@{/logout}">로그아웃</a></li>-->
+<!--                    </ul>-->
+<!--                </nav>-->
+<!--            </header>-->
 
             <section class="visual" style="margin-top:0px;">
                 <div class="img">
@@ -99,16 +100,18 @@
                     </ul>
                 </div>
             </section>
+
+            <div id="footer-load" th:replace="layout/footer.html :: footer"></div>
             <!--footer-->
-            <footer>
-                <h2 class="footerLogo">프렌토피아</h2>
-                <div class="box">
-                    <h2>
-                        당신 옆의 멘토, 프렌토피아<br>
-                        For Your Mentor, Frientopia
-                    </h2>
-                </div>
-            </footer>
+<!--            <footer>-->
+<!--                <h2 class="footerLogo">프렌토피아</h2>-->
+<!--                <div class="box">-->
+<!--                    <h2>-->
+<!--                        당신 옆의 멘토, 프렌토피아<br>-->
+<!--                        For Your Mentor, Frientopia-->
+<!--                    </h2>-->
+<!--                </div>-->
+<!--            </footer>-->
         </div>
 </body>
 </html>
