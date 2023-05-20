@@ -28,6 +28,12 @@ public class AdminController {
 
     @GetMapping("/admin/{email}")
     public String adminUser(@PathVariable("email") String email, Model model){
+        SessionUser admin = (SessionUser) httpSession.getAttribute("user");
+        if(admin != null) {
+            model.addAttribute("userName", admin.getName());
+            model.addAttribute("userEmail", admin.getEmail());
+            model.addAttribute("userRole", userService.SelectUser(admin.getEmail()).getRole().name());
+        }
         User user = userService.SelectUser(email);
         model.addAttribute(user);
         model.addAttribute("roles", Role.values());
