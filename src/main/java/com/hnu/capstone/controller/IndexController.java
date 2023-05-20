@@ -122,12 +122,14 @@ public class IndexController {
         return "redirect:/";
     }
 
-
-
     @GetMapping("/posts/save")
     public String postsSave(Model model)
     {
-        model.addAttribute("post", new PostsSaveRequestDto());
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        if(user != null) {
+            model.addAttribute("post", new PostsSaveRequestDto(user.getName()));
+        }
+
         return "post";
     }
 
@@ -140,4 +142,5 @@ public class IndexController {
 
         return "modifytemp";
     }
+
 }

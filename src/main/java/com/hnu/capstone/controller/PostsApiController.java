@@ -1,23 +1,32 @@
 package com.hnu.capstone.controller;
 
+import com.hnu.capstone.config.SessionUser;
 import com.hnu.capstone.dto.PostsListResponseDto;
 import com.hnu.capstone.dto.PostsResponseDto;
 import com.hnu.capstone.dto.PostsSaveRequestDto;
 import com.hnu.capstone.dto.PostsUpdateRequestDto;
 import com.hnu.capstone.service.PostsService;
+import com.hnu.capstone.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import javax.servlet.http.HttpSession;
 
 @RequiredArgsConstructor
 @RestController
 public class PostsApiController {
 
     private final PostsService postsService;
+    private final HttpSession httpSession;
+    private final UserService userService;
 
     @PostMapping("/api/v1/posts")
     public Long save(@ModelAttribute PostsSaveRequestDto requestDto){
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        if(user != null) {
+            requestDto.setUser(userService.SelectUser(user.getEmail()));
+        }
         return postsService.save(requestDto);
     }
 
