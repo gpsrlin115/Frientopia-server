@@ -10,10 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-<<<<<<< HEAD
 import java.util.Collection;
-=======
->>>>>>> posts
 import java.util.List;
 
 @Getter

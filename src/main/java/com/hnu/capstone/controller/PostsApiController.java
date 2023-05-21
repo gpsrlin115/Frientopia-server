@@ -8,6 +8,7 @@ import com.hnu.capstone.dto.PostsUpdateRequestDto;
 import com.hnu.capstone.service.PostsService;
 import com.hnu.capstone.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
