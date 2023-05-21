@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -14,6 +16,7 @@ public class User extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Long id;
 
     @Column(nullable = false)
@@ -47,6 +50,10 @@ public class User extends BaseTimeEntity {
     @Column
     private double rating_score;
 
+    @OneToMany(mappedBy = "user")
+    private List<Posts> posts = new ArrayList<>();
+
+
 
     @Builder
     public User(String name, String email, String picture, Role role) {
@@ -75,4 +82,5 @@ public class User extends BaseTimeEntity {
     public String getRoleKey() {
         return this.role.getKey();
     }
+
 }
