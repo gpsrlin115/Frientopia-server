@@ -11,22 +11,6 @@
 <body>
         <div class="wrap">
             <div id="header-load" th:replace="layout/header.html :: header"></div>
-<!--            <header>-->
-<!--                <a th:href="@{/}" class="logo">프렌토피아</a>-->
-<!--                <nav>-->
-<!--                    <ul class="gnb">-->
-<!--                        <li><a th:href="@{mentor-find}">멘토 찾기</a></li>-->
-<!--                        <li><a href="member_find2.html">커뮤니티</a></li>-->
-<!--                        <li><a href="my-wishlist.html">내 멘토링</a></li>-->
-<!--                        <li th:if="${userName} != null"><a th:href="@{/myPage}">마이페이지</a></li>-->
-<!--                        <li> | </li>-->
-<!--                        <li th:if="${userName} == null"><a th:href="@{/oauth2/authorization/google}">로그인</a></li>-->
-<!--                        <li th:if="${userName} != null" th:text="${userName} + '님, 환영합니다!'"></li>-->
-<!--                        <li th:if="${userName} != null"><a th:href="@{/logout}">로그아웃</a></li>-->
-<!--                    </ul>-->
-<!--                </nav>-->
-<!--            </header>-->
-
             <section class="visual" style="margin-top:0px;">
                 <div class="img">
                     <img th:src="@{/img/main_visual.png}" alt="">
@@ -44,12 +28,6 @@
                         <a th:href="@{mentor-find}">
                             <p><span>현재 모집중인 멘토링 보기</span>멘토 찾기</p>
                             <span class="arrow"><img th:src="@{/img/arrow_btn.png}" alt=""></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <p><span>모든 사용자의 자유로운 소통공간</span>커뮤니티</p>
-                            <span class="arrow"><img th:src="@{img/arrow_btn.png}" alt=""></span>
                         </a>
                     </li>
                     <li>
