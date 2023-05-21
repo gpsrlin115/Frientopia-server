@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<head>
+    <meta charset="UTF-8">
+    <title>프렌토피아 관리자 페이지</title>
+    <link th:href="@{/css/main1.css}" rel="stylesheet">
+    <!--font-->
+    <link th:href="@{/img/favicon.png}" rel="shortcut icon">
+    <link rel="stylesheet" th:href="@{./css/common.css}">
+    <link rel="stylesheet" th:href="@{./css/member.css}">
+    <link rel="shortcut icon" th:href=="@{img/favicon.png}">
+    <link th:href="@{/css/mentor-find.css}" rel="stylesheet">
+    <link th:href="@{/css/admin.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="wrap">
+        <div id="header-load" th:replace="layout/header.html :: header"></div>
+
+
+        <div class="admin-container">
+            <div><h2>회원 관리</h2></div>
+            &nbsp;&nbsp;
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>이름</th>
+                        <th>email</th>
+                        <th>유저 권한</th>
+                        <th>수정</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="user, stat : ${users}">
+                        <td th:text="|${stat.count}|"></td>
+                        <td th:text="${user.name}"></td>
+                        <td th:text="${user.email}"></td>
+                        <td th:text="${user.role.getTitle()}"></td>
+                        <td><a th:href="@{/admin/{email}(email=${user.email})}"><button class="btn btn-primary">수정</button></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--footer-->
+        <div id="footer-load" th:replace="layout/footer.html :: footer"></div>
+
+    </div>
+</body>
+</html>

@@ -3,9 +3,17 @@ package com.hnu.capstone.domain;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+<<<<<<< HEAD
+=======
+import java.util.Collection;
+>>>>>>> master
 import java.util.List;
 
 @Getter
@@ -48,7 +56,7 @@ public class User extends BaseTimeEntity {
     private String introduce;
 
     @Column
-    private double rating_score;
+    private double ratingScore;
 
     @OneToMany(mappedBy = "user")
     private List<Posts> posts = new ArrayList<>();
@@ -83,4 +91,10 @@ public class User extends BaseTimeEntity {
         return this.role.getKey();
     }
 
+<<<<<<< HEAD
+=======
+/*    public void setAuthority(){
+        this.authority = new SimpleGrantedAuthority(this.getRoleKey());
+    }*/
+>>>>>>> master
 }
