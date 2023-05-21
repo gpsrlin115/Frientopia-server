@@ -48,8 +48,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>1</td>
+                        <tr th:each="post, stat : ${posts}">
+                            <td th:text="${stat.count}"></td>
                             <th>
                                 <a th:href="@{/posts/update/{id}(id = ${post.getId()})}" th:text="${post.getTitle()}"></a>
                             </th>
