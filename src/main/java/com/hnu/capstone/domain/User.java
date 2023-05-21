@@ -10,7 +10,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.Collection;
+=======
+>>>>>>> posts
 import java.util.List;
 
 @Getter
@@ -21,6 +24,7 @@ public class User extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Long id;
 
     @Column(nullable = false)
@@ -53,6 +57,10 @@ public class User extends BaseTimeEntity {
 
     @Column
     private double ratingScore;
+
+    @OneToMany(mappedBy = "user")
+    private List<Posts> posts = new ArrayList<>();
+
 
 
     @Builder

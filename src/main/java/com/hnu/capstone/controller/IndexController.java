@@ -2,6 +2,9 @@ package com.hnu.capstone.controller;
 
 
 import com.hnu.capstone.config.SessionUser;
+import com.hnu.capstone.dto.PostsListResponseDto;
+import com.hnu.capstone.dto.PostsSaveRequestDto;
+import com.hnu.capstone.dto.PostsUpdateRequestDto;
 import com.hnu.capstone.service.UserService;
 import com.hnu.capstone.domain.*;
 import com.hnu.capstone.dto.PostsResponseDto;
@@ -44,6 +47,8 @@ public class IndexController {
             model.addAttribute("userName", user.getName());
             model.addAttribute("userRole", userService.SelectUser(user.getEmail()).getRole().name());
         }
+        List<PostsListResponseDto> posts = postsService.findAllDesc();
+        model.addAttribute("posts", posts);
         return "mentor-find";
     }
 
@@ -146,15 +151,26 @@ public class IndexController {
     }
 
     @GetMapping("/posts/save")
-    public String postsSave() {
-        return "posts-save";
+    public String postsSave(Model model)
+    {
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        if(user != null) {
+            model.addAttribute("post", new PostsSaveRequestDto(user.getName()));
+        }
+
+        return "post";
     }
 
     @GetMapping("/posts/update/{id}")
     public String postsUpdate(@PathVariable Long id, Model model) {
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
+        model.addAttribute("userName", sessionUser.getName());
         PostsResponseDto dto = postsService.findById(id);
         model.addAttribute("post", dto);
+        PostsUpdateRequestDto update = new PostsUpdateRequestDto(dto.getTitle(), dto.getContent());
+        model.addAttribute("update", update);
 
-        return "posts-update";
+        return "modifytemp";
     }
+
 }
