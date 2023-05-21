@@ -52,6 +52,7 @@ public class IndexController {
         return "mentor-find";
     }
 
+
     @GetMapping("/signUp")
     public String signUpForm(Model model){
         model.addAttribute("posts", postsService.findAllDesc());
@@ -150,14 +151,16 @@ public class IndexController {
         return "admin";
     }
 
-    @GetMapping("/posts/save")
-    public String postsSave(Model model)
-    {
+
+
+    @GetMapping("/mentor-find/post")
+    public String postsSave(Model model) {
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
         if(user != null) {
             model.addAttribute("post", new PostsSaveRequestDto(user.getName()));
+            model.addAttribute("userName", user.getName());
+            model.addAttribute("userRole", userService.SelectUser(user.getEmail()).getRole().name());
         }
-
         return "post";
     }
 
