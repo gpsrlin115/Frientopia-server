@@ -1,8 +1,11 @@
 package com.hnu.capstone.config;
 
+import com.hnu.capstone.domain.Role;
 import com.hnu.capstone.domain.User;
 import com.hnu.capstone.domain.UserRepository;
+import com.hnu.capstone.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
@@ -22,6 +25,9 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
     private final UserRepository userRepository;
     private final HttpSession httpSession;
 
+    @Autowired
+    UserService userService;
+
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
         OAuth2UserService delegate = new DefaultOAuth2UserService();
@@ -31,8 +37,12 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails().getUserInfoEndpoint().getUserNameAttributeName();
 
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
+        User olduser = new User();
+        if(userRepository.findByEmail(attributes.getEmail()).isPresent()){
+            olduser = userService.SelectUser(attributes.getEmail());
+        }
+        User user = saveOrUpdate(attributes, olduser);
 
-        User user = saveOrUpdate(attributes);
         httpSession.setAttribute("user", new SessionUser(user));
 
         return new DefaultOAuth2User(
@@ -41,9 +51,10 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
                 attributes.getNameAttributeKey());
     }
 
-    private User saveOrUpdate(OAuthAttributes attributes) {
+    private User saveOrUpdate(OAuthAttributes attributes, User olduser) {
         User user = userRepository.findByEmail(attributes.getEmail())
-                .map(entity -> entity.update(attributes.toEntity().getGen(), attributes.toEntity().getAge(), attributes.toEntity().getMajor(), attributes.toEntity().getPhoneNum(), attributes.toEntity().getIntroduce()))
+                .map(entity -> entity.update(olduser.getGen(), olduser.getAge(), olduser.getMajor(), olduser.getPhoneNum(), olduser.getIntroduce()))
+                .map(entity -> entity.roleUpdate(olduser.getRole()))
                 .orElse(attributes.toEntity());
 
         return userRepository.save(user);
