@@ -23,7 +23,6 @@ public class PostsApiController {
 
     @PutMapping("/api/v1/posts/{id}")
     public Long update(@PathVariable Long id, @ModelAttribute PostsUpdateRequestDto requestDto) {
-        System.out.println(requestDto.getTitle());
         if (requestDto.getTitle() == null){
             return 0L;
         }else{

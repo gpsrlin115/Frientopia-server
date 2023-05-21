@@ -26,10 +26,12 @@
         <textarea class="form-control" id="content" th:field="*{content}"></textarea>
       </div>
       <button type="submit">수정</button>
+      <form th:method="delete" th:action="@{/api/v1/posts/{id}(id=${post.id})}">
+        <button type="submit">삭제</button>
+      </form>
     </form>
-    <form th:method="delete" th:action="@{/api/v1/posts/{id}(id=${post.id})}">
-      <button type="submit">삭제</button>
-    </form>
+
+
     <a href="/" role="button" class="btn btn-secondary">취소</a>
 <!--    <form th:action = "@{/api/v1/posts/{id}(id = ${post.id})}" method="update">-->
 <!--      <button type="button" th:onclick="'|updatePost(${post.id})|'">수정 완료</button>-->
