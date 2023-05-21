@@ -3,6 +3,7 @@ package com.hnu.capstone.config;
 import com.hnu.capstone.domain.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -11,7 +12,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @RequiredArgsConstructor
 @EnableWebSecurity
-public class SecurityConfig {
+public class SecurityConfig{
 
     private final CustomOAuth2UserService customOAuth2UserService;
 
@@ -25,13 +26,14 @@ public class SecurityConfig {
                     .antMatchers("/", "/css/**", "/img/**",
                             "/js/**", "/h2-console/**").permitAll()
                     .antMatchers("/api/v1/**").hasRole(Role.USER.name())
+                    .antMatchers("/admin/**").hasRole(Role.ADMIN.name())
                     .anyRequest().authenticated()
                 .and()
                     .logout()
                         .logoutSuccessUrl("/")
                 .and()
                     .oauth2Login()
-                    .defaultSuccessUrl("/signUp")
+                        .defaultSuccessUrl("/signUp", true)
                         .userInfoEndpoint()
                             .userService(customOAuth2UserService);
 

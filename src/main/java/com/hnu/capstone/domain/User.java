@@ -3,8 +3,15 @@ package com.hnu.capstone.domain;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -45,7 +52,7 @@ public class User extends BaseTimeEntity {
     private String introduce;
 
     @Column
-    private double rating_score;
+    private double ratingScore;
 
 
     @Builder
@@ -75,4 +82,8 @@ public class User extends BaseTimeEntity {
     public String getRoleKey() {
         return this.role.getKey();
     }
+
+/*    public void setAuthority(){
+        this.authority = new SimpleGrantedAuthority(this.getRoleKey());
+    }*/
 }

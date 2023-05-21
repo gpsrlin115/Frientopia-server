@@ -5,6 +5,9 @@ import com.hnu.capstone.domain.User;
 import lombok.Builder;
 import lombok.Getter;
 
+import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.util.Map;
 
 @Getter
