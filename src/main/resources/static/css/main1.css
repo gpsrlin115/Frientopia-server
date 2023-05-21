@@ -12,10 +12,10 @@ address, em, i {font-style: normal;}
 
 /*layout*/
 body {font-family: 'NanumSquare', sans-serif !important; font-size: 14px; color:#4e4e4e; line-height: 1.4;}
-.wrap {width: 100%; min-width: 1100px;}
+.wrap {width: 100%; min-width: 1300px;}
 
 /*header*/
-header {width: 100%; height: 120px; line-height: 120px; padding: 0 60px; box-sizing: border-box; position: fixed; top:0; z-index: 100; background: #fff;}
+header {width: 100%; height: 120px; line-height: 120px; padding: 0 60px; box-sizing: border-box; position: sticky; top:0; z-index: 100; background: #fff; min-width: 1300px;}
 header .logo {display: block; font-size: 42px; font-weight: 900;letter-spacing: -6px; color: #39312b; float: left;}
 header nav {float: right;}
 header nav .gnb li {display: inline-block; margin-left: 60px;}
@@ -131,11 +131,7 @@ footer .footerLogo {font-size: 40px; font-weight: 900; letter-spacing: -6px; col
 footer .box {padding: 100px 0; background: url(../img/bottom_bg.jpg) no-repeat center/cover; margin-top: 80px;}
 footer .box h2 {color: #fff; font-size: 22px; font-weight: normal; animation-name: slid-up; animation-duration: 1s;}
 
-
-
-
-
-
-
-
-
+/*formcontainer*/
+.formcontainer {
+    padding: 0 20% 0 20%;
+}
