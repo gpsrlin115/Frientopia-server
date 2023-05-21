@@ -9,6 +9,7 @@
 <p th:text="${post.content}">내용이 들어갈 부분입니다.</p>
 <a th:href="@{/api/v1/posts/${post.id}">글 삭제</a>
 <!--<a th:href="@{${board.filepath}}">다운 받기</a>-->
+<a th:href="@{/api/v1/">신청</a>
 <a th:href="@{/api/v1/posts/${post.id}">수정</a>
 </body>
 </html>
