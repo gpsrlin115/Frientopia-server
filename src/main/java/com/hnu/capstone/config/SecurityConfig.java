@@ -35,7 +35,7 @@ public class SecurityConfig{
                     .oauth2Login()
                         .defaultSuccessUrl("/signUp", true)
                         .userInfoEndpoint()
-                            .userService(customOAuth2UserService);
+                               .userService(customOAuth2UserService);
 
         return http.build();
     }

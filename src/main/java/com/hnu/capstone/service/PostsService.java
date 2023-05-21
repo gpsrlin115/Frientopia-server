@@ -20,7 +20,6 @@ public class PostsService {
 
     @Transactional
     public Long save(PostsSaveRequestDto requestDto) {
-
         return postsRepository.save(requestDto.toEntity()).getId();
     }
 
@@ -29,6 +28,7 @@ public class PostsService {
         Posts posts = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id="+ id));
 
         posts.update(requestDto.getTitle(), requestDto.getContent());
+        postsRepository.save(posts);
 
         return id;
     }
@@ -53,4 +53,5 @@ public class PostsService {
                 .map(PostsListResponseDto::new)
                 .collect(Collectors.toList());
     }
+
 }

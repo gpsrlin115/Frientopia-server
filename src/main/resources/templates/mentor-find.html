@@ -51,11 +51,10 @@
                         <tr>
                             <td>1</td>
                             <th>
-                                <a href="#!">test</a>
-                                <p>테스트</p>
+                                <a th:href="@{/posts/update/{id}(id = ${post.getId()})}" th:text="${post.getTitle()}"></a>
                             </th>
-                            <td>김김김</td>
-                            <td>2222.22.22</td>
+                            <td th:text="${post.getAuthor()}"></td>
+                            <td th:text="${post.getModifiedDate()}"></td>
                         </tr>
                         </tbody>
                     </table>
