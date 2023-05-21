@@ -17,7 +17,8 @@
             <ul class="gnb">
                 <li><a th:href="@{mentor-find}">멘토 찾기</a></li>
                 <li><a href="my-wishlist.html">내 멘토링</a></li>
-                <li th:if="${userName} != null"><a th:href="@{/myPage}">마이페이지</a></li>
+                <li th:if="${userRole} == 'USER'"><a th:href="@{/myPage}">마이페이지</a></li>
+                <li th:if="${userRole} == 'ADMIN'"><a th:href="@{/admin}">관리페이지</a></li>
                 <li> | </li>
                 <li th:if="${userName} == null"><a th:href="@{/oauth2/authorization/google}">로그인</a></li>
                 <li th:if="${userName} != null" th:text="${userName} + '님, 환영합니다!'"></li>
@@ -34,6 +35,7 @@
             <div class="page-title">
                 <div class="container">
                     <h3>현재 모집중인 멘토링 글</h3>
+                    <button class="btn btn-primary" th:onclick="|location.href='@{/mentor-find/post}'|">등록하기</button>
                 </div>
             </div>
             <div id="board-list">
