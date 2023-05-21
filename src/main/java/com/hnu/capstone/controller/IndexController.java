@@ -2,6 +2,7 @@ package com.hnu.capstone.controller;
 
 
 import com.hnu.capstone.config.SessionUser;
+import com.hnu.capstone.dto.PostsListResponseDto;
 import com.hnu.capstone.dto.PostsSaveRequestDto;
 import com.hnu.capstone.dto.PostsUpdateRequestDto;
 import com.hnu.capstone.service.UserService;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Controller
@@ -43,6 +45,8 @@ public class IndexController {
         if(user != null) {
             model.addAttribute("userName", user.getName());
         }
+        List<PostsListResponseDto> posts = postsService.findAllDesc();
+        model.addAttribute("posts", posts);
         return "mentor-find";
     }
 
@@ -135,6 +139,8 @@ public class IndexController {
 
     @GetMapping("/posts/update/{id}")
     public String postsUpdate(@PathVariable Long id, Model model) {
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
+        model.addAttribute("userName", sessionUser.getName());
         PostsResponseDto dto = postsService.findById(id);
         model.addAttribute("post", dto);
         PostsUpdateRequestDto update = new PostsUpdateRequestDto(dto.getTitle(), dto.getContent());

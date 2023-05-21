@@ -47,14 +47,13 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
+                        <tr th:each="post, stat : ${posts}">
+                            <td th:text="${stat.count}"></td>
                             <th>
-                                <a href="/api/v1/posts/1">test</a>
-                                <p>테스트</p>
+                                <a th:href="@{/posts/update/{id}(id = ${post.getId()})}" th:text="${post.getTitle()}"></a>
                             </th>
-                            <td>김김김</td>
-                            <td>2222.22.22</td>
+                            <td th:text="${post.getAuthor()}"></td>
+                            <td th:text="${post.getModifiedDate()}"></td>
                         </tr>
                     </tbody>
                     <a href="/posts/save" class="btn-write">게시글 작성</a>
