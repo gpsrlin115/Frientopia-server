@@ -1,5 +1,6 @@
 package com.hnu.capstone.dto;
 
+import com.hnu.capstone.domain.Category;
 import com.hnu.capstone.domain.Posts;
 import com.hnu.capstone.domain.User;
 import lombok.Builder;

@@ -61,11 +61,6 @@ public class IndexController {
             model.addAttribute("userName", user.getName());
             model.addAttribute("userEmail", user.getEmail());
             model.addAttribute("userRole", userService.SelectUser(user.getEmail()).getRole().name());
-            if(userService.SelectUser(user.getEmail()).getId() == 1){
-                User admin = userService.SelectUser(user.getEmail());
-                admin.roleUpdate(Role.ADMIN);
-                userService.UpdateUser(admin);
-            }
             if (userService.SelectUser(user.getEmail()).getRole() == Role.GUEST){
                 return "signUp";
             }
