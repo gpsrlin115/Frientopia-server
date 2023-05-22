@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @NoArgsConstructor
@@ -53,6 +55,9 @@ public class User extends BaseTimeEntity {
     @OneToMany(mappedBy = "user")
     private List<Posts> posts = new ArrayList<>();
 
+    @OneToMany(mappedBy = "participant")
+    private Set<MentoringMapping> registeredStudies = new HashSet<>();
+
 
 
     @Builder
@@ -81,6 +86,15 @@ public class User extends BaseTimeEntity {
 
     public String getRoleKey() {
         return this.role.getKey();
+    }
+
+    public void addRegisteredMentorPost(MentoringMapping mentoringMapping){
+        this.registeredStudies.add(mentoringMapping);
+    }
+
+    public void removeRegisteredStudy(MentoringMapping registeredStudy){
+        this.registeredStudies.remove(registeredStudy);
+        registeredStudy.setParticipant(null);
     }
 
 }

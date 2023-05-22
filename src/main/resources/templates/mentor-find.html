@@ -50,7 +50,7 @@
                         <tr th:each="post, stat : ${posts}">
                             <td th:text="${stat.count}"></td>
                             <th>
-                                <a th:href="@{/posts/update/{id}(id = ${post.getId()})}" th:text="${post.getTitle()}"></a>
+                                <a th:href="@{/posts/view/{id}(id = ${post.getId()})}" th:text="${post.getTitle()}"></a>
                             </th>
                             <td th:text="${post.getAuthor()}"></td>
                             <td th:text="${post.getModifiedDate()}"></td>

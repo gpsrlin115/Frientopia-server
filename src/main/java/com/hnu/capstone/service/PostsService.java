@@ -1,5 +1,6 @@
 package com.hnu.capstone.service;
 
+import com.hnu.capstone.domain.MentoringMapping;
 import com.hnu.capstone.domain.Posts;
 import com.hnu.capstone.domain.PostsRepository;
 import com.hnu.capstone.dto.PostsListResponseDto;
@@ -52,6 +53,13 @@ public class PostsService {
         return postsRepository.findAllDesc().stream()
                 .map(PostsListResponseDto::new)
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public void assignParticipant(String email, MentoringMapping studyMember) {
+        Posts post = postsRepository.findById(email).get();
+        post.addParticipants(studyMember);
+        post.increaseOneStudyMate();
     }
 
 }

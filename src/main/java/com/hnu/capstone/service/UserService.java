@@ -1,5 +1,6 @@
 package com.hnu.capstone.service;
 
+import com.hnu.capstone.domain.MentoringMapping;
 import com.hnu.capstone.domain.User;
 import com.hnu.capstone.domain.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -28,5 +29,25 @@ public class UserService {
     @Transactional
     public void DeleteUser(String email){
         userRepo.deleteByEmail(email);
+    }
+
+    @Transactional
+    public void registerStudy(String email, MentoringMapping mentoringMapping){
+        User user = userRepo.findByEmail(email).get();
+        user.addRegisteredMentorPost(mentoringMapping);
+        userRepo.save(user);
+    }
+
+    @Transactional
+    public Long unregisterStudy(String email, Long studyIdx) {
+        User user = userRepo.findByEmail(email).get();
+        user.getRegisteredStudies().stream()
+                .filter(a -> a.getRegisteredStudy().getId().equals(studyIdx))
+                .forEach(studyMember -> {
+                    studyMember.getParticipant().removeRegisteredStudy(studyMember);
+                    studyMember.getRegisteredStudy().removeParticipant(studyMember);
+                });
+
+        return user.getId();
     }
 }

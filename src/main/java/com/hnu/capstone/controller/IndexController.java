@@ -126,6 +126,7 @@ public class IndexController {
         return "redirect:/";
     }
 
+    //게시글 등록 페이지로 넘어감
     @GetMapping("/posts/save")
     public String postsSave(Model model)
     {
@@ -137,6 +138,7 @@ public class IndexController {
         return "post";
     }
 
+    //게시글 수정페이지로 넘어감
     @GetMapping("/posts/update/{id}")
     public String postsUpdate(@PathVariable Long id, Model model) {
         SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
@@ -147,6 +149,14 @@ public class IndexController {
         model.addAttribute("update", update);
 
         return "modifytemp";
+    }
+
+    //게시글 조회페이지로 넘어감
+    @GetMapping("/posts/view/{id}")
+    public String postsView(@PathVariable Long id, Model model) {
+        PostsResponseDto dto = postsService.findById(id);
+        model.addAttribute("post", dto);
+        return "postview";
     }
 
 }
