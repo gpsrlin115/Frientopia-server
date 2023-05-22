@@ -1,17 +1,25 @@
 package com.hnu.capstone.domain;
 
+import com.hnu.capstone.dto.PostsResponseDto;
+import com.hnu.capstone.dto.PostsSaveRequestDto;
+import com.hnu.capstone.service.PostsService;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
+import java.util.function.Function;
 
 @Getter
 @NoArgsConstructor
@@ -19,7 +27,6 @@ import java.util.List;
 @Entity
 public class User extends BaseTimeEntity {
 
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Long id;
@@ -27,6 +34,7 @@ public class User extends BaseTimeEntity {
     @Column(nullable = false)
     private String name;
 
+    @Id
     @Column(nullable = false)
     private String email;
 
@@ -55,10 +63,19 @@ public class User extends BaseTimeEntity {
     @Column
     private double ratingScore;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Posts> posts = new ArrayList<>();
 
+    @OneToMany (mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private List<MentoringMapping> mentoringMappings = new ArrayList<>();
 
+    public void PostAddUser(PostsSaveRequestDto post){
+        post.setUser(this);
+    }
+
+    public void UserAddPost(Posts post){
+        this.getPosts().add(post);
+    }
 
     @Builder
     public User(String name, String email, String picture, Role role) {
@@ -87,8 +104,4 @@ public class User extends BaseTimeEntity {
     public String getRoleKey() {
         return this.role.getKey();
     }
-
-/*    public void setAuthority(){
-        this.authority = new SimpleGrantedAuthority(this.getRoleKey());
-    }*/
 }

@@ -1,10 +1,12 @@
 package com.hnu.capstone.controller;
 
 import com.hnu.capstone.config.SessionUser;
+import com.hnu.capstone.domain.*;
 import com.hnu.capstone.dto.PostsListResponseDto;
 import com.hnu.capstone.dto.PostsResponseDto;
 import com.hnu.capstone.dto.PostsSaveRequestDto;
 import com.hnu.capstone.dto.PostsUpdateRequestDto;
+import com.hnu.capstone.service.MentoringMappingService;
 import com.hnu.capstone.service.PostsService;
 import com.hnu.capstone.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -21,14 +23,15 @@ public class PostsApiController {
     private final PostsService postsService;
     private final HttpSession httpSession;
     private final UserService userService;
+    private final PostsRepository postsRepository;
+    private final MentoringMappingService mentoringMappingService;
+    private final MentoringMappingRepository mentoringMappingRepository;
 
     @PostMapping("/api/v1/posts")
     public Long save(@ModelAttribute PostsSaveRequestDto requestDto){
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
-        if(user != null) {
-            requestDto.setUser(userService.SelectUser(user.getEmail()));
-        }
-        return postsService.save(requestDto);
+
+        return userService.UserToPost(user, requestDto);
     }
 
     @PutMapping("/api/v1/posts/{id}")
@@ -60,5 +63,16 @@ public class PostsApiController {
     @GetMapping("/api/v1/posts/list")
     public List<PostsListResponseDto> findAll() {
         return postsService.findAllDesc();
+    }
+
+    @GetMapping("/api/v1/posts/mapping/{post_id}")
+    public String mapping(@PathVariable Long post_id){
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
+
+        User user = userService.SelectUser(sessionUser.getEmail());
+        Posts post = postsRepository.findById(post_id).get();
+
+        mentoringMappingService.save(post, user);
+        return "신청완료";
     }
 }
