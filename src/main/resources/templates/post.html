@@ -12,64 +12,64 @@
 </head>
 <!--수정 필요-->
 <body>
-    <header>
-        <a th:href="@{/}" class="logo">프렌토피아</a>
-        <nav>
-            <ul class="gnb">
-                <li><a th:href="@{mentor-find}">멘토 찾기</a></li>
-                <li><a href="my-wishlist.html">내 멘토링</a></li>
-                <li th:if="${userRole} == 'USER'"><a th:href="@{/myPage}">마이페이지</a></li>
-                <li th:if="${userRole} == 'ADMIN'"><a th:href="@{/admin}">관리페이지</a></li>
-                <li> | </li>
-                <li th:if="${userName} == null"><a th:href="@{/oauth2/authorization/google}">로그인</a></li>
-                <li th:if="${userName} != null" th:text="${userName} + '님, 환영합니다!'"></li>
-                <li th:if="${userName} != null"><a th:href="@{/logout}">로그아웃</a></li>
-            </ul>
-        </nav>
-    </header>
-    <div class="wrap">
-        <section>
-            <div id="main_img_bar"></div>
-            <div class="page-title">
-                <div class="container">
-                    <h3>멘토링 모집 글쓰기</h3>
-                </div>
+<header>
+    <a th:href="@{/}" class="logo">프렌토피아</a>
+    <nav>
+        <ul class="gnb">
+            <li><a th:href="@{/mentor-find}">멘토 찾기</a></li>
+            <li><a href="my-wishlist.html">내 멘토링</a></li>
+            <li th:if="${userRole} == 'USER'"><a th:href="@{/myPage}">마이페이지</a></li>
+            <li th:if="${userRole} == 'ADMIN'"><a th:href="@{/admin}">관리페이지</a></li>
+            <li> | </li>
+            <li th:if="${userName} == null"><a th:href="@{/oauth2/authorization/google}">로그인</a></li>
+            <li th:if="${userName} != null" th:text="${userName} + '님, 환영합니다!'"></li>
+            <li th:if="${userName} != null"><a th:href="@{/logout}">로그아웃</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="wrap">
+    <section>
+        <div id="main_img_bar"></div>
+        <div class="page-title">
+            <div class="container">
+                <h3>멘토링 모집 글쓰기</h3>
             </div>
-            <div class="layout">
-                <div class="col-md-12">
-                    <div class="col-md-4">
-                        <form id="postForm" method="post" action="/api/v1/posts" th:object="${post}"> <!-- 이부분의 id = postForm -->
-                            <div class="form-group">
-                                <label for="title">제목</label>
-                                <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요" th:field="*{title}"><!---->
-                            </div>
-                            <div class="form-group">
-                                <label for="author">작성자</label>
-                                <input type="text" class="form-control" id="author" name="author" placeholder="작성자" th:field="*{author}" th:text="${userName}" readonly> <!---->
-                            </div>
-                            <div class="form-group">
-                                <label for="content">내용</label>
-                                <textarea class="form-control" id="content" name="content" placeholder="내용을 입력하세요" th:field="*{content}"></textarea> <!---->
-                            </div>
-                            <button class="btn btn-secondary" type="undo" th:onclick="|location.href='@{/mentor-find}'|">취소</button>
-                            <button class="btn btn-primary" type="submit">등록</button>
-                        </form>
-                    </div>
-                    <!--<button type="button" class="btn btn-primary" th:onclick="'save()'" >등록</button>-->
-                </div>
-            </div>
-        </section>
-    </div>
-    <!--footer-->
-    <footer>
-        <h2 class="footerLogo">프렌토피아</h2>
-        <div class="box">
-            <h2>
-                당신 옆의 멘토, 프렌토피아<br>
-                For Your Mentor, Frientopia
-            </h2>
         </div>
-    </footer>
+        <div class="layout">
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <form id="postForm" method="post" action="/api/v1/posts" th:object="${post}"> <!-- 이부분의 id = postForm -->
+                        <div class="form-group">
+                            <label for="title">제목</label>
+                            <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요" th:field="*{title}"><!---->
+                        </div>
+                        <div class="form-group">
+                            <label for="author">작성자</label>
+                            <input type="text" class="form-control" id="author" name="author" placeholder="작성자" th:field="*{author}" th:text="${userName}" readonly> <!---->
+                        </div>
+                        <div class="form-group">
+                            <label for="content">내용</label>
+                            <textarea class="form-control" id="content" name="content" placeholder="내용을 입력하세요" th:field="*{content}"></textarea> <!---->
+                        </div>
+                        <button class="btn btn-primary" type="submit">등록</button>
+                    </form>
+                    <button class="btn btn-secondary" type="undo" th:onclick="|location.href='@{/mentor-find}'|">취소</button>
+                </div>
+                <!--<button type="button" class="btn btn-primary" th:onclick="'save()'" >등록</button>-->
+            </div>
+        </div>
+    </section>
+</div>
+<!--footer-->
+<footer>
+    <h2 class="footerLogo">프렌토피아</h2>
+    <div class="box">
+        <h2>
+            당신 옆의 멘토, 프렌토피아<br>
+            For Your Mentor, Frientopia
+        </h2>
+    </div>
+</footer>
 <!-- JavaScript 코드 추가 -->
 <script>
     // form 요소를 선택합니다.
@@ -90,6 +90,7 @@
         xhr.onload = function() {
             if (xhr.status === 200) {
                 // 요청이 성공하면 /mentor-find로 리다이렉션합니다.
+                alert('글이 등록되었습니다.')
                 window.location.href = '/mentor-find';
             } else {
                 // 요청이 실패하면 오류 메시지를 표시합니다.

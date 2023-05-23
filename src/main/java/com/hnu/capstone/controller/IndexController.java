@@ -39,7 +39,6 @@ public class IndexController {
         return "index";
     }
 
-    // 게시글 기능 추가 후에 수정 할 것
     @GetMapping("/mentor-find")
     public String mentorFind(Model model) {
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
@@ -157,6 +156,20 @@ public class IndexController {
             model.addAttribute("userRole", userService.SelectUser(user.getEmail()).getRole().name());
         }
         return "post";
+    }
+
+    @GetMapping("/posts/view/{id}")
+    public String postsView(@PathVariable Long id, Model model) {
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        if(user != null) {
+            model.addAttribute("userName", user.getName());
+            model.addAttribute("userRole", userService.SelectUser(user.getEmail()).getRole().name());
+        }
+        PostsResponseDto dto = postsService.findById(id);
+        model.addAttribute("postId", dto.getId());
+        model.addAttribute("post", dto);
+
+        return "postview";
     }
 
     @GetMapping("/posts/update/{id}")

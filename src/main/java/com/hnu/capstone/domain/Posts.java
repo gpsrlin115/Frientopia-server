@@ -34,7 +34,8 @@ public class Posts extends BaseTimeEntity {
     private List<MentoringMapping> mentoringMappings = new ArrayList<>();
 
     @Builder
-    public Posts(String title, String content, String author, User user) {
+    public Posts(Long id, String title, String content, String author, User user) {
+        this.id = id;
         this.title = title;
         this.content = content;
         this.author = author;

@@ -2,10 +2,7 @@ package com.hnu.capstone.controller;
 
 import com.hnu.capstone.config.SessionUser;
 import com.hnu.capstone.domain.*;
-import com.hnu.capstone.dto.PostsListResponseDto;
-import com.hnu.capstone.dto.PostsResponseDto;
-import com.hnu.capstone.dto.PostsSaveRequestDto;
-import com.hnu.capstone.dto.PostsUpdateRequestDto;
+import com.hnu.capstone.dto.*;
 import com.hnu.capstone.service.MentoringMappingService;
 import com.hnu.capstone.service.PostsService;
 import com.hnu.capstone.service.UserService;
@@ -26,6 +23,7 @@ public class PostsApiController {
     private final PostsRepository postsRepository;
     private final MentoringMappingService mentoringMappingService;
     private final MentoringMappingRepository mentoringMappingRepository;
+
 
     @PostMapping("/api/v1/posts")
     public Long save(@ModelAttribute PostsSaveRequestDto requestDto){
