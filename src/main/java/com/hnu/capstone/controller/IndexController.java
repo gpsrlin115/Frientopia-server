@@ -172,16 +172,26 @@ public class IndexController {
         return "postview";
     }
 
+    // 다른 사용자가 주소로 직접 접근해도 수정이 됨. (나중에 고칠 예정)
     @GetMapping("/posts/update/{id}")
     public String postsUpdate(@PathVariable Long id, Model model) {
-        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
-        model.addAttribute("userName", sessionUser.getName());
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        if(user != null) {
+            model.addAttribute("userName", user.getName());
+            model.addAttribute("userRole", userService.SelectUser(user.getEmail()).getRole().name());
+        }
         PostsResponseDto dto = postsService.findById(id);
         model.addAttribute("post", dto);
         PostsUpdateRequestDto update = new PostsUpdateRequestDto(dto.getTitle(), dto.getContent());
         model.addAttribute("update", update);
 
         return "modifytemp";
+    }
+
+    @GetMapping("/posts/delete/{id}")
+    public String postsDelete(@PathVariable Long id) {
+        postsService.delete(id);
+        return "redirect:/mentor-find";
     }
 
 }

@@ -52,8 +52,7 @@
       </div>
       <div class="bt_wrap">
         <button class="btn btn-secondary" type="undo" th:onclick="|location.href='@{/mentor-find}'|">목록</button>
-        <!--수정 버튼 먹통-->
-        <button th:if="${userName == post.author}" class="btn btn-secondary" type="undo" a th:href="@{/posts/update/{id}(id = ${post.getId()})}" th:text="수정"></a>></button>
+        <button th:if="${userName == post.author}" class="btn btn-secondary" type="undo" th:onclick="|location.href='@{/posts/update/{id}(id = ${post.id})}'|" th:text="수정"></button>
       </div>
     </div>
   </section>
