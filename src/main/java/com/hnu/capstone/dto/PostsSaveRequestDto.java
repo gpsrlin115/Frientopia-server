@@ -2,19 +2,20 @@ package com.hnu.capstone.dto;
 
 import com.hnu.capstone.domain.Posts;
 import com.hnu.capstone.domain.User;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
 public class PostsSaveRequestDto {
     private String title;
     private String content;
     private String author;
     private User user;
+    private String fileName;
+    private MultipartFile file;
 
     @Builder
     public PostsSaveRequestDto(String title, String content, String author, User user) {
@@ -35,6 +36,11 @@ public class PostsSaveRequestDto {
                 .content(content)
                 .author(author)
                 .user(user)
+                .fileName(fileName)
                 .build();
+    }
+    /* 서버가 관리하는 파일명 추가 */
+    public void addFileName(String storeFileName){
+        this.fileName = storeFileName;
     }
 }

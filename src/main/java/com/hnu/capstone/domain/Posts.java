@@ -26,6 +26,9 @@ public class Posts extends BaseTimeEntity {
     @Column
     private String author;
 
+    @Column
+    private String fileName;
+
     @ManyToOne
     @JoinColumn(name = "user_email")
     private User user;
@@ -34,12 +37,13 @@ public class Posts extends BaseTimeEntity {
     private List<MentoringMapping> mentoringMappings = new ArrayList<>();
 
     @Builder
-    public Posts(Long id, String title, String content, String author, User user) {
+    public Posts(Long id, String title, String content, String author, User user, String fileName) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.author = author;
         this.user = user;
+        this.fileName = fileName;
         }
 
     public void update(String title, String content) {
