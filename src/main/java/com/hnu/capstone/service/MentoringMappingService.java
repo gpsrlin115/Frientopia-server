@@ -1,9 +1,6 @@
 package com.hnu.capstone.service;
 
-import com.hnu.capstone.domain.MentoringMapping;
-import com.hnu.capstone.domain.MentoringMappingRepository;
-import com.hnu.capstone.domain.Posts;
-import com.hnu.capstone.domain.User;
+import com.hnu.capstone.domain.*;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.sql.Select;
 import org.springframework.stereotype.Service;
@@ -15,6 +12,8 @@ import java.util.List;
 @Service
 public class MentoringMappingService {
     private final MentoringMappingRepository mentoringMappingRepository;
+    private final MentoringRoomService mentoringRoomService;
+
     @Transactional
     public List<MentoringMapping> SelectAll(){
         return mentoringMappingRepository.findAll();
@@ -38,11 +37,20 @@ public class MentoringMappingService {
     @Transactional
     public void save(Posts post, User user){
         MentoringMapping mentoringMapping = new MentoringMapping(post, user);
-        if(SelectByPostAndUser(post, user) == null){
-            mentoringMapping.PostAddMentoringMapping(post);
-            mentoringMapping.MentoringMappingAddUser(user);
-            mentoringMappingRepository.save(mentoringMapping);
+        if(post != null && user !=null){
+            if(SelectByPostAndUser(post, user) == null){
+                mentoringMapping.PostAddMentoringMapping(post);
+                mentoringMapping.MentoringMappingAddUser(user);
+                mentoringMappingRepository.save(mentoringMapping);
+            }
         }
+    }
+
+    @Transactional
+    public void updateMentoringRoom(MentoringMapping mentoringMapping){
+        MentoringRoom mentoringRoom = mentoringRoomService.findByPost(mentoringMapping.getPost());
+        mentoringMapping.setMentoringRoom(mentoringRoom);
+        mentoringMappingRepository.save(mentoringMapping);
     }
 
     @Transactional

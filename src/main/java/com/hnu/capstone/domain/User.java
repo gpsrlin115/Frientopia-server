@@ -69,6 +69,9 @@ public class User extends BaseTimeEntity {
     @OneToMany (mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<MentoringMapping> mentoringMappings = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private List<MentoringRoomPost> mentoringRoomPosts = new ArrayList<>();
+
     public void PostAddUser(PostsSaveRequestDto post){
         post.setUser(this);
     }

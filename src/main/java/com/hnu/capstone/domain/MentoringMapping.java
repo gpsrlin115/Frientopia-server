@@ -26,6 +26,10 @@ public class MentoringMapping {
     @JoinColumn(name = "user_email", nullable = false) // 사용자 이메일 외래 키 설정
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name="mentoring_room", nullable = true)
+    private MentoringRoom mentoringRoom;
+
     @Builder
     public MentoringMapping(Posts post, User user) {
         this.post = post;
@@ -48,4 +52,8 @@ public class MentoringMapping {
         post.getMentoringMappings().add(this);
     }
 
+    public void MentoringRoomMapping(MentoringRoom mentoringRoom){
+        this.setMentoringRoom(mentoringRoom);
+        mentoringRoom.getMentoringMappings().add(this);
+    }
 }
