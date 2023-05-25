@@ -33,8 +33,15 @@ public class MentoringRoomPostsController {
     public String MentoringRoomForm(@PathVariable Long room_id){
         SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
         User user = userService.SelectUser(sessionUser.getEmail());
-        String i = mentoringRoomService.mentoringRoomEnter(user, room_id);
+        Long i = mentoringRoomService.mentoringRoomEnter(user, room_id);
 
-        return i;
+        if(i != null){
+            if(i == 1L){
+                return room_id + "에 입장하였습니다.";
+            }else if(i == 0L){
+                return room_id + "에 신청하지 않았습니다.";
+            }
+        }
+        return "멘토링 룸이 존재하지 않습니다.";
     }
 }
