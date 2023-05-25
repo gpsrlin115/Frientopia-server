@@ -36,17 +36,17 @@ public class MentoringRoomService {
     }
 
     @Transactional
-    public String mentoringRoomEnter(User user, Long room_id){
+    public Long mentoringRoomEnter(User user, Long room_id){
         MentoringRoom mentoringRoom = this.findById(room_id);
         if(mentoringRoom != null){
             for (User mentee : mentoringRoom.getMentee() ) {
                 if(mentee == user){
-                    return room_id + "에 입장하였습니다.";
+                    return 1L;
                 }
             }
-            return "멘토링 룸에 신청하지 않았습니다.";
+            return 0L;
         }else {
-            return "멘토링 룸이 존재하지 않습니다.";
+            return null;
         }
     }
 }
