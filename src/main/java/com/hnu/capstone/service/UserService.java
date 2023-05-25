@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -43,7 +44,7 @@ public class UserService{
     }
 
     @Transactional
-    public Long UserToPost(SessionUser user, PostsSaveRequestDto requestDto){
+    public Long UserToPost(SessionUser user, PostsSaveRequestDto requestDto) throws IOException {
         if(user != null) {
             this.SelectUser(user.getEmail()).PostAddUser(requestDto);
         }
