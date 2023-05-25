@@ -4,12 +4,14 @@ import com.hnu.capstone.config.SessionUser;
 import com.hnu.capstone.domain.*;
 import com.hnu.capstone.dto.*;
 import com.hnu.capstone.service.MentoringMappingService;
+import com.hnu.capstone.service.MentoringRoomService;
 import com.hnu.capstone.service.PostsService;
 import com.hnu.capstone.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 
@@ -23,13 +25,16 @@ public class PostsApiController {
     private final PostsRepository postsRepository;
     private final MentoringMappingService mentoringMappingService;
     private final MentoringMappingRepository mentoringMappingRepository;
-
+    private final MentoringRoomService mentoringRoomService;
 
     @PostMapping("/api/v1/posts")
     public Long save(@ModelAttribute PostsSaveRequestDto requestDto){
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
 
-        return userService.UserToPost(user, requestDto);
+        Long post_num = userService.UserToPost(user, requestDto);
+        mentoringRoomService.newMentoringRoom(post_num);
+
+        return post_num;
     }
 
     @PutMapping("/api/v1/posts/{id}")
@@ -71,6 +76,22 @@ public class PostsApiController {
         Posts post = postsRepository.findById(post_id).get();
 
         mentoringMappingService.save(post, user);
+        mentoringMappingService.updateMentoringRoom(mentoringMappingService.SelectByPosts(post));
         return "신청완료";
+    }
+
+    @GetMapping("/user/posts")
+    public String userPosts(){
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
+
+        User user = userService.SelectUser(sessionUser.getEmail());
+        int post_num = user.getPosts().size();
+
+        List<String> posts = new ArrayList<>();
+        for (Posts post: user.getPosts()) {
+            posts.add(post.getTitle());
+        }
+
+        return posts.toString();
     }
 }
