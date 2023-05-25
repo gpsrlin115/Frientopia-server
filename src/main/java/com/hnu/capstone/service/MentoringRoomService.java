@@ -1,13 +1,13 @@
 package com.hnu.capstone.service;
 
-import com.hnu.capstone.domain.MentoringRoom;
-import com.hnu.capstone.domain.MentoringRoomRepository;
-import com.hnu.capstone.domain.Posts;
-import com.hnu.capstone.domain.PostsRepository;
+import com.hnu.capstone.config.SessionUser;
+import com.hnu.capstone.domain.*;
 import com.hnu.capstone.dto.PostsSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -21,8 +21,32 @@ public class MentoringRoomService {
     }
 
     @Transactional
+    public MentoringRoom findById(Long id){
+        if (mentoringRoomRepository.findById(id).isPresent()){
+            return mentoringRoomRepository.findById(id).get();
+        }else{
+            return null;
+        }
+    }
+
+    @Transactional
     public void newMentoringRoom(Long postID) {
         MentoringRoom mentoringRoom = new MentoringRoom(postsRepository.findById(postID).get());
         mentoringRoomRepository.save(mentoringRoom);
+    }
+
+    @Transactional
+    public String mentoringRoomEnter(User user, Long room_id){
+        MentoringRoom mentoringRoom = this.findById(room_id);
+        if(mentoringRoom != null){
+            for (User mentee : mentoringRoom.getMentee() ) {
+                if(mentee == user){
+                    return room_id + "에 입장하였습니다.";
+                }
+            }
+            return "멘토링 룸에 신청하지 않았습니다.";
+        }else {
+            return "멘토링 룸이 존재하지 않습니다.";
+        }
     }
 }

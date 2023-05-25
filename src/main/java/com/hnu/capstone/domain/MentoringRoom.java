@@ -34,7 +34,7 @@ public class MentoringRoom {
         this.post = post;
     }
 
-    public List<User> getMentee(MentoringRoom mentoringRoom){
+    public List<User> getMentee(){
         List<User> mentee = new ArrayList<>();
         for (MentoringMapping m : mentoringMappings) {
             mentee.add(m.getUser());
