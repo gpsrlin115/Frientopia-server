@@ -34,6 +34,8 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
+    implementation group: 'commons-io', name: 'commons-io', version: '2.4'
+
 }
 
 tasks.named('test') {

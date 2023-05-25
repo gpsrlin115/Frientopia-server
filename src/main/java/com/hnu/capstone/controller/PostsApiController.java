@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 
@@ -28,7 +29,7 @@ public class PostsApiController {
     private final MentoringRoomService mentoringRoomService;
 
     @PostMapping("/api/v1/posts")
-    public Long save(@ModelAttribute PostsSaveRequestDto requestDto){
+    public Long save(@ModelAttribute PostsSaveRequestDto requestDto) throws IOException {
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
 
         Long post_num = userService.UserToPost(user, requestDto);
@@ -58,7 +59,7 @@ public class PostsApiController {
     }
 
     @GetMapping("/api/v1/posts/{id}")
-    public PostsResponseDto findById (@PathVariable Long id, Model model)
+    public PostsResponseDto findById (@PathVariable Long id)
     {
         return postsService.findById(id);
     }
