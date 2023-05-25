@@ -36,7 +36,7 @@ public class MentoringRoomService {
     }
 
     @Transactional
-    public Long mentoringRoomEnter(User user, Long room_id){
+    public Long mentoringRoomEnter(User user, Long room_id){ //enter 성공시 1L, 신청이 안 되어 있을 시 0L, 멘토링 룸이 존재하지 않을 시 null;
         MentoringRoom mentoringRoom = this.findById(room_id);
         if(mentoringRoom != null){
             for (User mentee : mentoringRoom.getMentee() ) {
