@@ -6,20 +6,37 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Component
 public class FileStore {
-    @Value("${file.dir}")
-    private String fileDir;
+    private String fileDir = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files";
 
     /* 전체 파일 경로 */
     public String getFullPath(String fileName){
         return fileDir + fileName;
     }
     /* 파일 저장 */
+    //다중 파일인 경우
+    public List<UploadFile> storeFiles(List<MultipartFile> multipartFiles) throws IOException {
+
+        List<UploadFile> storeFileResult = new ArrayList<>();
+
+        for (MultipartFile multipartFile : multipartFiles) {
+            if (!multipartFile.isEmpty()) {
+                storeFileResult.add(storeFile(multipartFile));
+            }
+        }
+        return storeFileResult;
+    }
+    //한개인 경우
     public UploadFile storeFile(MultipartFile multipartFile) throws IOException{
-        if(multipartFile.isEmpty()) return null;
+        if(multipartFile.isEmpty())
+        {
+            return null;
+        }
 
         String originalFileName = multipartFile.getOriginalFilename();
 
