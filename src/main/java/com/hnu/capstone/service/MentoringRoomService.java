@@ -25,5 +25,4 @@ public class MentoringRoomService {
         MentoringRoom mentoringRoom = new MentoringRoom(postsRepository.findById(postID).get());
         mentoringRoomRepository.save(mentoringRoom);
     }
-
 }

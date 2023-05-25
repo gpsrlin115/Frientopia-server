@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 @Service
 public class PostsService {
     private final PostsRepository postsRepository;
+    private final MentoringRoomService mentoringRoomService;
 
     @Transactional
     public Long save(PostsSaveRequestDto requestDto) throws IOException {
@@ -50,6 +51,7 @@ public class PostsService {
     public void delete(Long id) {
         Posts posts = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + id));
 
+        mentoringRoomService.findByPost(posts).setPost(null);
         postsRepository.delete(posts);
     }
 
