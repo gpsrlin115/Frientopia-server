@@ -3,30 +3,42 @@ package com.hnu.capstone.domain;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "mentoring_room") // 테이블 이름 설정
 public class MentoringRoom {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "post_id", nullable = false) // 게시글 외래 키 설정
+    @OneToOne
+    @JoinColumn(name="post_id")
     private Posts post;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false) // 사용자 이메일 외래 키 설정
-    private User user;
+    @OneToMany (mappedBy = "mentoringRoom", cascade = {CascadeType.PERSIST})
+    private List<MentoringMapping> mentoringMappings = new ArrayList<>();
+
+    @OneToMany(mappedBy = "mentoringRoom", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private List<MentoringRoomPost> mentoringRoomPosts = new ArrayList<>();
 
     @Builder
-    public MentoringRoom(Posts post, User user) {
+    public MentoringRoom(Posts post) {
         this.post = post;
-        this.user = user;
+    }
+
+    public List<User> getMentee(){
+        List<User> mentee = new ArrayList<>();
+        for (MentoringMapping m : mentoringMappings) {
+            mentee.add(m.getUser());
+        }
+        return mentee;
     }
 }
