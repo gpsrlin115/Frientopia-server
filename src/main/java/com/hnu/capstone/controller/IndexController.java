@@ -39,7 +39,6 @@ public class IndexController {
         return "index";
     }
 
-    // 게시글 기능 추가 후에 수정 할 것
     @GetMapping("/mentor-find")
     public String mentorFind(Model model) {
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
@@ -52,6 +51,7 @@ public class IndexController {
         return "mentor-find";
     }
 
+
     @GetMapping("/signUp")
     public String signUpForm(Model model){
         model.addAttribute("posts", postsService.findAllDesc());
@@ -60,11 +60,6 @@ public class IndexController {
             model.addAttribute("userName", user.getName());
             model.addAttribute("userEmail", user.getEmail());
             model.addAttribute("userRole", userService.SelectUser(user.getEmail()).getRole().name());
-            if(userService.SelectUser(user.getEmail()).getId() == 1){
-                User admin = userService.SelectUser(user.getEmail());
-                admin.roleUpdate(Role.ADMIN);
-                userService.UpdateUser(admin);
-            }
             if (userService.SelectUser(user.getEmail()).getRole() == Role.GUEST){
                 return "signUp";
             }
@@ -150,27 +145,53 @@ public class IndexController {
         return "admin";
     }
 
-    @GetMapping("/posts/save")
-    public String postsSave(Model model)
-    {
+
+
+    @GetMapping("/mentor-find/post")
+    public String postsSave(Model model) {
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
         if(user != null) {
             model.addAttribute("post", new PostsSaveRequestDto(user.getName()));
+            model.addAttribute("userName", user.getName());
+            model.addAttribute("userRole", userService.SelectUser(user.getEmail()).getRole().name());
         }
-
         return "post";
     }
 
+    @GetMapping("/posts/view/{id}")
+    public String postsView(@PathVariable Long id, Model model) {
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        if(user != null) {
+            model.addAttribute("userName", user.getName());
+            model.addAttribute("userRole", userService.SelectUser(user.getEmail()).getRole().name());
+        }
+        PostsResponseDto dto = postsService.findById(id);
+        model.addAttribute("postId", dto.getId());
+        model.addAttribute("post", dto);
+
+        return "postview";
+    }
+
+    // 다른 사용자가 주소로 직접 접근해도 수정이 됨. (나중에 고칠 예정)
     @GetMapping("/posts/update/{id}")
     public String postsUpdate(@PathVariable Long id, Model model) {
-        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
-        model.addAttribute("userName", sessionUser.getName());
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        if(user != null) {
+            model.addAttribute("userName", user.getName());
+            model.addAttribute("userRole", userService.SelectUser(user.getEmail()).getRole().name());
+        }
         PostsResponseDto dto = postsService.findById(id);
         model.addAttribute("post", dto);
         PostsUpdateRequestDto update = new PostsUpdateRequestDto(dto.getTitle(), dto.getContent());
         model.addAttribute("update", update);
 
         return "modifytemp";
+    }
+
+    @GetMapping("/posts/delete/{id}")
+    public String postsDelete(@PathVariable Long id) {
+        postsService.delete(id);
+        return "redirect:/mentor-find";
     }
 
 }

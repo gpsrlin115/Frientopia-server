@@ -1,45 +1,93 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:style="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
-  <title>게시글 수정</title>
+  <title>프렌토피아</title>
+  <link th:href="@{/css/common.css}" rel="stylesheet">
+  <link th:href="@{/css/mentor-find.css}" rel="stylesheet">
+  <link th:href="@{/css/main1.css}" rel="stylesheet">
+  <link th:href="@{/css/post.css}" rel="stylesheet">
+  <link th:href="@{/css/postview.css}" rel="stylesheet">
+  <!--font-->
+  <link th:href="@{img/favicon.png}" rel="shortcut icon">
 </head>
 <body>
+<header>
+  <a th:href="@{/}" class="logo">프렌토피아</a>
+  <nav>
+    <ul class="gnb">
+      <li><a th:href="@{/mentor-find}">멘토 찾기</a></li>
+      <li><a href="my-wishlist.html">내 멘토링</a></li>
+      <li th:if="${userRole} == 'USER'"><a th:href="@{/myPage}">마이페이지</a></li>
+      <li th:if="${userRole} == 'ADMIN'"><a th:href="@{/admin}">관리페이지</a></li>
+      <li> | </li>
+      <li th:if="${userName} == null"><a th:href="@{/oauth2/authorization/google}">로그인</a></li>
+      <li th:if="${userName} != null" th:text="${userName} + '님, 환영합니다!'"></li>
+      <li th:if="${userName} != null"><a th:href="@{/logout}">로그아웃</a></li>
+    </ul>
+  </nav>
+</header>
 <div class="wrap">
-<h1>게시글 수정</h1>
-
-  <div class="col1-md-12">
-    <div class="col-md-4">
-      <form th:object="${update}" th:method="put" th:action="@{/api/v1/posts/{id}(id=${post.id})}">
-        <div class="form-group">
-          <label for="id">글 번호</label>
-          <input type="text" class="form-control" id="id" th:value="${post.id}" readonly>
-        </div>
-        <div class="form-group">
-          <label for=title>제목</label>
-          <input type="text" class="form-control" id="title" th:field="*{title}">
-        </div>
-        <div class="form-group">
-          <label for="author">작성자</label>
-          <input type="text" class="form-control" id="author" th:value="${post.author}" readonly>
-        </div>
-        <div class="form-group">
-          <label for="content">내용</label>
-          <textarea class="form-control" id="content" th:field="*{content}"></textarea>
-        </div>
-        <button type="submit">수정</button>
-      </form>
-      <form th:method="delete" th:action="@{/api/v1/posts/{id}(id=${post.id})}">
-        <button type="submit">삭제</button>
-      </form>
-      <a href="#" role="button" class="btn btn-secondary">취소</a>
+  <section>
+    <div id="main_img_bar"></div>
+    <div class="page-title">
+      <div class="container">
+        <h3>멘토링 글 수정</h3>
+      </div>
     </div>
+    <div class="layout">
+      <div class="col1-md-12">
+        <div class="col-md-4">
+          <form id="updateForm" th:object="${update}" th:method="put" th:action="@{/api/v1/posts/{id}(id=${post.id})}">
+            <div class="form-group">
+              <label for=title>제목</label>
+              <input type="text" class="form-control" id="title" th:field="*{title}">
+            </div>
+            <div class="form-group">
+              <label for="author">작성자</label>
+              <input type="text" class="form-control" id="author" th:text="${post.author}" readonly>
+            </div>
+            <div class="form-group">
+              <label for="content">내용</label>
+              <textarea class="form-control" id="content" th:field="*{content}"></textarea>
+            </div>
+            <button type="submit">수정</button>
+          </form>
+          <button type="delete" th:onclick="|location.href='@{/posts/delete/{id}(id = ${post.id})}'|" th:text="삭제"></button>
+          <button class="btn btn-secondary" type="undo" th:onclick="|location.href='@{/mentor-find}'|">취소</button>
+        </div>
 <!--    <form th:action = "@{/api/v1/posts/{id}(id = ${post.id})}" method="update">-->
 <!--      <button type="button" th:onclick="'|updatePost(${post.id})|'">수정 완료</button>-->
 <!--      <button type="button" th:onclick="'|deletePost(${post.id})|'">삭제</button>-->
 <!--    </form>-->
-  </div>
+      </div>
+    </div>
+  </section>
 </div>
+<script>
+  var form = document.querySelector('#updateForm');
 
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var xhr = new XMLHttpRequest();
+    var id = [[${post.id}]];
+
+    xhr.open('PUT', '/api/v1/posts/'+id);
+
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        alert('글이 수정되었습니다.')
+        window.location.href = '/mentor-find';
+      } else {
+        alert('An error occurred: ' + xhr.responseText);
+      }
+    };
+
+    var formData = new FormData(form);
+
+    xhr.send(formData);
+  });
+</script>
 </body>
 </html>
