@@ -74,11 +74,20 @@ public class PostsApiController {
         SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
 
         User user = userService.SelectUser(sessionUser.getEmail());
-        Posts post = postsRepository.findById(post_id).get();
+        Posts post = new Posts();
+        if(postsRepository.findById(post_id).isPresent()){
+            post = postsRepository.findById(post_id).get();
+        }else{
+            post = null;
+        }
 
-        mentoringMappingService.save(post, user);
-        mentoringMappingService.updateMentoringRoom(mentoringMappingService.SelectByPosts(post));
-        return "신청완료";
+        Long mm = mentoringMappingService.save(post, user);
+        Long um = mentoringMappingService.updateMentoringRoom(post, user);
+
+        if (mm != null && um != null){
+            return "신청완료";
+        }
+        return "신청실패";
     }
 
     @GetMapping("/user/posts")

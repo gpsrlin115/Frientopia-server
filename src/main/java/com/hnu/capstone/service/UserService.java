@@ -1,12 +1,12 @@
 package com.hnu.capstone.service;
 
 import com.hnu.capstone.config.SessionUser;
-import com.hnu.capstone.domain.Posts;
-import com.hnu.capstone.domain.PostsRepository;
-import com.hnu.capstone.domain.User;
-import com.hnu.capstone.domain.UserRepository;
+import com.hnu.capstone.domain.*;
 import com.hnu.capstone.dto.PostsResponseDto;
 import com.hnu.capstone.dto.PostsSaveRequestDto;
+import com.hnu.capstone.dto.mentoringroom.NoticeSaveRequestDto;
+import com.hnu.capstone.dto.mentoringroom.ReferenceSaveRequestDto;
+import com.hnu.capstone.dto.mentoringroom.VideoSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -24,6 +24,8 @@ public class UserService{
     private final UserRepository userRepo;
     private final PostsService postsService;
     private final PostsRepository postsRepository;
+    private final MentoringRoomPostsService mentoringRoomPostsService;
+    private final MentoringRoomService mentoringRoomService;
 
     @Transactional
     public List<User> SelectAll(){
@@ -31,7 +33,12 @@ public class UserService{
     }
 
     public User SelectUser(String email){
-        return userRepo.findByEmail(email).get();
+        if(email != null){
+            if(userRepo.findByEmail(email).isPresent()){
+                return userRepo.findByEmail(email).get();
+            }
+        }
+        return null;
     }
 
     public void UpdateUser(User user){
@@ -50,6 +57,43 @@ public class UserService{
         }
         Long post_id = postsService.save(requestDto);
         this.SelectUser(user.getEmail()).UserAddPost(postsRepository.findById(post_id).get());
+
+        return post_id;
+    }
+
+    @Transactional
+    public Long UserToPost(SessionUser user, NoticeSaveRequestDto requestDto, Long roomId) throws IOException {
+        if(user != null) {
+            this.SelectUser(user.getEmail()).PostAddUser(requestDto);
+        }
+
+        Long post_id = mentoringRoomPostsService.save(requestDto);
+        mentoringRoomPostsService.findById(post_id).MentoringRoomPostToUser(this.SelectUser(user.getEmail()));
+        mentoringRoomPostsService.findById(post_id).MentoringRoomPostToRoom(mentoringRoomService.findById(roomId));
+
+        return post_id;
+    }
+
+    @Transactional
+    public Long UserToPost(SessionUser user, ReferenceSaveRequestDto requestDto, Long roomId) throws IOException {
+        if(user != null) {
+            this.SelectUser(user.getEmail()).PostAddUser(requestDto);
+        }
+        Long post_id = mentoringRoomPostsService.save(requestDto);
+        mentoringRoomPostsService.findById(post_id).MentoringRoomPostToUser(this.SelectUser(user.getEmail()));
+        mentoringRoomPostsService.findById(post_id).MentoringRoomPostToRoom(mentoringRoomService.findById(roomId));
+
+        return post_id;
+    }
+
+    @Transactional
+    public Long UserToPost(SessionUser user, VideoSaveRequestDto requestDto, Long roomId) throws IOException {
+        if(user != null) {
+            this.SelectUser(user.getEmail()).PostAddUser(requestDto);
+        }
+        Long post_id = mentoringRoomPostsService.save(requestDto);
+        mentoringRoomPostsService.findById(post_id).MentoringRoomPostToUser(this.SelectUser(user.getEmail()));
+        mentoringRoomPostsService.findById(post_id).MentoringRoomPostToRoom(mentoringRoomService.findById(roomId));
 
         return post_id;
     }

@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 public class PostsService {
     private final PostsRepository postsRepository;
     private final MentoringRoomService mentoringRoomService;
+    private final MentoringMappingService mentoringMappingService;
 
     @Transactional
     public Long save(PostsSaveRequestDto requestDto) throws IOException {
@@ -52,6 +53,10 @@ public class PostsService {
         Posts posts = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + id));
 
         mentoringRoomService.findByPost(posts).setPost(null);
+        List<MentoringMapping> mentoringMappings = mentoringMappingService.SelectAllByPosts(posts);
+        for (MentoringMapping m: mentoringMappings) {
+            m.setPost(null);
+        }
         postsRepository.delete(posts);
     }
 

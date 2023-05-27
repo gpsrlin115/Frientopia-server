@@ -20,12 +20,12 @@ public class MentoringMappingService {
     }
 
     @Transactional
-    public MentoringMapping SelectByPosts(Posts post){
-        return mentoringMappingRepository.findAllByPost(post).get();
+    public List<MentoringMapping> SelectAllByPosts(Posts posts){
+        return mentoringMappingRepository.findAllByPost(posts);
     }
 
     @Transactional
-    public MentoringMapping SelectByUser(User user){
+    public MentoringMapping SelectAllByUser(User user){
         return mentoringMappingRepository.findAllByUser(user).get();
     }
 
@@ -35,22 +35,34 @@ public class MentoringMappingService {
     }
 
     @Transactional
-    public void save(Posts post, User user){
-        MentoringMapping mentoringMapping = new MentoringMapping(post, user);
-        if(post != null && user !=null){
+    public Long save(Posts post, User user){
+        if(post != null && user != null){
+            MentoringMapping mentoringMapping = new MentoringMapping(post, user);
             if(SelectByPostAndUser(post, user) == null){
                 mentoringMapping.PostAddMentoringMapping(post);
-                mentoringMapping.MentoringMappingAddUser(user);
+                mentoringMapping.UserAddMentoringMapping(user);
                 mentoringMappingRepository.save(mentoringMapping);
+
+                return mentoringMappingRepository.findByPostAndUser(post, user).getId();
             }
+            return mentoringMappingRepository.findByPostAndUser(post, user).getId();
         }
+        return null;
     }
 
     @Transactional
-    public void updateMentoringRoom(MentoringMapping mentoringMapping){
-        MentoringRoom mentoringRoom = mentoringRoomService.findByPost(mentoringMapping.getPost());
-        mentoringMapping.setMentoringRoom(mentoringRoom);
-        mentoringMappingRepository.save(mentoringMapping);
+    public Long updateMentoringRoom(Posts post, User user){
+        if(post != null && user !=null){
+            if(SelectByPostAndUser(post, user) != null){
+                MentoringMapping mentoringMapping = SelectByPostAndUser(post, user);
+                MentoringRoom mentoringRoom = mentoringRoomService.findByPost(mentoringMapping.getPost());
+                mentoringMapping.setMentoringRoom(mentoringRoom);
+
+                return mentoringMapping.getId();
+            }
+            return null;
+        }
+        return null;
     }
 
     @Transactional

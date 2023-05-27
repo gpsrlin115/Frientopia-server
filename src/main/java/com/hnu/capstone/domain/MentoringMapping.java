@@ -19,7 +19,7 @@ public class MentoringMapping {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "post_id", nullable = false) // 게시글 외래 키 설정
+    @JoinColumn(name = "post_id", nullable = true) // 게시글 외래 키 설정
     private Posts post;
 
     @ManyToOne
