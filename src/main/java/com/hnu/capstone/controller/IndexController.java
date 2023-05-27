@@ -25,8 +25,7 @@ public class IndexController {
 
     private final PostsService postsService;
     private final HttpSession httpSession;
-    @Autowired
-    UserService userService;
+    private final UserService userService;
 
     @GetMapping("/")
     public String index(Model model) {
