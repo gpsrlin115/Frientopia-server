@@ -1,47 +1,92 @@
 package com.hnu.capstone.controller;
 
 import com.hnu.capstone.config.SessionUser;
-import com.hnu.capstone.dto.PostsListResponseDto;
+import com.hnu.capstone.domain.MentoringMappingRepository;
+import com.hnu.capstone.domain.MentoringRoomPost;
+import com.hnu.capstone.domain.PostsRepository;
+import com.hnu.capstone.domain.User;
+import com.hnu.capstone.dto.PostsResponseDto;
 import com.hnu.capstone.dto.PostsSaveRequestDto;
 import com.hnu.capstone.dto.PostsUpdateRequestDto;
-import com.hnu.capstone.service.MentoringMappingService;
-import com.hnu.capstone.service.MentoringRoomService;
-import com.hnu.capstone.service.UserService;
-import com.hnu.capstone.domain.*;
-import com.hnu.capstone.dto.PostsResponseDto;
-import com.hnu.capstone.service.PostsService;
+import com.hnu.capstone.dto.mentoringroom.MentoringRoomPostsUpdateRequestDto;
+import com.hnu.capstone.dto.mentoringroom.NoticeSaveRequestDto;
+import com.hnu.capstone.dto.mentoringroom.ReferenceSaveRequestDto;
+import com.hnu.capstone.dto.mentoringroom.VideoSaveRequestDto;
+import com.hnu.capstone.service.*;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.List;
+import java.io.IOException;
 
 @RequiredArgsConstructor
-@RestController
+@RequestMapping("/mentoring/room")
+@Controller
 public class MentoringRoomPostsController {
     private final PostsService postsService;
     private final HttpSession httpSession;
     private final UserService userService;
+    private final PostsRepository postsRepository;
     private final MentoringMappingService mentoringMappingService;
+    private final MentoringMappingRepository mentoringMappingRepository;
     private final MentoringRoomService mentoringRoomService;
+    private final MentoringRoomPostsService mentoringRoomPostsService;
 
-    @GetMapping("/mentoring/room/{room_id}")
-    public String MentoringRoomForm(@PathVariable Long room_id){
+    @PostMapping("/{room_id}/notice/posts")
+    public String saveNotice(@PathVariable Long room_id, @ModelAttribute NoticeSaveRequestDto requestDto) throws IOException {
         SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
         User user = userService.SelectUser(sessionUser.getEmail());
-        Long i = mentoringRoomService.mentoringRoomEnter(user, room_id); //enter 성공시 1L, 신청이 안 되어 있을 시 0L, 멘토링 룸이 존재하지 않을 시 null;
-
-        if(i != null){
-            if(i == 1L){
-                return room_id + "에 입장하였습니다.";
-            }else if(i == 0L){
-                return room_id + "에 신청하지 않았습니다.";
-            }
+        Long result = mentoringRoomService.mentoringRoomEnter(user, room_id);
+        if(result != 1L && result != 2L){
+            return "redirect:/mentor-find";
         }
-        return "멘토링 룸이 존재하지 않습니다.";
+
+        Long post_num = userService.UserToPost(sessionUser, requestDto, room_id);
+
+        return "redirect:/mentoring/room/{room_id}/notice";
+    }
+
+    @PostMapping("/{room_id}/reference/posts")
+    public String saveReference(@PathVariable Long room_id, @ModelAttribute ReferenceSaveRequestDto requestDto) throws IOException {
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
+        User user = userService.SelectUser(sessionUser.getEmail());
+        Long result = mentoringRoomService.mentoringRoomEnter(user, room_id);
+        if(result != 1L && result != 2L){
+            return "redirect:/mentor-find";
+        }
+
+        Long post_num = userService.UserToPost(sessionUser, requestDto, room_id);
+
+        return "redirect:/mentoring/room/{room_id}/reference";
+    }
+
+    @PostMapping("/{room_id}/video/posts")
+    public String saveVideo(@PathVariable Long room_id, @ModelAttribute VideoSaveRequestDto requestDto) throws IOException {
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
+        User user = userService.SelectUser(sessionUser.getEmail());
+        Long result = mentoringRoomService.mentoringRoomEnter(user, room_id);
+        if(result != 1L && result != 2L){
+            return "redirect:/mentor-find";
+        }
+
+        Long post_num = userService.UserToPost(sessionUser, requestDto, room_id);
+
+        return "redirect:/mentoring/room/{room_id}/video";
+    }
+
+    @PutMapping("/{room_id}/update/{id}")
+    public String update(@PathVariable Long room_id, @PathVariable Long id, @ModelAttribute MentoringRoomPostsUpdateRequestDto requestDto) {
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
+        User user = userService.SelectUser(sessionUser.getEmail());
+        Long result = mentoringRoomService.mentoringRoomEnter(user, room_id);
+        if(result != 1L && result != 2L){
+            return "redirect:/mentor-find";
+        }
+
+        mentoringRoomPostsService.update(id, requestDto);
+
+        return "redirect:/mentoring/room/{room_id}";
     }
 }

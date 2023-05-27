@@ -2,6 +2,9 @@ package com.hnu.capstone.domain;
 
 import com.hnu.capstone.dto.PostsResponseDto;
 import com.hnu.capstone.dto.PostsSaveRequestDto;
+import com.hnu.capstone.dto.mentoringroom.NoticeSaveRequestDto;
+import com.hnu.capstone.dto.mentoringroom.ReferenceSaveRequestDto;
+import com.hnu.capstone.dto.mentoringroom.VideoSaveRequestDto;
 import com.hnu.capstone.service.PostsService;
 import lombok.Builder;
 import lombok.Getter;
@@ -72,12 +75,31 @@ public class User extends BaseTimeEntity {
     @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<MentoringRoomPost> mentoringRoomPosts = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private List<MentoringRoom> mentoringRoom = new ArrayList<>();
+
     public void PostAddUser(PostsSaveRequestDto post){
         post.setUser(this);
     }
 
     public void UserAddPost(Posts post){
         this.getPosts().add(post);
+    }
+
+    public void PostAddUser(NoticeSaveRequestDto post){
+        post.setUser(this);
+    }
+
+    public void UserAddPost(MentoringRoomPost post){
+        this.getMentoringRoomPosts().add(post);
+    }
+
+    public void PostAddUser(ReferenceSaveRequestDto post){
+        post.setUser(this);
+    }
+
+    public void PostAddUser(VideoSaveRequestDto post){
+        post.setUser(this);
     }
 
     @Builder

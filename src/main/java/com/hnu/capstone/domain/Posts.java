@@ -33,7 +33,7 @@ public class Posts extends BaseTimeEntity {
     @JoinColumn(name = "user_email")
     private User user;
 
-    @OneToMany (mappedBy = "post", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany (mappedBy = "post", cascade = {CascadeType.PERSIST})
     private List<MentoringMapping> mentoringMappings = new ArrayList<>();
 
     @OneToOne (mappedBy = "post", cascade = {CascadeType.PERSIST})
