@@ -35,6 +35,18 @@ public class PostsApiController {
         Long post_num = userService.UserToPost(user, requestDto);
         mentoringRoomService.newMentoringRoom(post_num);
 
+        User mentor = userService.SelectUser(user.getEmail());
+
+        Posts post = new Posts();
+        if(postsRepository.findById(post_num).isPresent()){
+            post = postsRepository.findById(post_num).get();
+        }else{
+            post = null;
+        }
+
+        mentoringMappingService.save(post, mentor);
+        mentoringMappingService.updateMentoringRoom(post, mentor);
+
         return post_num;
     }
 

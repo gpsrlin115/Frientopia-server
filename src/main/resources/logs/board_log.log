@@ -1027,3 +1027,378 @@ org.springframework.security.web.firewall.RequestRejectedException: The request 
 2023-05-28 02:51:41.661  INFO 1408 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
 2023-05-28 02:51:41.814  INFO 1408 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2023-05-28 02:51:41.816  INFO 1408 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-05-28 04:04:04.726  INFO 23268 --- [main] com.hnu.capstone.CapstoneApplication     : Starting CapstoneApplication using Java 11.0.19 on DESKTOP-3LV1DFL with PID 23268 (C:\Users\ygy01\IdeaProjects\capstone\build\classes\java\main started by ygy01 in C:\Users\ygy01\IdeaProjects\capstone)
+2023-05-28 04:04:04.729  INFO 23268 --- [main] com.hnu.capstone.CapstoneApplication     : The following 1 profile is active: "oauth"
+2023-05-28 04:04:06.231  INFO 23268 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-28 04:04:06.231  INFO 23268 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-05-28 04:04:06.404  INFO 23268 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-28 04:04:06.587  INFO 23268 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-28 04:04:06.785  INFO 23268 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-28 04:04:06.855  INFO 23268 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-28 04:04:06.922  INFO 23268 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-28 04:04:07.102  INFO 23268 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-28 04:04:07.235  INFO 23268 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-05-28 04:04:08.023  INFO 23268 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-28 04:04:09.243  INFO 23268 --- [main] com.hnu.capstone.CapstoneApplication     : Started CapstoneApplication in 4.961 seconds (JVM running for 6.637)
+2023-05-28 04:04:09.245  INFO 23268 --- [main] com.hnu.capstone.LoggingRunner           : INFO 로그 메시지
+2023-05-28 04:04:09.246  WARN 23268 --- [main] com.hnu.capstone.LoggingRunner           : WARN 로그 메시지
+2023-05-28 04:04:09.246 ERROR 23268 --- [main] com.hnu.capstone.LoggingRunner           : ERROR 로그 메시지
+2023-05-28 04:04:25.098  INFO 23268 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-28 04:04:26.147  WARN 23268 --- [http-nio-8080-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [949] milliseconds.
+2023-05-28 04:11:43.310  INFO 23268 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2023-05-28 04:11:43.316  INFO 23268 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-28 04:11:43.319  INFO 23268 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-05-28 04:19:01.161  INFO 22864 --- [main] com.hnu.capstone.CapstoneApplication     : Starting CapstoneApplication using Java 11.0.19 on DESKTOP-3LV1DFL with PID 22864 (C:\Users\ygy01\IdeaProjects\capstone\build\classes\java\main started by ygy01 in C:\Users\ygy01\IdeaProjects\capstone)
+2023-05-28 04:19:01.163  INFO 22864 --- [main] com.hnu.capstone.CapstoneApplication     : The following 1 profile is active: "oauth"
+2023-05-28 04:19:02.308  INFO 22864 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-28 04:19:02.308  INFO 22864 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-05-28 04:19:02.440  INFO 22864 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-28 04:19:02.565  INFO 22864 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-28 04:19:02.668  INFO 22864 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-28 04:19:02.712  INFO 22864 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-28 04:19:02.755  INFO 22864 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-28 04:19:02.887  INFO 22864 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-28 04:19:02.987  INFO 22864 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-05-28 04:19:03.657  INFO 22864 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-28 04:19:04.656  INFO 22864 --- [main] com.hnu.capstone.CapstoneApplication     : Started CapstoneApplication in 3.858 seconds (JVM running for 5.419)
+2023-05-28 04:19:04.658  INFO 22864 --- [main] com.hnu.capstone.LoggingRunner           : INFO 로그 메시지
+2023-05-28 04:19:04.658  WARN 22864 --- [main] com.hnu.capstone.LoggingRunner           : WARN 로그 메시지
+2023-05-28 04:19:04.658 ERROR 22864 --- [main] com.hnu.capstone.LoggingRunner           : ERROR 로그 메시지
+2023-05-28 04:19:08.980  INFO 22864 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-28 04:19:09.999  WARN 22864 --- [http-nio-8080-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [932] milliseconds.
+2023-05-28 04:19:48.900  INFO 22864 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2023-05-28 04:19:48.906  INFO 22864 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-28 04:19:48.908  INFO 22864 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-05-28 17:08:24.829  INFO 13000 --- [main] com.hnu.capstone.CapstoneApplication     : Starting CapstoneApplication using Java 11.0.19 on DESKTOP-3LV1DFL with PID 13000 (C:\Users\ygy01\IdeaProjects\capstone\build\classes\java\main started by ygy01 in C:\Users\ygy01\IdeaProjects\capstone)
+2023-05-28 17:08:24.833  INFO 13000 --- [main] com.hnu.capstone.CapstoneApplication     : The following 1 profile is active: "oauth"
+2023-05-28 17:08:26.560  INFO 13000 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-28 17:08:26.560  INFO 13000 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-05-28 17:08:26.748  INFO 13000 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-28 17:08:26.920  INFO 13000 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-28 17:08:27.074  INFO 13000 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-28 17:08:27.134  INFO 13000 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-28 17:08:27.214  INFO 13000 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-28 17:08:27.405  INFO 13000 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-28 17:08:27.557  INFO 13000 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-05-28 17:08:28.453  INFO 13000 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-28 17:08:29.771  INFO 13000 --- [main] com.hnu.capstone.CapstoneApplication     : Started CapstoneApplication in 5.48 seconds (JVM running for 8.388)
+2023-05-28 17:08:29.773  INFO 13000 --- [main] com.hnu.capstone.LoggingRunner           : INFO 로그 메시지
+2023-05-28 17:08:29.774  WARN 13000 --- [main] com.hnu.capstone.LoggingRunner           : WARN 로그 메시지
+2023-05-28 17:08:29.774 ERROR 13000 --- [main] com.hnu.capstone.LoggingRunner           : ERROR 로그 메시지
+2023-05-28 17:16:58.063  INFO 13000 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-28 17:16:59.137  WARN 13000 --- [http-nio-8080-exec-2] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [966] milliseconds.
+2023-05-28 17:34:35.891  INFO 13000 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2023-05-28 17:34:35.898  INFO 13000 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-28 17:34:35.901  INFO 13000 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-05-28 18:07:01.133  INFO 21100 --- [main] com.hnu.capstone.CapstoneApplication     : Starting CapstoneApplication using Java 11.0.19 on DESKTOP-3LV1DFL with PID 21100 (C:\Users\ygy01\IdeaProjects\capstone\build\classes\java\main started by ygy01 in C:\Users\ygy01\IdeaProjects\capstone)
+2023-05-28 18:07:01.137  INFO 21100 --- [main] com.hnu.capstone.CapstoneApplication     : The following 1 profile is active: "oauth"
+2023-05-28 18:07:02.797  INFO 21100 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-28 18:07:02.798  INFO 21100 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-05-28 18:07:02.968  INFO 21100 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-28 18:07:03.118  INFO 21100 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-28 18:07:03.293  INFO 21100 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-28 18:07:03.354  INFO 21100 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-28 18:07:03.417  INFO 21100 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-28 18:07:03.610  INFO 21100 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-28 18:07:03.736  INFO 21100 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-05-28 18:07:04.592  INFO 21100 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-28 18:07:05.749  INFO 21100 --- [main] com.hnu.capstone.CapstoneApplication     : Started CapstoneApplication in 5.099 seconds (JVM running for 6.813)
+2023-05-28 18:07:05.751  INFO 21100 --- [main] com.hnu.capstone.LoggingRunner           : INFO 로그 메시지
+2023-05-28 18:07:05.751  WARN 21100 --- [main] com.hnu.capstone.LoggingRunner           : WARN 로그 메시지
+2023-05-28 18:07:05.752 ERROR 21100 --- [main] com.hnu.capstone.LoggingRunner           : ERROR 로그 메시지
+2023-05-28 18:07:08.103  INFO 21100 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-28 18:07:09.142  WARN 21100 --- [http-nio-8080-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [939] milliseconds.
+2023-05-28 18:07:26.464 ERROR 21100 --- [http-nio-8080-exec-6] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.util.NoSuchElementException: No value present] with root cause
+
+java.util.NoSuchElementException: No value present
+	at java.base/java.util.Optional.get(Optional.java:148) ~[na:na]
+	at com.hnu.capstone.service.MentoringMappingService.SelectAllByUser(MentoringMappingService.java:29) ~[main/:na]
+	at com.hnu.capstone.service.MentoringMappingService$$FastClassBySpringCGLIB$$30b74a0.invoke(<generated>) ~[main/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.27.jar:5.3.27]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793) ~[spring-aop-5.3.27.jar:5.3.27]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.27.jar:5.3.27]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.27.jar:5.3.27]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-5.3.27.jar:5.3.27]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388) ~[spring-tx-5.3.27.jar:5.3.27]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-5.3.27.jar:5.3.27]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.27.jar:5.3.27]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.27.jar:5.3.27]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708) ~[spring-aop-5.3.27.jar:5.3.27]
+	at com.hnu.capstone.service.MentoringMappingService$$EnhancerBySpringCGLIB$$41894bca.SelectAllByUser(<generated>) ~[main/:na]
+	at com.hnu.capstone.controller.MentoringViewController.myMentoring(MentoringViewController.java:36) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.27.jar:5.3.27]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.27.jar:5.3.27]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.27.jar:5.3.27]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.27.jar:5.3.27]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.27.jar:5.3.27]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.27.jar:5.3.27]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072) ~[spring-webmvc-5.3.27.jar:5.3.27]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965) ~[spring-webmvc-5.3.27.jar:5.3.27]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.27.jar:5.3.27]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.3.27.jar:5.3.27]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:529) ~[tomcat-embed-core-9.0.74.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.27.jar:5.3.27]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623) ~[tomcat-embed-core-9.0.74.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-9.0.74.jar:9.0.74]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:337) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter.doFilterInternal(DefaultLogoutPageGeneratingFilter.java:58) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.27.jar:5.3.27]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:237) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:223) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:223) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:217) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter.doFilterInternal(OAuth2AuthorizationRequestRedirectFilter.java:178) ~[spring-security-oauth2-client-5.7.8.jar:5.7.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.27.jar:5.3.27]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.27.jar:5.3.27]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:112) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:82) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.27.jar:5.3.27]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.27.jar:5.3.27]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:221) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:186) ~[spring-security-web-5.7.8.jar:5.7.8]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354) ~[spring-web-5.3.27.jar:5.3.27]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) ~[spring-web-5.3.27.jar:5.3.27]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.27.jar:5.3.27]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.27.jar:5.3.27]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.27.jar:5.3.27]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.27.jar:5.3.27]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:94) ~[spring-web-5.3.27.jar:5.3.27]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.27.jar:5.3.27]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.27.jar:5.3.27]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.27.jar:5.3.27]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
+	at java.base/java.lang.Thread.run(Thread.java:829) ~[na:na]
+
+2023-05-28 20:37:17.244  INFO 21100 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2023-05-28 20:37:17.268  INFO 21100 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-28 20:37:17.279  INFO 21100 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-05-28 20:56:07.293  INFO 26320 --- [main] com.hnu.capstone.CapstoneApplication     : Starting CapstoneApplication using Java 11.0.19 on DESKTOP-3LV1DFL with PID 26320 (C:\Users\ygy01\IdeaProjects\capstone\build\classes\java\main started by ygy01 in C:\Users\ygy01\IdeaProjects\capstone)
+2023-05-28 20:56:07.296  INFO 26320 --- [main] com.hnu.capstone.CapstoneApplication     : The following 1 profile is active: "oauth"
+2023-05-28 20:56:08.632  INFO 26320 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-28 20:56:08.633  INFO 26320 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-05-28 20:56:08.789  INFO 26320 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-28 20:56:08.932  INFO 26320 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-28 20:56:09.047  INFO 26320 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-28 20:56:09.096  INFO 26320 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-28 20:56:09.144  INFO 26320 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-28 20:56:09.302  INFO 26320 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-28 20:56:09.418  INFO 26320 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-05-28 20:56:10.183  INFO 26320 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-28 20:56:11.341  INFO 26320 --- [main] com.hnu.capstone.CapstoneApplication     : Started CapstoneApplication in 4.49 seconds (JVM running for 6.192)
+2023-05-28 20:56:11.343  INFO 26320 --- [main] com.hnu.capstone.LoggingRunner           : INFO 로그 메시지
+2023-05-28 20:56:11.344  WARN 26320 --- [main] com.hnu.capstone.LoggingRunner           : WARN 로그 메시지
+2023-05-28 20:56:11.344 ERROR 26320 --- [main] com.hnu.capstone.LoggingRunner           : ERROR 로그 메시지
+2023-05-28 20:56:13.889  INFO 26320 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-28 20:56:15.010  WARN 26320 --- [http-nio-8080-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,028] milliseconds.
+2023-05-28 21:00:44.457  INFO 26320 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2023-05-28 21:00:44.463  INFO 26320 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-28 21:00:44.466  INFO 26320 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-05-28 21:00:49.899  INFO 22984 --- [main] com.hnu.capstone.CapstoneApplication     : Starting CapstoneApplication using Java 11.0.19 on DESKTOP-3LV1DFL with PID 22984 (C:\Users\ygy01\IdeaProjects\capstone\build\classes\java\main started by ygy01 in C:\Users\ygy01\IdeaProjects\capstone)
+2023-05-28 21:00:49.902  INFO 22984 --- [main] com.hnu.capstone.CapstoneApplication     : The following 1 profile is active: "oauth"
+2023-05-28 21:00:51.171  INFO 22984 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-28 21:00:51.172  INFO 22984 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-05-28 21:00:51.324  INFO 22984 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-28 21:00:51.456  INFO 22984 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-28 21:00:51.567  INFO 22984 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-28 21:00:51.616  INFO 22984 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-28 21:00:51.664  INFO 22984 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-28 21:00:51.815  INFO 22984 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-28 21:00:51.931  INFO 22984 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-05-28 21:00:52.656  INFO 22984 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-28 21:00:53.786  INFO 22984 --- [main] com.hnu.capstone.CapstoneApplication     : Started CapstoneApplication in 4.283 seconds (JVM running for 6.018)
+2023-05-28 21:00:53.788  INFO 22984 --- [main] com.hnu.capstone.LoggingRunner           : INFO 로그 메시지
+2023-05-28 21:00:53.788  WARN 22984 --- [main] com.hnu.capstone.LoggingRunner           : WARN 로그 메시지
+2023-05-28 21:00:53.789 ERROR 22984 --- [main] com.hnu.capstone.LoggingRunner           : ERROR 로그 메시지
+2023-05-28 21:01:00.916  INFO 22984 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-28 21:01:01.939  WARN 22984 --- [http-nio-8080-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [921] milliseconds.
+2023-05-28 21:13:55.606  INFO 22984 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2023-05-28 21:13:55.613  INFO 22984 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-28 21:13:55.616  INFO 22984 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-05-28 21:14:00.208  INFO 1516 --- [main] com.hnu.capstone.CapstoneApplication     : Starting CapstoneApplication using Java 11.0.19 on DESKTOP-3LV1DFL with PID 1516 (C:\Users\ygy01\IdeaProjects\capstone\build\classes\java\main started by ygy01 in C:\Users\ygy01\IdeaProjects\capstone)
+2023-05-28 21:14:00.211  INFO 1516 --- [main] com.hnu.capstone.CapstoneApplication     : The following 1 profile is active: "oauth"
+2023-05-28 21:14:01.917  INFO 1516 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-28 21:14:01.917  INFO 1516 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-05-28 21:14:02.121  INFO 1516 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-28 21:14:02.327  INFO 1516 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-28 21:14:02.467  INFO 1516 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-28 21:14:02.526  INFO 1516 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-28 21:14:02.586  INFO 1516 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-28 21:14:02.750  INFO 1516 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-28 21:14:02.882  INFO 1516 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-05-28 21:14:03.847  INFO 1516 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-28 21:14:05.096  INFO 1516 --- [main] com.hnu.capstone.CapstoneApplication     : Started CapstoneApplication in 5.315 seconds (JVM running for 6.978)
+2023-05-28 21:14:05.099  INFO 1516 --- [main] com.hnu.capstone.LoggingRunner           : INFO 로그 메시지
+2023-05-28 21:14:05.100  WARN 1516 --- [main] com.hnu.capstone.LoggingRunner           : WARN 로그 메시지
+2023-05-28 21:14:05.100 ERROR 1516 --- [main] com.hnu.capstone.LoggingRunner           : ERROR 로그 메시지
+2023-05-28 21:14:15.638  INFO 1516 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-28 21:14:16.713  WARN 1516 --- [http-nio-8080-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,037] milliseconds.
+2023-05-28 21:15:07.024  INFO 1516 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2023-05-28 21:15:07.030  INFO 1516 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-28 21:15:07.034  INFO 1516 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-05-28 21:15:11.396  INFO 2480 --- [main] com.hnu.capstone.CapstoneApplication     : Starting CapstoneApplication using Java 11.0.19 on DESKTOP-3LV1DFL with PID 2480 (C:\Users\ygy01\IdeaProjects\capstone\build\classes\java\main started by ygy01 in C:\Users\ygy01\IdeaProjects\capstone)
+2023-05-28 21:15:11.399  INFO 2480 --- [main] com.hnu.capstone.CapstoneApplication     : The following 1 profile is active: "oauth"
+2023-05-28 21:15:12.760  INFO 2480 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-28 21:15:12.761  INFO 2480 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-05-28 21:15:12.926  INFO 2480 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-28 21:15:13.073  INFO 2480 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-28 21:15:13.194  INFO 2480 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-28 21:15:13.246  INFO 2480 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-28 21:15:13.297  INFO 2480 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-28 21:15:13.456  INFO 2480 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-28 21:15:13.575  INFO 2480 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-05-28 21:15:14.345  INFO 2480 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-28 21:15:15.493  INFO 2480 --- [main] com.hnu.capstone.CapstoneApplication     : Started CapstoneApplication in 4.514 seconds (JVM running for 6.165)
+2023-05-28 21:15:15.496  INFO 2480 --- [main] com.hnu.capstone.LoggingRunner           : INFO 로그 메시지
+2023-05-28 21:15:15.496  WARN 2480 --- [main] com.hnu.capstone.LoggingRunner           : WARN 로그 메시지
+2023-05-28 21:15:15.496 ERROR 2480 --- [main] com.hnu.capstone.LoggingRunner           : ERROR 로그 메시지
+2023-05-28 21:15:16.398  INFO 2480 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-28 21:15:17.524  WARN 2480 --- [http-nio-8080-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,087] milliseconds.
+2023-05-28 21:15:59.452  INFO 2480 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2023-05-28 21:15:59.458  INFO 2480 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-28 21:15:59.461  INFO 2480 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-05-28 21:16:03.905  INFO 15364 --- [main] com.hnu.capstone.CapstoneApplication     : Starting CapstoneApplication using Java 11.0.19 on DESKTOP-3LV1DFL with PID 15364 (C:\Users\ygy01\IdeaProjects\capstone\build\classes\java\main started by ygy01 in C:\Users\ygy01\IdeaProjects\capstone)
+2023-05-28 21:16:03.908  INFO 15364 --- [main] com.hnu.capstone.CapstoneApplication     : The following 1 profile is active: "oauth"
+2023-05-28 21:16:05.254  INFO 15364 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-28 21:16:05.255  INFO 15364 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-05-28 21:16:05.416  INFO 15364 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-28 21:16:05.558  INFO 15364 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-28 21:16:05.677  INFO 15364 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-28 21:16:05.727  INFO 15364 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-28 21:16:05.779  INFO 15364 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-28 21:16:05.933  INFO 15364 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-28 21:16:06.058  INFO 15364 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-05-28 21:16:06.825  INFO 15364 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-28 21:16:07.973  INFO 15364 --- [main] com.hnu.capstone.CapstoneApplication     : Started CapstoneApplication in 4.479 seconds (JVM running for 6.169)
+2023-05-28 21:16:07.975  INFO 15364 --- [main] com.hnu.capstone.LoggingRunner           : INFO 로그 메시지
+2023-05-28 21:16:07.976  WARN 15364 --- [main] com.hnu.capstone.LoggingRunner           : WARN 로그 메시지
+2023-05-28 21:16:07.976 ERROR 15364 --- [main] com.hnu.capstone.LoggingRunner           : ERROR 로그 메시지
+2023-05-28 21:16:22.332  INFO 15364 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-28 21:16:23.409  WARN 15364 --- [http-nio-8080-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,015] milliseconds.
+2023-05-28 21:18:45.749  INFO 15364 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2023-05-28 21:18:45.755  INFO 15364 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-28 21:18:45.758  INFO 15364 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-05-28 21:20:36.991  INFO 4628 --- [main] com.hnu.capstone.CapstoneApplication     : Starting CapstoneApplication using Java 11.0.19 on DESKTOP-3LV1DFL with PID 4628 (C:\Users\ygy01\IdeaProjects\capstone\build\classes\java\main started by ygy01 in C:\Users\ygy01\IdeaProjects\capstone)
+2023-05-28 21:20:36.994  INFO 4628 --- [main] com.hnu.capstone.CapstoneApplication     : The following 1 profile is active: "oauth"
+2023-05-28 21:20:38.334  INFO 4628 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-28 21:20:38.335  INFO 4628 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-05-28 21:20:38.491  INFO 4628 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-28 21:20:38.631  INFO 4628 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-28 21:20:38.749  INFO 4628 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-28 21:20:38.802  INFO 4628 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-28 21:20:38.854  INFO 4628 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-28 21:20:39.021  INFO 4628 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-28 21:20:39.142  INFO 4628 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-05-28 21:20:39.905  INFO 4628 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-28 21:20:41.087  INFO 4628 --- [main] com.hnu.capstone.CapstoneApplication     : Started CapstoneApplication in 4.514 seconds (JVM running for 6.214)
+2023-05-28 21:20:41.089  INFO 4628 --- [main] com.hnu.capstone.LoggingRunner           : INFO 로그 메시지
+2023-05-28 21:20:41.089  WARN 4628 --- [main] com.hnu.capstone.LoggingRunner           : WARN 로그 메시지
+2023-05-28 21:20:41.089 ERROR 4628 --- [main] com.hnu.capstone.LoggingRunner           : ERROR 로그 메시지
+2023-05-28 21:20:53.275  INFO 4628 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-28 21:20:54.317  WARN 4628 --- [http-nio-8080-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [946] milliseconds.
+2023-05-28 21:23:23.565  INFO 4628 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2023-05-28 21:23:23.571  INFO 4628 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-28 21:23:23.574  INFO 4628 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-05-28 21:23:35.637  INFO 7336 --- [main] com.hnu.capstone.CapstoneApplication     : Starting CapstoneApplication using Java 11.0.19 on DESKTOP-3LV1DFL with PID 7336 (C:\Users\ygy01\IdeaProjects\capstone\build\classes\java\main started by ygy01 in C:\Users\ygy01\IdeaProjects\capstone)
+2023-05-28 21:23:35.641  INFO 7336 --- [main] com.hnu.capstone.CapstoneApplication     : The following 1 profile is active: "oauth"
+2023-05-28 21:23:37.546  INFO 7336 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-28 21:23:37.547  INFO 7336 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-05-28 21:23:37.730  INFO 7336 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-28 21:23:37.878  INFO 7336 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-28 21:23:38.001  INFO 7336 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-28 21:23:38.057  INFO 7336 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-28 21:23:38.109  INFO 7336 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-28 21:23:38.294  INFO 7336 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-28 21:23:38.427  INFO 7336 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-05-28 21:23:39.255  INFO 7336 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-28 21:23:40.505  INFO 7336 --- [main] com.hnu.capstone.CapstoneApplication     : Started CapstoneApplication in 5.297 seconds (JVM running for 6.931)
+2023-05-28 21:23:40.508  INFO 7336 --- [main] com.hnu.capstone.LoggingRunner           : INFO 로그 메시지
+2023-05-28 21:23:40.508  WARN 7336 --- [main] com.hnu.capstone.LoggingRunner           : WARN 로그 메시지
+2023-05-28 21:23:40.509 ERROR 7336 --- [main] com.hnu.capstone.LoggingRunner           : ERROR 로그 메시지
+2023-05-28 21:23:41.887  INFO 7336 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-28 21:23:43.060  WARN 7336 --- [http-nio-8080-exec-2] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,047] milliseconds.
+2023-05-28 21:30:27.215  INFO 7336 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2023-05-28 21:30:27.222  INFO 7336 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-28 21:30:27.225  INFO 7336 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-05-28 21:36:54.586  INFO 1336 --- [main] com.hnu.capstone.CapstoneApplication     : Starting CapstoneApplication using Java 11.0.19 on DESKTOP-3LV1DFL with PID 1336 (C:\Users\ygy01\IdeaProjects\capstone\build\classes\java\main started by ygy01 in C:\Users\ygy01\IdeaProjects\capstone)
+2023-05-28 21:36:54.590  INFO 1336 --- [main] com.hnu.capstone.CapstoneApplication     : The following 1 profile is active: "oauth"
+2023-05-28 21:36:55.847  INFO 1336 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-28 21:36:55.848  INFO 1336 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-05-28 21:36:55.996  INFO 1336 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-28 21:36:56.131  INFO 1336 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-28 21:36:56.241  INFO 1336 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-28 21:36:56.290  INFO 1336 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-28 21:36:56.337  INFO 1336 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-28 21:36:56.481  INFO 1336 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-28 21:36:56.595  INFO 1336 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-05-28 21:36:57.314  INFO 1336 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-28 21:36:58.378  INFO 1336 --- [main] com.hnu.capstone.CapstoneApplication     : Started CapstoneApplication in 4.194 seconds (JVM running for 5.77)
+2023-05-28 21:36:58.380  INFO 1336 --- [main] com.hnu.capstone.LoggingRunner           : INFO 로그 메시지
+2023-05-28 21:36:58.381  WARN 1336 --- [main] com.hnu.capstone.LoggingRunner           : WARN 로그 메시지
+2023-05-28 21:36:58.381 ERROR 1336 --- [main] com.hnu.capstone.LoggingRunner           : ERROR 로그 메시지
+2023-05-28 21:37:03.194  INFO 1336 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-28 21:37:04.224  WARN 1336 --- [http-nio-8080-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [937] milliseconds.
+2023-05-28 21:37:30.799  INFO 1336 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2023-05-28 21:37:30.805  INFO 1336 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-28 21:37:30.807  INFO 1336 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
