@@ -18,7 +18,7 @@
         <ul class="gnb">
             <li><a th:href="@{/mentor-find}">멘토 찾기</a></li>
             <li><a th:href="@{/mentoring}">내 멘토링</a></li>
-            <li th:if="${userRole} == 'USER'"><a th:href="@{/myPage}">마이페이지</a></li>
+            <li th:if="${userRole} != 'ADMIN'"><a th:href="@{/myPage}">마이페이지</a></li>
             <li th:if="${userRole} == 'ADMIN'"><a th:href="@{/admin}">관리페이지</a></li>
             <li> | </li>
             <li th:if="${userName} == null"><a th:href="@{/oauth2/authorization/google}">로그인</a></li>
