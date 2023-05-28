@@ -2,6 +2,7 @@ package com.hnu.capstone.controller;
 
 import com.hnu.capstone.config.SessionUser;
 import com.hnu.capstone.domain.*;
+import com.hnu.capstone.dto.PostsSaveRequestDto;
 import com.hnu.capstone.service.MentoringMappingService;
 import com.hnu.capstone.service.MentoringRoomService;
 import com.hnu.capstone.service.PostsService;
@@ -33,6 +34,12 @@ public class MentoringViewController {
     public String myMentoring(Model model) {
         SessionUser sessionuser = (SessionUser) httpSession.getAttribute("user");
         User user = userService.SelectUser(sessionuser.getEmail());
+
+        if(user != null) {
+            model.addAttribute("post", new PostsSaveRequestDto(user.getName()));
+            model.addAttribute("userName", user.getName());
+            model.addAttribute("userRole", userService.SelectUser(user.getEmail()).getRole().name());
+        }
 
         List<Posts> posts = new ArrayList<>();
         for (MentoringMapping mentoringMapping: user.getMentoringMappings()) {
