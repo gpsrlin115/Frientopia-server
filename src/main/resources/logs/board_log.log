@@ -1,66 +1,107 @@
-2023-05-26 00:03:27.864  INFO 20296 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2023-05-26 00:03:28.008  INFO 20296 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2023-05-26 00:03:28.011  INFO 20296 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2023-05-26 00:03:31.859  INFO 21268 --- [main] com.hnu.capstone.CapstoneApplication     : Starting CapstoneApplication using Java 11.0.18 on DESKTOP-FDLVBGD with PID 21268 (C:\Users\USER\IdeaProjects\Frientopia-server\out\production\classes started by USER in C:\Users\USER\IdeaProjects\Frientopia-server)
-2023-05-26 00:03:31.867  INFO 21268 --- [main] com.hnu.capstone.CapstoneApplication     : The following 1 profile is active: "oauth"
-2023-05-26 00:03:32.843  INFO 21268 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-05-26 00:03:32.844  INFO 21268 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.74]
-2023-05-26 00:03:32.920  INFO 21268 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-05-26 00:03:33.038  INFO 21268 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-05-26 00:03:33.127  INFO 21268 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-05-26 00:03:33.160  INFO 21268 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-05-26 00:03:33.192  INFO 21268 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
-2023-05-26 00:03:33.295  INFO 21268 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2023-05-26 00:03:33.371  INFO 21268 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2023-05-26 00:03:33.852  INFO 21268 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-05-26 00:03:34.679  INFO 21268 --- [main] com.hnu.capstone.CapstoneApplication     : Started CapstoneApplication in 3.161 seconds (JVM running for 3.775)
-2023-05-26 00:03:34.681  INFO 21268 --- [main] com.hnu.capstone.LoggingRunner           : INFO 로그 메시지
-2023-05-26 00:03:34.681  WARN 21268 --- [main] com.hnu.capstone.LoggingRunner           : WARN 로그 메시지
-2023-05-26 00:03:34.681 ERROR 21268 --- [main] com.hnu.capstone.LoggingRunner           : ERROR 로그 메시지
-2023-05-26 00:03:39.516  INFO 21268 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-05-26 00:04:36.492  INFO 21268 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2023-05-26 00:04:36.644  INFO 21268 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2023-05-26 00:04:36.646  INFO 21268 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2023-05-26 00:05:30.660  INFO 20648 --- [main] com.hnu.capstone.CapstoneApplication     : Starting CapstoneApplication using Java 11.0.18 on DESKTOP-FDLVBGD with PID 20648 (C:\Users\USER\IdeaProjects\Frientopia-server\out\production\classes started by USER in C:\Users\USER\IdeaProjects\Frientopia-server)
-2023-05-26 00:05:30.662  INFO 20648 --- [main] com.hnu.capstone.CapstoneApplication     : The following 1 profile is active: "oauth"
-2023-05-26 00:05:31.629  INFO 20648 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-05-26 00:05:31.630  INFO 20648 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.74]
-2023-05-26 00:05:31.713  INFO 20648 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-05-26 00:05:31.841  INFO 20648 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-05-26 00:05:31.938  INFO 20648 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-05-26 00:05:31.973  INFO 20648 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-05-26 00:05:32.008  INFO 20648 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
-2023-05-26 00:05:32.118  INFO 20648 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2023-05-26 00:05:32.190  INFO 20648 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2023-05-26 00:05:32.668  INFO 20648 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-05-26 00:05:33.522  INFO 20648 --- [main] com.hnu.capstone.CapstoneApplication     : Started CapstoneApplication in 3.212 seconds (JVM running for 3.826)
-2023-05-26 00:05:33.523  INFO 20648 --- [main] com.hnu.capstone.LoggingRunner           : INFO 로그 메시지
-2023-05-26 00:05:33.524  WARN 20648 --- [main] com.hnu.capstone.LoggingRunner           : WARN 로그 메시지
-2023-05-26 00:05:33.524 ERROR 20648 --- [main] com.hnu.capstone.LoggingRunner           : ERROR 로그 메시지
-2023-05-26 00:06:16.354  INFO 20648 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2023-05-26 00:06:16.494  INFO 20648 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2023-05-26 00:06:16.496  INFO 20648 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2023-05-26 00:09:45.052  INFO 16400 --- [main] com.hnu.capstone.CapstoneApplication     : Starting CapstoneApplication using Java 11.0.18 on DESKTOP-FDLVBGD with PID 16400 (C:\Users\USER\IdeaProjects\Frientopia-server\out\production\classes started by USER in C:\Users\USER\IdeaProjects\Frientopia-server)
-2023-05-26 00:09:45.054  INFO 16400 --- [main] com.hnu.capstone.CapstoneApplication     : The following 1 profile is active: "oauth"
-2023-05-26 00:09:46.032  INFO 16400 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-05-26 00:09:46.032  INFO 16400 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.74]
-2023-05-26 00:09:46.111  INFO 16400 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-05-26 00:09:46.226  INFO 16400 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-05-26 00:09:46.313  INFO 16400 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-05-26 00:09:46.347  INFO 16400 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-05-26 00:09:46.376  INFO 16400 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
-2023-05-26 00:09:46.493  INFO 16400 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2023-05-26 00:09:46.569  INFO 16400 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2023-05-26 00:09:47.053  INFO 16400 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-05-26 00:09:47.900  INFO 16400 --- [main] com.hnu.capstone.CapstoneApplication     : Started CapstoneApplication in 3.206 seconds (JVM running for 3.824)
-2023-05-26 00:09:47.902  INFO 16400 --- [main] com.hnu.capstone.LoggingRunner           : INFO 로그 메시지
-2023-05-26 00:09:47.903  WARN 16400 --- [main] com.hnu.capstone.LoggingRunner           : WARN 로그 메시지
-2023-05-26 00:09:47.903 ERROR 16400 --- [main] com.hnu.capstone.LoggingRunner           : ERROR 로그 메시지
-2023-05-26 00:09:52.230  INFO 16400 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-05-26 00:10:01.115 ERROR 16400 --- [http-nio-8080-exec-8] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause
+2023-05-25 16:20:04.576  INFO 59904 --- [main] com.hnu.capstone.CapstoneApplication     : Starting CapstoneApplication using Java 11.0.19 on sungjinui-MacBookAir.local with PID 59904 (/Users/sungjinkim/IdeaProjects/Frientopia-server/out/production/classes started by sungjinkim in /Users/sungjinkim/IdeaProjects/Frientopia-server)
+2023-05-25 16:20:04.578  INFO 59904 --- [main] com.hnu.capstone.CapstoneApplication     : The following 1 profile is active: "oauth"
+2023-05-25 16:20:05.338  INFO 59904 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-25 16:20:05.339  INFO 59904 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-05-25 16:20:05.399  INFO 59904 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-25 16:20:05.506  INFO 59904 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-25 16:20:05.586  INFO 59904 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-25 16:20:05.619  INFO 59904 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-25 16:20:05.647  INFO 59904 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-25 16:20:05.728  INFO 59904 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-25 16:20:05.786  INFO 59904 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-05-25 16:20:06.164  INFO 59904 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-25 16:20:07.448  INFO 59904 --- [main] com.hnu.capstone.CapstoneApplication     : Started CapstoneApplication in 3.246 seconds (JVM running for 4.349)
+2023-05-25 16:20:07.451  INFO 59904 --- [main] com.hnu.capstone.LoggingRunner           : INFO 로그 메시지
+2023-05-25 16:20:07.451  WARN 59904 --- [main] com.hnu.capstone.LoggingRunner           : WARN 로그 메시지
+2023-05-25 16:20:07.451 ERROR 59904 --- [main] com.hnu.capstone.LoggingRunner           : ERROR 로그 메시지
+2023-05-25 16:20:13.111  INFO 59904 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-25 16:24:33.998  WARN 59904 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Retrograde clock change detected (housekeeper delta=28s188ms), soft-evicting connections from pool.
+2023-05-25 16:27:13.212  WARN 59904 --- [http-nio-8080-exec-7] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 42104, SQLState: 42S04
+2023-05-25 16:27:13.214 ERROR 59904 --- [http-nio-8080-exec-7] o.h.engine.jdbc.spi.SqlExceptionHelper   : Table "USERS" not found (this database is empty); SQL statement:
+select user0_.email as email1_2_, user0_.created_date as created_2_2_, user0_.modified_date as modified3_2_, user0_.age as age4_2_, user0_.gen as gen5_2_, user0_.user_id as user_id6_2_, user0_.introduce as introduc7_2_, user0_.major as major8_2_, user0_.name as name9_2_, user0_.phone_num as phone_n10_2_, user0_.picture as picture11_2_, user0_.rating_score as rating_12_2_, user0_.role as role13_2_ from users user0_ where user0_.email=? [42104-214]
+2023-05-25 16:27:13.429 ERROR 59904 --- [http-nio-8080-exec-7] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.InvalidDataAccessResourceUsageException: could not prepare statement; SQL [select user0_.email as email1_2_, user0_.created_date as created_2_2_, user0_.modified_date as modified3_2_, user0_.age as age4_2_, user0_.gen as gen5_2_, user0_.user_id as user_id6_2_, user0_.introduce as introduc7_2_, user0_.major as major8_2_, user0_.name as name9_2_, user0_.phone_num as phone_n10_2_, user0_.picture as picture11_2_, user0_.rating_score as rating_12_2_, user0_.role as role13_2_ from users user0_ where user0_.email=?]; nested exception is org.hibernate.exception.SQLGrammarException: could not prepare statement] with root cause
 
-java.lang.NullPointerException: null
-	at com.hnu.capstone.controller.MentoringRoomPostsController.MentoringRoomForm(MentoringRoomPostsController.java:37) ~[classes/:na]
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select user0_.email as email1_2_, user0_.created_date as created_2_2_, user0_.modified_date as modified3_2_, user0_.age as age4_2_, user0_.gen as gen5_2_, user0_.user_id as user_id6_2_, user0_.introduce as introduc7_2_, user0_.major as major8_2_, user0_.name as name9_2_, user0_.phone_num as phone_n10_2_, user0_.picture as picture11_2_, user0_.rating_score as rating_12_2_, user0_.role as role13_2_ from users user0_ where user0_.email=? [42104-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502) ~[h2-2.1.214.jar:2.1.214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477) ~[h2-2.1.214.jar:2.1.214]
+	at org.h2.message.DbException.get(DbException.java:223) ~[h2-2.1.214.jar:2.1.214]
+	at org.h2.message.DbException.get(DbException.java:199) ~[h2-2.1.214.jar:2.1.214]
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:8385) ~[h2-2.1.214.jar:2.1.214]
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:8369) ~[h2-2.1.214.jar:2.1.214]
+	at org.h2.command.Parser.readTableOrView(Parser.java:8358) ~[h2-2.1.214.jar:2.1.214]
+	at org.h2.command.Parser.readTablePrimary(Parser.java:1863) ~[h2-2.1.214.jar:2.1.214]
+	at org.h2.command.Parser.readTableReference(Parser.java:2334) ~[h2-2.1.214.jar:2.1.214]
+	at org.h2.command.Parser.parseSelectFromPart(Parser.java:2772) ~[h2-2.1.214.jar:2.1.214]
+	at org.h2.command.Parser.parseSelect(Parser.java:2878) ~[h2-2.1.214.jar:2.1.214]
+	at org.h2.command.Parser.parseQueryPrimary(Parser.java:2762) ~[h2-2.1.214.jar:2.1.214]
+	at org.h2.command.Parser.parseQueryTerm(Parser.java:2633) ~[h2-2.1.214.jar:2.1.214]
+	at org.h2.command.Parser.parseQueryExpressionBody(Parser.java:2612) ~[h2-2.1.214.jar:2.1.214]
+	at org.h2.command.Parser.parseQueryExpressionBodyAndEndOfQuery(Parser.java:2605) ~[h2-2.1.214.jar:2.1.214]
+	at org.h2.command.Parser.parseQueryExpression(Parser.java:2598) ~[h2-2.1.214.jar:2.1.214]
+	at org.h2.command.Parser.parseQuery(Parser.java:2567) ~[h2-2.1.214.jar:2.1.214]
+	at org.h2.command.Parser.parsePrepared(Parser.java:724) ~[h2-2.1.214.jar:2.1.214]
+	at org.h2.command.Parser.parse(Parser.java:689) ~[h2-2.1.214.jar:2.1.214]
+	at org.h2.command.Parser.parse(Parser.java:661) ~[h2-2.1.214.jar:2.1.214]
+	at org.h2.command.Parser.prepareCommand(Parser.java:569) ~[h2-2.1.214.jar:2.1.214]
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631) ~[h2-2.1.214.jar:2.1.214]
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554) ~[h2-2.1.214.jar:2.1.214]
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116) ~[h2-2.1.214.jar:2.1.214]
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:92) ~[h2-2.1.214.jar:2.1.214]
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:288) ~[h2-2.1.214.jar:2.1.214]
+	at com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:337) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyConnection.prepareStatement(HikariProxyConnection.java) ~[HikariCP-4.0.3.jar:na]
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$5.doPrepare(StatementPreparerImpl.java:149) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$StatementPreparationTemplate.prepareStatement(StatementPreparerImpl.java:176) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl.prepareQueryStatement(StatementPreparerImpl.java:151) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.loader.Loader.prepareQueryStatement(Loader.java:2122) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2059) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2037) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.loader.Loader.doQuery(Loader.java:956) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:357) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.loader.Loader.doList(Loader.java:2868) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.loader.Loader.doList(Loader.java:2850) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2682) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.loader.Loader.list(Loader.java:2677) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.loader.hql.QueryLoader.list(QueryLoader.java:540) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.list(QueryTranslatorImpl.java:400) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.engine.query.spi.HQLQueryPlan.performList(HQLQueryPlan.java:218) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1459) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.query.internal.AbstractProducedQuery.doList(AbstractProducedQuery.java:1649) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1617) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1665) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.query.criteria.internal.compile.CriteriaQueryTypeQueryAdapter.getSingleResult(CriteriaQueryTypeQueryAdapter.java:111) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$SingleEntityExecution.doExecute(JpaQueryExecution.java:198) ~[spring-data-jpa-2.7.11.jar:2.7.11]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:90) ~[spring-data-jpa-2.7.11.jar:2.7.11]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:156) ~[spring-data-jpa-2.7.11.jar:2.7.11]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:144) ~[spring-data-jpa-2.7.11.jar:2.7.11]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:137) ~[spring-data-commons-2.7.11.jar:2.7.11]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:121) ~[spring-data-commons-2.7.11.jar:2.7.11]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:160) ~[spring-data-commons-2.7.11.jar:2.7.11]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:139) ~[spring-data-commons-2.7.11.jar:2.7.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.27.jar:5.3.27]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:81) ~[spring-data-commons-2.7.11.jar:2.7.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.27.jar:5.3.27]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-5.3.27.jar:5.3.27]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388) ~[spring-tx-5.3.27.jar:5.3.27]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-5.3.27.jar:5.3.27]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.27.jar:5.3.27]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-5.3.27.jar:5.3.27]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.27.jar:5.3.27]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:145) ~[spring-data-jpa-2.7.11.jar:2.7.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.27.jar:5.3.27]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-5.3.27.jar:5.3.27]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.27.jar:5.3.27]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:220) ~[spring-aop-5.3.27.jar:5.3.27]
+	at com.sun.proxy.$Proxy122.findByEmail(Unknown Source) ~[na:na]
+	at com.hnu.capstone.service.UserService.SelectUser(UserService.java:34) ~[classes/:na]
+	at com.hnu.capstone.service.UserService$$FastClassBySpringCGLIB$$52150822.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.27.jar:5.3.27]
+	at org.springframework.aop.framework.CglibAopProxy.invokeMethod(CglibAopProxy.java:386) ~[spring-aop-5.3.27.jar:5.3.27]
+	at org.springframework.aop.framework.CglibAopProxy.access$000(CglibAopProxy.java:85) ~[spring-aop-5.3.27.jar:5.3.27]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:704) ~[spring-aop-5.3.27.jar:5.3.27]
+	at com.hnu.capstone.service.UserService$$EnhancerBySpringCGLIB$$fd2418b4.SelectUser(<generated>) ~[classes/:na]
+	at com.hnu.capstone.controller.IndexController.postsSave(IndexController.java:156) ~[classes/:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
@@ -164,48 +205,5 @@ java.lang.NullPointerException: null
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.74.jar:9.0.74]
-	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:829) ~[na:na]
 
-2023-05-26 00:11:38.668  INFO 16400 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2023-05-26 00:11:38.809  INFO 16400 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2023-05-26 00:11:38.811  INFO 16400 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2023-05-26 00:11:42.090  INFO 21232 --- [main] com.hnu.capstone.CapstoneApplication     : Starting CapstoneApplication using Java 11.0.18 on DESKTOP-FDLVBGD with PID 21232 (C:\Users\USER\IdeaProjects\Frientopia-server\out\production\classes started by USER in C:\Users\USER\IdeaProjects\Frientopia-server)
-2023-05-26 00:11:42.092  INFO 21232 --- [main] com.hnu.capstone.CapstoneApplication     : The following 1 profile is active: "oauth"
-2023-05-26 00:11:43.046  INFO 21232 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-05-26 00:11:43.046  INFO 21232 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.74]
-2023-05-26 00:11:43.123  INFO 21232 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-05-26 00:11:43.252  INFO 21232 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-05-26 00:11:43.341  INFO 21232 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-05-26 00:11:43.374  INFO 21232 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-05-26 00:11:43.406  INFO 21232 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
-2023-05-26 00:11:43.510  INFO 21232 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2023-05-26 00:11:43.585  INFO 21232 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2023-05-26 00:11:44.078  INFO 21232 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-05-26 00:11:44.919  INFO 21232 --- [main] com.hnu.capstone.CapstoneApplication     : Started CapstoneApplication in 3.143 seconds (JVM running for 3.736)
-2023-05-26 00:11:44.920  INFO 21232 --- [main] com.hnu.capstone.LoggingRunner           : INFO 로그 메시지
-2023-05-26 00:11:44.921  WARN 21232 --- [main] com.hnu.capstone.LoggingRunner           : WARN 로그 메시지
-2023-05-26 00:11:44.921 ERROR 21232 --- [main] com.hnu.capstone.LoggingRunner           : ERROR 로그 메시지
-2023-05-26 00:11:48.652  INFO 21232 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-05-26 00:14:39.237  INFO 21232 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2023-05-26 00:14:39.385  INFO 21232 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2023-05-26 00:14:39.387  INFO 21232 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2023-05-26 00:14:42.630  INFO 16340 --- [main] com.hnu.capstone.CapstoneApplication     : Starting CapstoneApplication using Java 11.0.18 on DESKTOP-FDLVBGD with PID 16340 (C:\Users\USER\IdeaProjects\Frientopia-server\out\production\classes started by USER in C:\Users\USER\IdeaProjects\Frientopia-server)
-2023-05-26 00:14:42.632  INFO 16340 --- [main] com.hnu.capstone.CapstoneApplication     : The following 1 profile is active: "oauth"
-2023-05-26 00:14:43.604  INFO 16340 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-05-26 00:14:43.604  INFO 16340 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.74]
-2023-05-26 00:14:43.684  INFO 16340 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-05-26 00:14:43.827  INFO 16340 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-05-26 00:14:43.917  INFO 16340 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-05-26 00:14:43.952  INFO 16340 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-05-26 00:14:43.990  INFO 16340 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
-2023-05-26 00:14:44.102  INFO 16340 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2023-05-26 00:14:44.180  INFO 16340 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2023-05-26 00:14:44.689  INFO 16340 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-05-26 00:14:45.522  INFO 16340 --- [main] com.hnu.capstone.CapstoneApplication     : Started CapstoneApplication in 3.235 seconds (JVM running for 3.822)
-2023-05-26 00:14:45.524  INFO 16340 --- [main] com.hnu.capstone.LoggingRunner           : INFO 로그 메시지
-2023-05-26 00:14:45.524  WARN 16340 --- [main] com.hnu.capstone.LoggingRunner           : WARN 로그 메시지
-2023-05-26 00:14:45.524 ERROR 16340 --- [main] com.hnu.capstone.LoggingRunner           : ERROR 로그 메시지
-2023-05-26 00:14:48.906  INFO 16340 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-05-26 00:15:45.092  INFO 16340 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2023-05-26 00:15:45.245  INFO 16340 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2023-05-26 00:15:45.248  INFO 16340 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

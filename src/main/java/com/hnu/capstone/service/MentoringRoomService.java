@@ -31,22 +31,26 @@ public class MentoringRoomService {
 
     @Transactional
     public void newMentoringRoom(Long postID) {
-        MentoringRoom mentoringRoom = new MentoringRoom(postsRepository.findById(postID).get());
+        MentoringRoom mentoringRoom = new MentoringRoom(postsRepository.findById(postID).get(), postsRepository.findById(postID).get().getUser());
         mentoringRoomRepository.save(mentoringRoom);
     }
 
     @Transactional
-    public Long mentoringRoomEnter(User user, Long room_id){ //enter 성공시 1L, 신청이 안 되어 있을 시 0L, 멘토링 룸이 존재하지 않을 시 null;
+    public Long mentoringRoomEnter(User user, Long room_id){ //enter 성공시 1L, 신청이 안 되어 있을 시 0L, 멘토링 룸이 존재하지 않을 시 -1L, 멘토일 시 2L;
         MentoringRoom mentoringRoom = this.findById(room_id);
         if(mentoringRoom != null){
-            for (User mentee : mentoringRoom.getMentee() ) {
-                if(mentee == user){
-                    return 1L;
+            if(mentoringRoom.getUser() == user){
+                return 2L;
+            }else{
+                for (User mentee : mentoringRoom.getMentee() ) {
+                    if(mentee == user){
+                        return 1L;
+                    }
                 }
             }
             return 0L;
         }else {
-            return null;
+            return -1L;
         }
     }
 }

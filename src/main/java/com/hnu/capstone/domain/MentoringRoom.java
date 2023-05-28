@@ -23,15 +23,21 @@ public class MentoringRoom {
     @JoinColumn(name="post_id")
     private Posts post;
 
-    @OneToMany (mappedBy = "mentoringRoom", cascade = {CascadeType.PERSIST})
+    @OneToMany (mappedBy = "mentoringRoom", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<MentoringMapping> mentoringMappings = new ArrayList<>();
 
     @OneToMany(mappedBy = "mentoringRoom", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<MentoringRoomPost> mentoringRoomPosts = new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn(name = "user_email")
+    private User user;
+
     @Builder
-    public MentoringRoom(Posts post) {
+    public MentoringRoom(Posts post, User user) {
         this.post = post;
+        this.user = user;
+        user.getMentoringRoom().add(this);
     }
 
     public List<User> getMentee(){

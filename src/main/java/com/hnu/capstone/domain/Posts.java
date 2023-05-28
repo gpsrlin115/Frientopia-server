@@ -36,7 +36,7 @@ public class Posts extends BaseTimeEntity {
     @OneToMany (mappedBy = "post", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<MentoringMapping> mentoringMappings = new ArrayList<>();
 
-    @OneToOne (mappedBy = "post", cascade = {CascadeType.PERSIST})
+    @OneToOne (mappedBy = "post", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private MentoringRoom mentoringRoom;
 
     @Builder
