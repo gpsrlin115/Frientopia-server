@@ -52,11 +52,11 @@ public class PostsService {
     public void delete(Long id) {
         Posts posts = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + id));
 
-        mentoringRoomService.findByPost(posts).setPost(null);
-        List<MentoringMapping> mentoringMappings = mentoringMappingService.SelectAllByPosts(posts);
-        for (MentoringMapping m: mentoringMappings) {
-            m.setPost(null);
-        }
+//        mentoringRoomService.findByPost(posts).setPost(null);
+//        List<MentoringMapping> mentoringMappings = mentoringMappingService.SelectAllByPosts(posts);
+//        for (MentoringMapping m: mentoringMappings) {
+//            m.setPost(null);
+//        }
         postsRepository.delete(posts);
     }
 
