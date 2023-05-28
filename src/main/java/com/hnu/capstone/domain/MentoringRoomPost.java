@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Entity
-public class MentoringRoomPost {
+public class MentoringRoomPost extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +31,7 @@ public class MentoringRoomPost {
     private String author;
 
     @Column
-    private String file;
+    private String fileName;
 
     @ManyToOne
     @JoinColumn(name="mentoring_room")
@@ -42,7 +42,7 @@ public class MentoringRoomPost {
     private User user;
 
     @Builder
-    public MentoringRoomPost(Long id, MentoringRoomCategory mentoringRoomCategory, String title, String content, String author, MentoringRoom mentoringRoom, User user) {
+    public MentoringRoomPost(Long id, MentoringRoomCategory mentoringRoomCategory, String title, String content, String author, MentoringRoom mentoringRoom, User user, String fileName) {
         this.id = id;
         this.mentoringRoom = mentoringRoom;
         this.title = title;
@@ -50,6 +50,7 @@ public class MentoringRoomPost {
         this.author = author;
         this.mentoringRoomCategory = mentoringRoomCategory;
         this.user = user;
+        this.fileName = fileName;
     }
 
     public void MentoringRoomPostToRoom(MentoringRoom mentoringRoom){
@@ -60,5 +61,10 @@ public class MentoringRoomPost {
     public void MentoringRoomPostToUser(User user){
         this.setUser(user);
         user.getMentoringRoomPosts().add(this);
+    }
+
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
     }
 }

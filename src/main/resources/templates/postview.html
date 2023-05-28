@@ -51,8 +51,9 @@
         </div>
       </div>
       <div class="bt_wrap">
-        <button class="btn btn-secondary" type="undo" th:onclick="|location.href='@{/mentor-find}'|">목록</button>
-        <button th:if="${userName == post.author}" class="btn btn-secondary" type="undo" th:onclick="|location.href='@{/posts/update/{id}(id = ${post.id})}'|" th:text="수정"></button>
+        <button class="btn btn-secondary" type="list" th:onclick="|location.href='@{/mentor-find}'|">목록</button>
+        <button th:if="${userName == post.author}" class="btn btn-secondary" type="update" th:onclick="|location.href='@{/posts/update/{id}(id = ${post.id})}'|" th:text="수정"></button>
+        <button th:if="${userName != post.author}" class="btn btn-secondary" id="apply" th:onclick="|location.href='@{/api/v1/posts/mapping/{post_id}(post_id = ${post.id})}'|" th:text="신청하기"></button>
       </div>
     </div>
   </section>
@@ -63,5 +64,14 @@
 <!--  &lt;!&ndash;<a th:href="@{${board.filepath}}">다운 받기</a>&ndash;&gt;-->
 <!--  <a th:href="@{/api/v1/">신청</a>-->
 <!--  <a th:href="@{/api/v1/posts/${post.id}">수정</a>-->
+<script>
+  const apply = document.getElementById("apply");
+
+  apply.addEventListener('click', () => {
+    alert('신청 되었습니다.')
+    window.location.href = '/mentor-find';
+  });
+
+</script>
 </body>
 </html>
