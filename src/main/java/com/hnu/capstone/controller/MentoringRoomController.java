@@ -37,6 +37,9 @@ public class MentoringRoomController {
             return "redirect:/mentor-find";
         }
 
+        List<MentoringRoomPostsListResponseDto> allposts = mentoringRoomPostsService.findAllDesc();
+        model.addAttribute("allPosts", allposts);
+
         model.addAttribute("userName", user.getName());
         model.addAttribute("userRole", user.getRole());
 
