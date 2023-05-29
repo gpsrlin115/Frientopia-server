@@ -36,7 +36,7 @@ public class MentoringViewController {
         User user = userService.SelectUser(sessionuser.getEmail());
 
         if(user != null) {
-            model.addAttribute("post", new PostsSaveRequestDto(user.getName()));
+//            model.addAttribute("post", new PostsSaveRequestDto(user.getName())); 삭제 예정
             model.addAttribute("userName", user.getName());
             model.addAttribute("userRole", userService.SelectUser(user.getEmail()).getRole().name());
         }
