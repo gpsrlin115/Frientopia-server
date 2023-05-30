@@ -4,6 +4,14 @@
     --button-hover-bg-color: #025ce2;
 }
 
+.wrap {
+    margin-top: 50px;
+}
+
+.page-title {
+    margin-bottom: 30px;
+}
+
 .layout {
     width: 800px;
     margin: 0 auto;
