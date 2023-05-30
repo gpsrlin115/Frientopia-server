@@ -40,6 +40,9 @@ public class MentoringRoomController {
         List<MentoringRoomPostsListResponseDto> allposts = mentoringRoomPostsService.findAllDesc();
         model.addAttribute("allPosts", allposts);
 
+        MentoringRoom mentoringRoom = mentoringRoomService.findById(room_id);
+        model.addAttribute("mentor", mentoringRoom.getUser().getName());
+
         model.addAttribute("userName", user.getName());
         model.addAttribute("userRole", user.getRole());
 
