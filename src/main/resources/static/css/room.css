@@ -32,6 +32,10 @@
 
 }
 
+.sideBar li a {
+    color: white;
+}
+
 .sideBar li:hover {
     transition: 0s;
     background: #242932;
