@@ -11,6 +11,7 @@ import com.hnu.capstone.dto.PostsResponseDto;
 import com.hnu.capstone.service.PostsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -164,7 +165,10 @@ public class IndexController {
             model.addAttribute("userName", user.getName());
             model.addAttribute("userRole", userService.SelectUser(user.getEmail()).getRole().name());
         }
+        ClassPathResource resource = new ClassPathResource("post_upload/");
+        System.out.println(resource);
         PostsResponseDto dto = postsService.findById(id);
+        model.addAttribute("fileStore", resource);
         model.addAttribute("postId", dto.getId());
         model.addAttribute("post", dto);
 
