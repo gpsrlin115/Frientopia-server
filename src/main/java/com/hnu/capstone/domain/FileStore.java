@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @Component
 public class FileStore {
-    private String fileDir = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files";
+    public static String fileDir = System.getProperty("user.dir") + "/src/main/resources/static/post_upload/";
 
     /* 전체 파일 경로 */
     public String getFullPath(String fileName){
@@ -45,6 +45,9 @@ public class FileStore {
 
         /* 새 파일명으로 파일 저장 */
         multipartFile.transferTo(new File(getFullPath(storeFileName)));
+        System.out.println(getFullPath(storeFileName));
+        System.out.print(fileDir);
+
 
         return new UploadFile(originalFileName, storeFileName);
     }
