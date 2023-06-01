@@ -1,15 +1,10 @@
 package com.hnu.capstone.service;
 
 import com.hnu.capstone.domain.*;
-import com.hnu.capstone.dto.PostsListResponseDto;
-import com.hnu.capstone.dto.PostsResponseDto;
-import com.hnu.capstone.dto.PostsSaveRequestDto;
-import com.hnu.capstone.dto.PostsUpdateRequestDto;
 import com.hnu.capstone.dto.mentoringroom.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
@@ -21,7 +16,7 @@ public class MentoringRoomPostsService {
     private final MentoringRoomPostRepository mentoringRoomPostRepository;
 
     @Transactional
-    public Long save(NoticeSaveRequestDto noticeSaveRequestDto) throws IOException {
+    public Long save(MentorSaveRequestDto noticeSaveRequestDto) throws IOException {
         return mentoringRoomPostRepository.save(noticeSaveRequestDto.toEntity()).getId();
     }
 

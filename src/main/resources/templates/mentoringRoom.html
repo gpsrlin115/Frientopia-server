@@ -40,8 +40,8 @@
         <button class="btn btn-primary" type="submit">글쓰기</button>
         <div class="container">
             <ul class="sideBar">
-                <li class="active">전체 게시물</li>
-                <li>멘토의 글</li>
+                <li class="active" ><a th:href="@{/mentoring/room/{roomId} (roomId= ${room_id})}">전체 게시물</a></li>
+                <li><a th:href="@{/mentoring/room/{roomId}/mentor (roomId= ${room_id})}">멘토의 글</a></li>
                 <li>자유 게시판</li>
             </ul>
             <div id="board-list">
@@ -49,7 +49,7 @@
                     <table class="board-table">
                         <thead>
                         <tr>
-                            <th scope="col" class="th-num">번호</th>
+<!--                            <th scope="col" class="th-num">번호</th>-->
                             <th scope="col" class="th-title">제목</th>
                             <th scope="col" class="th-author">작성자</th>
                             <th scope="col" class="th-date">날짜</th>
@@ -57,10 +57,9 @@
                         </thead>
                         <tbody>
                         <tr th:each="posts, stat : ${allPosts}">
-                            <td th:text="${posts.getId()}"></td>
+<!--                            <td th:text="${posts.getId()}"></td>-->
                             <th>
-<!--                                수정 해야함-->
-                                <a th:href="@{/posts/view/{id}(id = ${posts.getId()})}" th:text="${posts.getTitle()}"></a>
+                                <a th:if="${posts.getAuthor()} == ${mentor}" th th:href="@{/mentoring/room/{roomId}/mentor/posts/view/{id} (roomId = ${posts.getMentoringRoomId()}, id = ${posts.getId()})}" th:text="'[멘토] ' + ${posts.getTitle()}"></a>
                             </th>
                             <td th:text="${posts.getAuthor()}"></td>
                             <td th:text="${posts.getModifiedDate()}"></td>
@@ -81,19 +80,5 @@
             </h2>
         </div>
     </footer>
-    <script>
-        let items = document.querySelectorAll('li');
-
-        items.forEach(item => {
-            item.addEventListener('click', () => {
-                items.forEach(item => item.classList.remove('active'))
-                item.classList.add('active')
-
-            })
-        })
-    </script>
-<!--<li><a th:href="@{{room_id}/notice(room_id=${room_id})}">공지방</a></li>-->
-<!--<li><a th:href="@{{room_id}/reference(room_id=${room_id})}">자료실</a></li>-->
-<!--<li><a th:href="@{{room_id}/video(room_id=${room_id})}">영상실</a></li>-->
 </body>
 </html>
