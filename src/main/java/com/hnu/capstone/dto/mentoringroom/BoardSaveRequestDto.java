@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ReferenceSaveRequestDto {
+public class BoardSaveRequestDto {
     private String title;
     private String content;
     private String author;
@@ -21,7 +21,7 @@ public class ReferenceSaveRequestDto {
     private MentoringRoom mentoringRoom;
     private User user;
 
-    public ReferenceSaveRequestDto(String author) {
+    public BoardSaveRequestDto(String author) {
         this.author = author;
     }
 
@@ -33,7 +33,7 @@ public class ReferenceSaveRequestDto {
                 .author(author)
                 .user(user)
                 .fileName(fileName)
-                .mentoringRoomCategory(MentoringRoomCategory.REFERENCE)
+                .mentoringRoomCategory(MentoringRoomCategory.BOARD)
                 .build();
     }
 }

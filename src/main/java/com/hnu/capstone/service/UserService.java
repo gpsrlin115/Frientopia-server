@@ -4,7 +4,7 @@ import com.hnu.capstone.config.SessionUser;
 import com.hnu.capstone.domain.*;
 import com.hnu.capstone.dto.PostsSaveRequestDto;
 import com.hnu.capstone.dto.mentoringroom.MentorSaveRequestDto;
-import com.hnu.capstone.dto.mentoringroom.ReferenceSaveRequestDto;
+import com.hnu.capstone.dto.mentoringroom.BoardSaveRequestDto;
 import com.hnu.capstone.dto.mentoringroom.VideoSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -70,7 +70,7 @@ public class UserService{
     }
 
     @Transactional
-    public Long UserToPost(SessionUser user, ReferenceSaveRequestDto requestDto, Long roomId) throws IOException {
+    public Long UserToPost(SessionUser user, BoardSaveRequestDto requestDto, Long roomId) throws IOException {
         if(user != null) {
             this.SelectUser(user.getEmail()).PostAddUser(requestDto);
         }
