@@ -21,7 +21,7 @@ public class MentoringRoomPostsService {
     }
 
     @Transactional
-    public Long save(ReferenceSaveRequestDto referenceSaveRequestDto) throws IOException {
+    public Long save(BoardSaveRequestDto referenceSaveRequestDto) throws IOException {
         return mentoringRoomPostRepository.save(referenceSaveRequestDto.toEntity()).getId();
     }
 

@@ -37,12 +37,15 @@
                 <h3 th:text="${mentor} + ' 멘토의 멘토링 룸'"></h3>
             </div>
         </div>
-        <button class="btn btn-primary" type="submit">글쓰기</button>
+        <div >
+            <button class="btn btn-primary" th:if="${userName} == ${mentor}" th:onclick="|location.href='@{/mentoring/room/{room_id}/mentor/post(room_id=${room_id})}'|">글쓰기</button>
+            <button class="btn btn-primary" th:unless="${userName} == ${mentor}" th:onclick="|location.href='@{/mentoring/room/{room_id}/board/post(room_id=${room_id})}'|">글쓰기</button>
+        </div>
         <div class="container">
             <ul class="sideBar">
                 <li class="active" ><a th:href="@{/mentoring/room/{roomId} (roomId= ${room_id})}">전체 게시물</a></li>
                 <li><a th:href="@{/mentoring/room/{roomId}/mentor (roomId= ${room_id})}">멘토의 글</a></li>
-                <li>자유 게시판</li>
+                <li><a th:href="@{/mentoring/room/{roomId}/board (roomId= ${room_id})}">자유 게시판</a></li>
             </ul>
             <div id="board-list">
                 <div class="container">
@@ -60,6 +63,7 @@
 <!--                            <td th:text="${posts.getId()}"></td>-->
                             <th>
                                 <a th:if="${posts.getAuthor()} == ${mentor}" th th:href="@{/mentoring/room/{roomId}/mentor/posts/view/{id} (roomId = ${posts.getMentoringRoomId()}, id = ${posts.getId()})}" th:text="'[멘토] ' + ${posts.getTitle()}"></a>
+                                <a th:unless="${posts.getAuthor()} == ${mentor}" th th:href="@{/mentoring/room/{roomId}/board/posts/view/{id} (roomId = ${posts.getMentoringRoomId()}, id = ${posts.getId()})}" th:text="${posts.getTitle()}"></a>
                             </th>
                             <td th:text="${posts.getAuthor()}"></td>
                             <td th:text="${posts.getModifiedDate()}"></td>
