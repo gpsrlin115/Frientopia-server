@@ -6,7 +6,7 @@ import com.hnu.capstone.domain.PostsRepository;
 import com.hnu.capstone.domain.User;
 import com.hnu.capstone.dto.mentoringroom.MentoringRoomPostsUpdateRequestDto;
 import com.hnu.capstone.dto.mentoringroom.MentorSaveRequestDto;
-import com.hnu.capstone.dto.mentoringroom.ReferenceSaveRequestDto;
+import com.hnu.capstone.dto.mentoringroom.BoardSaveRequestDto;
 import com.hnu.capstone.dto.mentoringroom.VideoSaveRequestDto;
 import com.hnu.capstone.service.*;
 import lombok.RequiredArgsConstructor;
@@ -43,8 +43,8 @@ public class MentoringRoomPostsController {
         return "redirect:/mentoring/room/{room_id}/mentor";
     }
 
-    @PostMapping("/{room_id}/reference/posts")
-    public String saveReference(@PathVariable Long room_id, @ModelAttribute ReferenceSaveRequestDto requestDto) throws IOException {
+    @PostMapping("/{room_id}/board/posts")
+    public String saveReference(@PathVariable Long room_id, @ModelAttribute BoardSaveRequestDto requestDto) throws IOException {
         SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
         User user = userService.SelectUser(sessionUser.getEmail());
         Long result = mentoringRoomService.mentoringRoomEnter(user, room_id);
@@ -54,7 +54,7 @@ public class MentoringRoomPostsController {
 
         Long post_num = userService.UserToPost(sessionUser, requestDto, room_id);
 
-        return "redirect:/mentoring/room/{room_id}/reference";
+        return "redirect:/mentoring/room/{room_id}/board";
     }
 
     @PostMapping("/{room_id}/video/posts")

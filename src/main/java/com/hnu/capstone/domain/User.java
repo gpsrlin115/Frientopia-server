@@ -2,7 +2,7 @@ package com.hnu.capstone.domain;
 
 import com.hnu.capstone.dto.PostsSaveRequestDto;
 import com.hnu.capstone.dto.mentoringroom.MentorSaveRequestDto;
-import com.hnu.capstone.dto.mentoringroom.ReferenceSaveRequestDto;
+import com.hnu.capstone.dto.mentoringroom.BoardSaveRequestDto;
 import com.hnu.capstone.dto.mentoringroom.VideoSaveRequestDto;
 import lombok.Builder;
 import lombok.Getter;
@@ -81,7 +81,7 @@ public class User extends BaseTimeEntity {
         this.getMentoringRoomPosts().add(post);
     }
 
-    public void PostAddUser(ReferenceSaveRequestDto post){
+    public void PostAddUser(BoardSaveRequestDto post){
         post.setUser(this);
     }
 
