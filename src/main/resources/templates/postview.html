@@ -47,7 +47,7 @@
           </dl>
         </div>
         <div class="cont">
-          <img th:src="@{|file:///Users/sungjinkim/IdeaProjects/Frientopia-server/src/main/resources/static/post_upload/${post.fileName}|}"/>
+          <img th:src="|@{/post_upload}/${post.fileName}|" onError={handleImhError} />
           <p th:text="${post.content}"></p>
         </div>
       </div>

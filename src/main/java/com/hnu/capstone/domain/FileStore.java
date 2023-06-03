@@ -3,6 +3,7 @@ package com.hnu.capstone.domain;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 import java.io.File;
 import java.io.IOException;
@@ -45,8 +46,6 @@ public class FileStore {
 
         /* 새 파일명으로 파일 저장 */
         multipartFile.transferTo(new File(getFullPath(storeFileName)));
-        System.out.println(getFullPath(storeFileName));
-        System.out.print(fileDir);
 
 
         return new UploadFile(originalFileName, storeFileName);
@@ -70,5 +69,6 @@ public class FileStore {
 
         return storeFileName;
     }
+
 }
 

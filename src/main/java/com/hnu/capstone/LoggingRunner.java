@@ -1,4 +1,4 @@
-package com.hnu.capstone;
+/*package com.hnu.capstone;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,4 +21,4 @@ public class LoggingRunner implements ApplicationRunner {
         logger.error("ERROR 로그 메시지");
 
     }
-}
+}*/
