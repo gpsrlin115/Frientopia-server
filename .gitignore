@@ -38,3 +38,4 @@ out/
 
 application-oauth.properties
 *.log
+/src/main/resources/application-db.properties
