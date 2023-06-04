@@ -1,9 +1,6 @@
 package com.hnu.capstone.dto.mentoringroom;
 
-import com.hnu.capstone.domain.MentoringRoom;
-import com.hnu.capstone.domain.MentoringRoomCategory;
-import com.hnu.capstone.domain.MentoringRoomPost;
-import com.hnu.capstone.domain.User;
+import com.hnu.capstone.domain.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +10,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ReferenceSaveRequestDto {
+public class MentorSaveRequestDto {
     private String title;
     private String content;
     private String author;
@@ -21,7 +18,7 @@ public class ReferenceSaveRequestDto {
     private MentoringRoom mentoringRoom;
     private User user;
 
-    public ReferenceSaveRequestDto(String author) {
+    public MentorSaveRequestDto(String author) {
         this.author = author;
     }
 
@@ -33,7 +30,7 @@ public class ReferenceSaveRequestDto {
                 .author(author)
                 .user(user)
                 .fileName(fileName)
-                .mentoringRoomCategory(MentoringRoomCategory.REFERENCE)
+                .mentoringRoomCategory(MentoringRoomCategory.MENTOR)
                 .build();
     }
 }

@@ -4,10 +4,15 @@
     --button-hover-bg-color: #025ce2;
 }
 
+.wrap {
+    width: 1400px;
+    height: 1000px;
+    margin: 120px auto;
+}
 
 .card_container {
     width: 100%;
-    margin-left: 10%;
+    margin-left: 14%;
     display: flex;
     justify-content: center;
 }

@@ -1,16 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:style="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>프렌토피아</title>
+    <link th:href="@{/css/common.css}" rel="stylesheet">
+    <link th:href="@{/css/mentor-find.css}" rel="stylesheet">
+    <link th:href="@{/css/main1.css}" rel="stylesheet">
+    <link th:href="@{/css/post.css}" rel="stylesheet">
+    <link th:href="@{/css/postview.css}" rel="stylesheet">
+    <!--font-->
+    <link th:href="@{img/favicon.png}" rel="shortcut icon">
 </head>
 <body>
+<header>
+    <a th:href="@{/}" class="logo">프렌토피아</a>
+    <nav>
+        <ul class="gnb">
+            <li><a th:href="@{/mentor-find}">멘토 찾기</a></li>
+            <li><a th:href="@{/mentoring}">내 멘토링</a></li>
+            <li th:if="${userRole} != 'ADMIN'"><a th:href="@{/myPage}">마이페이지</a></li>
+            <li th:if="${userRole} == 'ADMIN'"><a th:href="@{/admin}">관리페이지</a></li>
+            <li> | </li>
+            <li th:if="${userName} == null"><a th:href="@{/oauth2/authorization/google}">로그인</a></li>
+            <li th:if="${userName} != null" th:text="${userName} + '님, 환영합니다!'"></li>
+            <li th:if="${userName} != null"><a th:href="@{/logout}">로그아웃</a></li>
+        </ul>
+    </nav>
+</header>
 <div class="wrap">
     <section>
         <div id="main_img_bar"></div>
         <div class="page-title">
             <div class="container">
-                <h3>멘토링 룸 글 수정</h3>
+                <h3>글 수정</h3>
             </div>
         </div>
         <div class="layout">

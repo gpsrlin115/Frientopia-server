@@ -1,28 +1,15 @@
 package com.hnu.capstone.domain;
 
-import com.hnu.capstone.dto.PostsResponseDto;
 import com.hnu.capstone.dto.PostsSaveRequestDto;
-import com.hnu.capstone.dto.mentoringroom.NoticeSaveRequestDto;
-import com.hnu.capstone.dto.mentoringroom.ReferenceSaveRequestDto;
+import com.hnu.capstone.dto.mentoringroom.MentorSaveRequestDto;
+import com.hnu.capstone.dto.mentoringroom.BoardSaveRequestDto;
 import com.hnu.capstone.dto.mentoringroom.VideoSaveRequestDto;
-import com.hnu.capstone.service.PostsService;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.query.FluentQuery;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 
 import javax.persistence.*;
 import java.util.*;
-import java.util.function.Function;
 
 @Getter
 @NoArgsConstructor
@@ -86,7 +73,7 @@ public class User extends BaseTimeEntity {
         this.getPosts().add(post);
     }
 
-    public void PostAddUser(NoticeSaveRequestDto post){
+    public void PostAddUser(MentorSaveRequestDto post){
         post.setUser(this);
     }
 
@@ -94,7 +81,7 @@ public class User extends BaseTimeEntity {
         this.getMentoringRoomPosts().add(post);
     }
 
-    public void PostAddUser(ReferenceSaveRequestDto post){
+    public void PostAddUser(BoardSaveRequestDto post){
         post.setUser(this);
     }
 

@@ -2,20 +2,15 @@ package com.hnu.capstone.controller;
 
 import com.hnu.capstone.config.SessionUser;
 import com.hnu.capstone.domain.MentoringMappingRepository;
-import com.hnu.capstone.domain.MentoringRoomPost;
 import com.hnu.capstone.domain.PostsRepository;
 import com.hnu.capstone.domain.User;
-import com.hnu.capstone.dto.PostsResponseDto;
-import com.hnu.capstone.dto.PostsSaveRequestDto;
-import com.hnu.capstone.dto.PostsUpdateRequestDto;
 import com.hnu.capstone.dto.mentoringroom.MentoringRoomPostsUpdateRequestDto;
-import com.hnu.capstone.dto.mentoringroom.NoticeSaveRequestDto;
-import com.hnu.capstone.dto.mentoringroom.ReferenceSaveRequestDto;
+import com.hnu.capstone.dto.mentoringroom.MentorSaveRequestDto;
+import com.hnu.capstone.dto.mentoringroom.BoardSaveRequestDto;
 import com.hnu.capstone.dto.mentoringroom.VideoSaveRequestDto;
 import com.hnu.capstone.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -34,8 +29,8 @@ public class MentoringRoomPostsController {
     private final MentoringRoomService mentoringRoomService;
     private final MentoringRoomPostsService mentoringRoomPostsService;
 
-    @PostMapping("/{room_id}/notice/posts")
-    public String saveNotice(@PathVariable Long room_id, @ModelAttribute NoticeSaveRequestDto requestDto) throws IOException {
+    @PostMapping("/{room_id}/mentor/posts")
+    public String saveNotice(@PathVariable Long room_id, @ModelAttribute MentorSaveRequestDto requestDto) throws IOException {
         SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
         User user = userService.SelectUser(sessionUser.getEmail());
         Long result = mentoringRoomService.mentoringRoomEnter(user, room_id);
@@ -45,11 +40,11 @@ public class MentoringRoomPostsController {
 
         Long post_num = userService.UserToPost(sessionUser, requestDto, room_id);
 
-        return "redirect:/mentoring/room/{room_id}/notice";
+        return "redirect:/mentoring/room/{room_id}/mentor";
     }
 
-    @PostMapping("/{room_id}/reference/posts")
-    public String saveReference(@PathVariable Long room_id, @ModelAttribute ReferenceSaveRequestDto requestDto) throws IOException {
+    @PostMapping("/{room_id}/board/posts")
+    public String saveReference(@PathVariable Long room_id, @ModelAttribute BoardSaveRequestDto requestDto) throws IOException {
         SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
         User user = userService.SelectUser(sessionUser.getEmail());
         Long result = mentoringRoomService.mentoringRoomEnter(user, room_id);
@@ -59,7 +54,7 @@ public class MentoringRoomPostsController {
 
         Long post_num = userService.UserToPost(sessionUser, requestDto, room_id);
 
-        return "redirect:/mentoring/room/{room_id}/reference";
+        return "redirect:/mentoring/room/{room_id}/board";
     }
 
     @PostMapping("/{room_id}/video/posts")
