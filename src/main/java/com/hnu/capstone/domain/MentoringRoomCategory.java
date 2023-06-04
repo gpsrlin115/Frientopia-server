@@ -6,8 +6,8 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum MentoringRoomCategory {
-    NOTICE("공지방"),
-    REFERENCE("자료실"),
+    MENTOR("멘토의글"),
+    BOARD("자유게시판"),
     VIDEO("영상실");
 
     private final String title;

@@ -1,14 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>프렌토피아</title>
+
+    <link th:href="@{/css/common.css}" rel="stylesheet">
+    <link th:href="@{/css/main1.css}" rel="stylesheet">
+    <link th:href="@{/css/mentoring.css}" rel="stylesheet">
+    <link th:href="@{/css/room.css}" rel="stylesheet">
+    <!--font-->
+    <link th:href="@{img/favicon.png}" rel="shortcut icon">
 </head>
 <body>
-
-<li><a th:href="@{{room_id}/notice(room_id=${room_id})}">공지방</a></li>
-<li><a th:href="@{{room_id}/reference(room_id=${room_id})}">자료실</a></li>
-<li><a th:href="@{{room_id}/video(room_id=${room_id})}">영상실</a></li>
-
+    <header>
+        <a th:href="@{/}" class="logo">프렌토피아</a>
+        <nav>
+            <ul class="gnb">
+                <li><a th:href="@{/mentor-find}">멘토 찾기</a></li>
+                <li><a th:href="@{/mentoring}">내 멘토링</a></li>
+                <li th:if="${userRole} != 'ADMIN'"><a th:href="@{/myPage}">마이페이지</a></li>
+                <li th:if="${userRole} == 'ADMIN'"><a th:href="@{/admin}">관리페이지</a></li>
+                <li> | </li>
+                <li th:if="${userName} == null"><a th:href="@{/oauth2/authorization/google}">로그인</a></li>
+                <li th:if="${userName} != null" th:text="${userName} + '님, 환영합니다!'"></li>
+                <li th:if="${userName} != null"><a th:href="@{/logout}">로그아웃</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- board -->
+    <div class="wrap">
+        <div id="main_img_bar">
+<!--            <img src="./imgs/main_img.png">-->
+        </div>
+        <div class="page-title">
+            <div class="container">
+                <h3 th:text="${mentor} + ' 멘토의 멘토링 룸'"></h3>
+            </div>
+        </div>
+        <div >
+            <button class="btn btn-primary" th:if="${userName} == ${mentor}" th:onclick="|location.href='@{/mentoring/room/{room_id}/mentor/post(room_id=${room_id})}'|">글쓰기</button>
+            <button class="btn btn-primary" th:unless="${userName} == ${mentor}" th:onclick="|location.href='@{/mentoring/room/{room_id}/board/post(room_id=${room_id})}'|">글쓰기</button>
+        </div>
+        <div class="container">
+            <ul class="sideBar">
+                <li class="active" ><a th:href="@{/mentoring/room/{roomId} (roomId= ${room_id})}">전체 게시물</a></li>
+                <li><a th:href="@{/mentoring/room/{roomId}/mentor (roomId= ${room_id})}">멘토의 글</a></li>
+                <li><a th:href="@{/mentoring/room/{roomId}/board (roomId= ${room_id})}">자유 게시판</a></li>
+            </ul>
+            <div id="board-list">
+                <div class="container">
+                    <table class="board-table">
+                        <thead>
+                        <tr>
+<!--                            <th scope="col" class="th-num">번호</th>-->
+                            <th scope="col" class="th-title">제목</th>
+                            <th scope="col" class="th-author">작성자</th>
+                            <th scope="col" class="th-date">날짜</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="posts, stat : ${allPosts}">
+<!--                            <td th:text="${posts.getId()}"></td>-->
+                            <th>
+                                <a th:if="${posts.getAuthor()} == ${mentor}" th th:href="@{/mentoring/room/{roomId}/mentor/posts/view/{id} (roomId = ${posts.getMentoringRoomId()}, id = ${posts.getId()})}" th:text="'[멘토] ' + ${posts.getTitle()}"></a>
+                                <a th:unless="${posts.getAuthor()} == ${mentor}" th th:href="@{/mentoring/room/{roomId}/board/posts/view/{id} (roomId = ${posts.getMentoringRoomId()}, id = ${posts.getId()})}" th:text="${posts.getTitle()}"></a>
+                            </th>
+                            <td th:text="${posts.getAuthor()}"></td>
+                            <td th:text="${posts.getModifiedDate()}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer-->
+    <footer>
+        <h2 class="footerLogo">프렌토피아</h2>
+        <div class="box">
+            <h2>
+                당신 옆의 멘토, 프렌토피아<br>
+                For Your Mentor, Frientopia
+            </h2>
+        </div>
+    </footer>
 </body>
 </html>

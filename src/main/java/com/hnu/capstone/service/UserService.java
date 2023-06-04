@@ -2,16 +2,11 @@ package com.hnu.capstone.service;
 
 import com.hnu.capstone.config.SessionUser;
 import com.hnu.capstone.domain.*;
-import com.hnu.capstone.dto.PostsResponseDto;
 import com.hnu.capstone.dto.PostsSaveRequestDto;
-import com.hnu.capstone.dto.mentoringroom.NoticeSaveRequestDto;
-import com.hnu.capstone.dto.mentoringroom.ReferenceSaveRequestDto;
+import com.hnu.capstone.dto.mentoringroom.MentorSaveRequestDto;
+import com.hnu.capstone.dto.mentoringroom.BoardSaveRequestDto;
 import com.hnu.capstone.dto.mentoringroom.VideoSaveRequestDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -62,7 +57,7 @@ public class UserService{
     }
 
     @Transactional
-    public Long UserToPost(SessionUser user, NoticeSaveRequestDto requestDto, Long roomId) throws IOException {
+    public Long UserToPost(SessionUser user, MentorSaveRequestDto requestDto, Long roomId) throws IOException {
         if(user != null) {
             this.SelectUser(user.getEmail()).PostAddUser(requestDto);
         }
@@ -75,7 +70,7 @@ public class UserService{
     }
 
     @Transactional
-    public Long UserToPost(SessionUser user, ReferenceSaveRequestDto requestDto, Long roomId) throws IOException {
+    public Long UserToPost(SessionUser user, BoardSaveRequestDto requestDto, Long roomId) throws IOException {
         if(user != null) {
             this.SelectUser(user.getEmail()).PostAddUser(requestDto);
         }

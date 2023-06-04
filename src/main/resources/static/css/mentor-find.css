@@ -4,6 +4,12 @@
     --button-hover-bg-color: #025ce2;
 }
 
+.wrap {
+    width: 1400px;
+    height: 1000px;
+    margin: 120px auto;
+}
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -85,7 +91,7 @@ button {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    margin: 0 0 0 50px;
+    margin: 0;
     padding: 0.5rem 1rem;
 
     font-family: "Noto Sans KR", sans-serif;

@@ -28,52 +28,50 @@
     </header>
     <!-- board -->
     <div class="wrap">
-        <section>
-            <div id="main_img_bar">
-                <!--<img th:src="@{/img/main_img.png}"> &lt;!&ndash; 쓸모 없음 &ndash;&gt;-->
+        <div id="main_img_bar">
+            <!--<img th:src="@{/img/main_img.png}"> &lt;!&ndash; 쓸모 없음 &ndash;&gt;-->
+        </div>
+        <div class="page-title">
+            <div class="container">
+                <h3>현재 모집중인 멘토링 글</h3>
+<!--                    ROLE 멘토인 유저만 버튼이 보이도록 수정 해야함 -->
+                <button class="btn btn-primary" th:onclick="|location.href='@{/mentor-find/post}'|">등록하기</button>
             </div>
-            <div class="page-title">
-                <div class="container">
-                    <h3>현재 모집중인 멘토링 글</h3>
-                    <button class="btn btn-primary" th:onclick="|location.href='@{/mentor-find/post}'|">등록하기</button>
-                </div>
+        </div>
+        <div id="board-list">
+            <div class="container">
+                <table class="board-table">
+                    <thead>
+                    <tr>
+                        <th scope="col" class="th-num">번호</th>
+                        <th scope="col" class="th-title">제목</th>
+                        <th scope="col" class="th-author">작성자</th>
+                        <th scope="col" class="th-date">날짜</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="post, stat : ${posts}">
+                        <td th:text="${post.getId()}"></td>
+                        <th>
+                            <a th:href="@{/posts/view/{id}(id = ${post.getId()})}" th:text="${post.getTitle()}"></a>
+                        </th>
+                        <td th:text="${post.getAuthor()}"></td>
+                        <td th:text="${post.getModifiedDate()}"></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
-            <div id="board-list">
-                <div class="container">
-                    <table class="board-table">
-                        <thead>
-                        <tr>
-                            <th scope="col" class="th-num">번호</th>
-                            <th scope="col" class="th-title">제목</th>
-                            <th scope="col" class="th-author">작성자</th>
-                            <th scope="col" class="th-date">날짜</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="post, stat : ${posts}">
-                            <td th:text="${post.getId()}"></td>
-                            <th>
-                                <a th:href="@{/posts/view/{id}(id = ${post.getId()})}" th:text="${post.getTitle()}"></a>
-                            </th>
-                            <td th:text="${post.getAuthor()}"></td>
-                            <td th:text="${post.getModifiedDate()}"></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <!--footer-->
-        <footer>
-            <h2 class="footerLogo">프렌토피아</h2>
-            <div class="box">
-                <h2>
-                    당신 옆의 멘토, 프렌토피아<br>
-                    For Your Mentor, Frientopia
-                </h2>
-            </div>
-        </footer>
+        </div>
     </div>
+    <!--footer-->
+    <footer>
+        <h2 class="footerLogo">프렌토피아</h2>
+        <div class="box">
+            <h2>
+                당신 옆의 멘토, 프렌토피아<br>
+                For Your Mentor, Frientopia
+            </h2>
+        </div>
+    </footer>
 </body>
 </html>

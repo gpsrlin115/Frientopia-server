@@ -2,9 +2,8 @@ package com.hnu.capstone.controller;
 
 import com.hnu.capstone.config.SessionUser;
 import com.hnu.capstone.dto.mentoringroom.MentoringRoomPostsListResponseDto;
-import com.hnu.capstone.dto.mentoringroom.MentoringRoomPostsResponseDto;
 import com.hnu.capstone.dto.mentoringroom.MentoringRoomPostsUpdateRequestDto;
-import com.hnu.capstone.dto.mentoringroom.NoticeSaveRequestDto;
+import com.hnu.capstone.dto.mentoringroom.MentorSaveRequestDto;
 import com.hnu.capstone.service.*;
 import com.hnu.capstone.domain.*;
 import lombok.RequiredArgsConstructor;
@@ -37,13 +36,28 @@ public class MentoringRoomController {
             return "redirect:/mentor-find";
         }
 
+        List<MentoringRoomPostsListResponseDto> allposts = mentoringRoomPostsService.findAllDesc();
+        model.addAttribute("allPosts", allposts);
+
+        // 게시물 조회 테스트 코드
+//        for (MentoringRoomPostsListResponseDto p: allposts) {
+//            System.out.println(p.getCategory());
+//            System.out.println(p.getMentoringRoomId());
+//            System.out.println(p.getAuthor());
+//        }
+
+        MentoringRoom mentoringRoom = mentoringRoomService.findById(room_id);
+        model.addAttribute("mentor", mentoringRoom.getUser().getName());
+
+        model.addAttribute("roomId", room_id); // 삭제 예정
+
         model.addAttribute("userName", user.getName());
         model.addAttribute("userRole", user.getRole());
 
         return "mentoringRoom";
     }
 
-    @GetMapping("/{room_id}/notice")
+    @GetMapping("/{room_id}/mentor")
     public String MentoringRoomNoticeForm(@PathVariable Long room_id, Model model){
         SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
         User user = userService.SelectUser(sessionUser.getEmail());
@@ -54,21 +68,24 @@ public class MentoringRoomController {
         model.addAttribute("userName", user.getName());
         model.addAttribute("userRole", user.getRole());
 
+        MentoringRoom mentoringRoom = mentoringRoomService.findById(room_id);
+        model.addAttribute("mentor", mentoringRoom.getUser().getName());
+
         List<MentoringRoomPostsListResponseDto> allposts = mentoringRoomPostsService.findAllDesc();
         List<MentoringRoomPostsListResponseDto> posts = new ArrayList<>();
         for (MentoringRoomPostsListResponseDto p: allposts) {
             if(p.getMentoringRoomId() == room_id){
-                if(p.getCategory() == MentoringRoomCategory.NOTICE){
+                if(p.getCategory() == MentoringRoomCategory.MENTOR){
                     posts.add(p);
                 }
             }
         }
         model.addAttribute("posts", posts);
 
-        return "mentoringRoomNotice";
+        return "mentoringRoomMentor";
     }
 
-    @GetMapping("/{room_id}/notice/post")
+    @GetMapping("/{room_id}/mentor/post")
     public String MentoringRoomNoticePostForm(@PathVariable Long room_id, Model model){
         SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
         User user = userService.SelectUser(sessionUser.getEmail());
@@ -78,12 +95,12 @@ public class MentoringRoomController {
         }
         model.addAttribute("userName", user.getName());
         model.addAttribute("userRole", user.getRole());
-        model.addAttribute("post", new NoticeSaveRequestDto(user.getName()));
+        model.addAttribute("post", new MentorSaveRequestDto(user.getName()));
 
-        return "mentoringRoomNoticePost";
+        return "mentoringRoomMentorPost";
     }
 
-    @GetMapping("/{room_id}/notice/posts/view/{id}")
+    @GetMapping("/{room_id}/mentor/posts/view/{id}")
     public String MentoringRoomNoticeView(@PathVariable Long room_id, @PathVariable Long id, Model model){
         SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
         User user = userService.SelectUser(sessionUser.getEmail());
@@ -97,11 +114,10 @@ public class MentoringRoomController {
         MentoringRoomPost dto = mentoringRoomPostsService.findById(id);
         model.addAttribute("postId", dto.getId());
         model.addAttribute("post", dto);
-
-        return "mentoringRoomNoticeView";
+        return "mentoringRoomMentorView";
     }
 
-    @GetMapping("/{room_id}/reference")
+    @GetMapping("/{room_id}/board")
     public String MentoringRoomReferenceForm(@PathVariable Long room_id, Model model){
         SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
         User user = userService.SelectUser(sessionUser.getEmail());
@@ -112,21 +128,24 @@ public class MentoringRoomController {
         model.addAttribute("userName", user.getName());
         model.addAttribute("userRole", user.getRole());
 
+        MentoringRoom mentoringRoom = mentoringRoomService.findById(room_id);
+        model.addAttribute("mentor", mentoringRoom.getUser().getName());
+
         List<MentoringRoomPostsListResponseDto> allposts = mentoringRoomPostsService.findAllDesc();
         List<MentoringRoomPostsListResponseDto> posts = new ArrayList<>();
         for (MentoringRoomPostsListResponseDto p: allposts) {
             if(p.getMentoringRoomId() == room_id){
-                if(p.getCategory() == MentoringRoomCategory.REFERENCE){
+                if(p.getCategory() == MentoringRoomCategory.BOARD){
                     posts.add(p);
                 }
             }
         }
         model.addAttribute("posts", posts);
 
-        return "mentoringRoomReference";
+        return "mentoringRoomBoard";
     }
 
-    @GetMapping("/{room_id}/reference/post")
+    @GetMapping("/{room_id}/board/post")
     public String MentoringRoomReferencePostForm(@PathVariable Long room_id, Model model){
         SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
         User user = userService.SelectUser(sessionUser.getEmail());
@@ -136,12 +155,12 @@ public class MentoringRoomController {
         }
         model.addAttribute("userName", user.getName());
         model.addAttribute("userRole", user.getRole());
-        model.addAttribute("post", new NoticeSaveRequestDto(user.getName()));
+        model.addAttribute("post", new MentorSaveRequestDto(user.getName()));
 
-        return "mentoringRoomReferencePost";
+        return "mentoringRoomBoardPost";
     }
 
-    @GetMapping("/{room_id}/reference/posts/view/{id}")
+    @GetMapping("/{room_id}/board/posts/view/{id}")
     public String MentoringRoomReferenceView(@PathVariable Long room_id, @PathVariable Long id, Model model){
         SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
         User user = userService.SelectUser(sessionUser.getEmail());
@@ -156,7 +175,7 @@ public class MentoringRoomController {
         model.addAttribute("postId", dto.getId());
         model.addAttribute("post", dto);
 
-        return "mentoringRoomReferenceView";
+        return "mentoringRoomBoardView";
     }
 
 
@@ -195,7 +214,7 @@ public class MentoringRoomController {
         }
         model.addAttribute("userName", user.getName());
         model.addAttribute("userRole", user.getRole());
-        model.addAttribute("post", new NoticeSaveRequestDto(user.getName()));
+        model.addAttribute("post", new MentorSaveRequestDto(user.getName()));
 
         return "mentoringRoomVideoPost";
     }

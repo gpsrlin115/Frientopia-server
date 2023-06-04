@@ -32,7 +32,7 @@
     <div id="main_img_bar"></div>
     <div class="page-title">
       <div class="container">
-        <h3>멘토 찾기</h3>
+        <h3>자유 게시판</h3>
       </div>
     </div>
     <div class="layout">
@@ -47,32 +47,15 @@
           </dl>
         </div>
         <div class="cont">
-          <img th:src="|@{/post_upload}/${post.fileName}|" onError={handleImhError} />
           <p th:text="${post.content}"></p>
         </div>
       </div>
       <div class="bt_wrap">
-        <button class="btn btn-secondary" type="list" th:onclick="|location.href='@{/mentor-find}'|">목록</button>
-        <button th:if="${userName == post.author}" class="btn btn-secondary" type="update" th:onclick="|location.href='@{/posts/update/{id}(id = ${post.id})}'|" th:text="수정"></button>
-        <button th:if="${userName != post.author}" class="btn btn-secondary" id="apply" th:onclick="|location.href='@{/api/v1/posts/mapping/{post_id}(post_id = ${post.id})}'|" th:text="신청하기"></button>
+        <button class="btn btn-secondary" type="undo" th:onclick="|location.href='@{/mentoring/room/{room_id}/board(room_id=${room_id})}'|">목록</button>
+        <button th:if="${userName == post.author}" class="btn btn-secondary" type="undo" th:onclick="|location.href='@{/mentoring/room/{room_id}/update/{id}(room_id=${room_id}, id=${post.id})}'|" th:text="수정"></button>
       </div>
     </div>
   </section>
 </div>
-<!--  <h1 th:text="${post.title}">제목입니다.</h1>-->
-<!--  <p th:text="${post.content}">내용이 들어갈 부분입니다.</p>-->
-<!--  <a th:href="@{/api/v1/posts/${post.id}">글 삭제</a>-->
-<!--  &lt;!&ndash;<a th:href="@{${board.filepath}}">다운 받기</a>&ndash;&gt;-->
-<!--  <a th:href="@{/api/v1/">신청</a>-->
-<!--  <a th:href="@{/api/v1/posts/${post.id}">수정</a>-->
-<script>
-  const apply = document.getElementById("apply");
-
-  apply.addEventListener('click', () => {
-    alert('신청 되었습니다.')
-    window.location.href = '/mentor-find';
-  });
-
-</script>
 </body>
 </html>
