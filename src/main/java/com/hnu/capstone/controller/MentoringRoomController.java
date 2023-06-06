@@ -2,6 +2,7 @@ package com.hnu.capstone.controller;
 
 import com.hnu.capstone.config.SessionUser;
 import com.hnu.capstone.dto.mentoringroom.MentoringRoomPostsListResponseDto;
+import com.hnu.capstone.dto.mentoringroom.MentoringRoomPostsResponseDto;
 import com.hnu.capstone.dto.mentoringroom.MentoringRoomPostsUpdateRequestDto;
 import com.hnu.capstone.dto.mentoringroom.MentorSaveRequestDto;
 import com.hnu.capstone.service.*;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @RequiredArgsConstructor
 @RequestMapping("/mentoring/room")
@@ -36,8 +38,19 @@ public class MentoringRoomController {
             return "redirect:/mentor-find";
         }
 
+        List<MentoringRoomPostsListResponseDto> posts = new ArrayList<>();
         List<MentoringRoomPostsListResponseDto> allposts = mentoringRoomPostsService.findAllDesc();
-        model.addAttribute("allPosts", allposts);
+        for (MentoringRoomPostsListResponseDto p: allposts) {
+            if(Objects.equals(p.getCategory(), MentoringRoomCategory.MENTOR)){
+                posts.add(p);
+            }
+        }
+        for (MentoringRoomPostsListResponseDto p: allposts) {
+            if(!Objects.equals(p.getCategory(), MentoringRoomCategory.MENTOR)){
+                posts.add(p);
+            }
+        }
+        model.addAttribute("allPosts", posts);
 
         // 게시물 조회 테스트 코드
 //        for (MentoringRoomPostsListResponseDto p: allposts) {
