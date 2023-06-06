@@ -21,14 +21,14 @@ public class ChatRoomController {
      * 채팅방 참여하기
      * @param roomId 채팅방 id
      */
-    @GetMapping("/{roomId}")
-    public String joinRoom(@PathVariable(required = false) Long roomId, Model model) {
-        List<Chat> chatList = chatService.findAllChatByRoomId(roomId);
-
-        model.addAttribute("roomId", roomId);
-        model.addAttribute("chatList", chatList);
-        return "room";
-    }
+//    @GetMapping("/{roomId}")
+//    public String joinRoom(@PathVariable(required = false) Long roomId, Model model) {
+//        List<Chat> chatList = chatService.findAllChatByRoomId(roomId);
+//
+//        model.addAttribute("roomId", roomId);
+//        model.addAttribute("chatList", chatList);
+//        return "room";
+//    }
 
     /**
      * 채팅방 리스트 보기
