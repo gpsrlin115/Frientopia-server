@@ -27,6 +27,7 @@ public class MentoringRoomController {
     private final MentoringMappingService mentoringMappingService;
     private final MentoringRoomService mentoringRoomService;
     private final MentoringRoomPostsService mentoringRoomPostsService;
+    private final ChatService chatService;
 
     @GetMapping("/{room_id}")
     public String MentoringRoomForm(@PathVariable Long room_id, Model model){
@@ -52,6 +53,10 @@ public class MentoringRoomController {
         }
         model.addAttribute("allPosts", posts);
 
+        List<Chat> chatList = chatService.findAllChatByRoomId(room_id);
+
+        model.addAttribute("roomId", room_id);
+        model.addAttribute("chatList", chatList);
         // 게시물 조회 테스트 코드
 //        for (MentoringRoomPostsListResponseDto p: allposts) {
 //            System.out.println(p.getCategory());
@@ -61,8 +66,6 @@ public class MentoringRoomController {
 
         MentoringRoom mentoringRoom = mentoringRoomService.findById(room_id);
         model.addAttribute("mentor", mentoringRoom.getUser().getName());
-
-        model.addAttribute("roomId", room_id); // 삭제 예정
 
         model.addAttribute("userName", user.getName());
         model.addAttribute("userRole", user.getRole());
