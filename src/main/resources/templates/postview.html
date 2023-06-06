@@ -52,12 +52,13 @@
       </div>
       <div class="bt_wrap">
         <button class="btn btn-secondary" type="list" th:onclick="|location.href='@{/mentor-find}'|">목록</button>
-        <button th:if="${userName == post.author}" class="btn btn-secondary" type="update" th:onclick="|location.href='@{/posts/update/{id}(id = ${post.id})}'|" th:text="수정"></button>
-        <button th:if="${userName != post.author}" class="btn btn-secondary" id="apply" th:onclick="|location.href='@{/api/v1/posts/mapping/{post_id}(post_id = ${post.id})}'|" th:text="신청하기"></button>
+        <button th:if="${userEmail == postAuthorEmail}" class="btn btn-secondary" type="update" th:onclick="|location.href='@{/posts/update/{id}(id = ${post.id})}'|" th:text="수정"></button>
+        <button th:if="${userEmail != postAuthorEmail}" class="btn btn-secondary" id="apply" th:onclick="|location.href='@{/api/v1/posts/mapping/{post_id}(post_id = ${post.id})}'|" th:text="신청하기"></button>
       </div>
     </div>
   </section>
 </div>
+<div id="footer-load" th:replace="layout/footer.html :: footer"></div>
 <!--  <h1 th:text="${post.title}">제목입니다.</h1>-->
 <!--  <p th:text="${post.content}">내용이 들어갈 부분입니다.</p>-->
 <!--  <a th:href="@{/api/v1/posts/${post.id}">글 삭제</a>-->

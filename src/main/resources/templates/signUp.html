@@ -35,7 +35,7 @@
 
                             <div class="form-group">
                                 <label for="inputMajor">학과</label>
-                                <input type="text" class="form-control" id="inputMajor" name="major" placeholder="학과" th:required="true">
+                                <input type="text" class="form-control" id="inputMajor" name="major" placeholder="학과" value="컴퓨터공학과" th:required="true">
                             </div>
 
                             <div class="form-group">
@@ -47,15 +47,15 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputAge">나이</label>
-                                <input type="number" class="form-control" id="inputAge" name="age" placeholder="나이" th:required="true">
+                                <input type="number" class="form-control" id="inputAge" name="age" placeholder="나이" value="26" th:required="true" >
                             </div>
                             <div class="form-group">
                                 <label for="inputPhoneNum">전화번호</label>
-                                <input type="number" class="form-control" id="inputPhoneNum" name="phoneNum" placeholder="전화번호" th:required="true">
+                                <input type="number" class="form-control" id="inputPhoneNum" name="phoneNum" placeholder="전화번호" value="01011111111" th:required="true">
                             </div>
                             <div class="form-group">
                                 <label for="inputIntroduce">자기소개</label>
-                                <input type="text" class="form-control" id="inputIntroduce" name="introduce" placeholder="자기소개" th:required="true">
+                                <input type="text" class="form-control" id="inputIntroduce" name="introduce" placeholder="자기소개" value="안녕하세요" th:required="true">
                             </div>
                             <button type="submit" class="btn btn-primary">가입 완료</button>
                         </div>
@@ -64,9 +64,7 @@
             </div>
         </section>
 
-
-        <div id="footer-load" th:replace="layout/footer.html :: footer"></div>
-
     </div>
+<div id="footer-load" th:replace="layout/footer.html :: footer"></div>
 </body>
 </html>

@@ -56,8 +56,8 @@
                             <input th:class="file-selector-button" type="file" id="postFile" th:name="file">
                         </div>
                         <button class="btn btn-primary" type="submit">등록</button>
+                        <button id="undoButton" class="btn btn-secondary" type="undo" th:onclick="|location.href='@{/mentor-find}'|">취소</button>
                     </form>
-                    <button class="btn btn-secondary" type="undo" th:onclick="|location.href='@{/mentor-find}'|">취소</button>
                 </div>
                 <!--<button type="button" class="btn btn-primary" th:onclick="'save()'" >등록</button>-->
             </div>
@@ -76,6 +76,12 @@
 </footer>
 <!-- JavaScript 코드 추가 -->
 <script>
+    var undoButton = document.querySelector('#undoButton');
+    undoButton.addEventListener('click', function(event) {
+        // 폼 제출을 막기 위해 event.preventDefault() 호출
+        event.preventDefault();
+    });
+
     // form 요소를 선택합니다.
     var form = document.querySelector('#postForm');
 
