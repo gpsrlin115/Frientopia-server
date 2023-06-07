@@ -54,13 +54,23 @@
                         <label for="postFile">업로드 사진 선택</label>
                         <input th:class="file-selector-button" type="file" id="postFile" th:name="file">
                         <button class="btn btn-primary" type="submit">등록</button>
+                        <button id="undoButton" class="btn btn-secondary" type="undo" th:onclick="|location.href='@{/mentoring/room/{room_id}/mentor(room_id=${room_id})}'|">취소</button>
                     </form>
-                    <button class="btn btn-secondary" type="undo" th:onclick="|location.href='@{/mentoring/room/{room_id}/mentor(room_id=${room_id})}'|">취소</button>
+
                 </div>
                 <!--<button type="button" class="btn btn-primary" th:onclick="'save()'" >등록</button>-->
             </div>
         </div>
     </section>
 </div>
+<div id="footer-load" th:replace="layout/footer.html :: footer"></div>
+
+<script>
+    var undoButton = document.querySelector('#undoButton');
+    undoButton.addEventListener('click', function(event) {
+        // 폼 제출을 막기 위해 event.preventDefault() 호출
+        event.preventDefault();
+    });
+</script>
 </body>
 </html>

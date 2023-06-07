@@ -27,6 +27,7 @@ public class IndexController {
     private final PostsService postsService;
     private final HttpSession httpSession;
     private final UserService userService;
+    private final PostsRepository postsRepository;
 
     @GetMapping("/")
     public String index(Model model) {
@@ -164,6 +165,7 @@ public class IndexController {
         if(user != null) {
             model.addAttribute("userName", user.getName());
             model.addAttribute("userRole", userService.SelectUser(user.getEmail()).getRole().name());
+            model.addAttribute("userEmail", user.getEmail());
         }
         ClassPathResource resource = new ClassPathResource("post_upload/");
         System.out.println(resource);
@@ -171,6 +173,7 @@ public class IndexController {
         model.addAttribute("fileStore", resource);
         model.addAttribute("postId", dto.getId());
         model.addAttribute("post", dto);
+        model.addAttribute("postAuthorEmail", postsRepository.findById(id).get().getUser().getEmail());
 
         return "postview";
     }

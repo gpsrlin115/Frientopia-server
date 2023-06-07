@@ -2,6 +2,7 @@ package com.hnu.capstone.controller;
 
 import com.hnu.capstone.config.SessionUser;
 import com.hnu.capstone.dto.mentoringroom.MentoringRoomPostsListResponseDto;
+import com.hnu.capstone.dto.mentoringroom.MentoringRoomPostsResponseDto;
 import com.hnu.capstone.dto.mentoringroom.MentoringRoomPostsUpdateRequestDto;
 import com.hnu.capstone.dto.mentoringroom.MentorSaveRequestDto;
 import com.hnu.capstone.service.*;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @RequiredArgsConstructor
 @RequestMapping("/mentoring/room")
@@ -25,6 +27,7 @@ public class MentoringRoomController {
     private final MentoringMappingService mentoringMappingService;
     private final MentoringRoomService mentoringRoomService;
     private final MentoringRoomPostsService mentoringRoomPostsService;
+    private final ChatService chatService;
 
     @GetMapping("/{room_id}")
     public String MentoringRoomForm(@PathVariable Long room_id, Model model){
@@ -37,8 +40,18 @@ public class MentoringRoomController {
         }
 
         List<MentoringRoomPostsListResponseDto> allposts = mentoringRoomPostsService.findAllDesc();
-        model.addAttribute("allPosts", allposts);
+        List<MentoringRoomPostsListResponseDto> posts = new ArrayList<>();
+        for (MentoringRoomPostsListResponseDto p: allposts) {
+            if(p.getMentoringRoomId() == room_id){
+                posts.add(p);
+            }
+        }
+        model.addAttribute("allPosts", posts);
 
+        List<Chat> chatList = chatService.findAllChatByRoomId(room_id);
+
+        model.addAttribute("roomId", room_id);
+        model.addAttribute("chatList", chatList);
         // 게시물 조회 테스트 코드
 //        for (MentoringRoomPostsListResponseDto p: allposts) {
 //            System.out.println(p.getCategory());
@@ -48,8 +61,6 @@ public class MentoringRoomController {
 
         MentoringRoom mentoringRoom = mentoringRoomService.findById(room_id);
         model.addAttribute("mentor", mentoringRoom.getUser().getName());
-
-        model.addAttribute("roomId", room_id); // 삭제 예정
 
         model.addAttribute("userName", user.getName());
         model.addAttribute("userRole", user.getRole());
@@ -81,6 +92,11 @@ public class MentoringRoomController {
             }
         }
         model.addAttribute("posts", posts);
+
+        List<Chat> chatList = chatService.findAllChatByRoomId(room_id);
+
+        model.addAttribute("roomId", room_id);
+        model.addAttribute("chatList", chatList);
 
         return "mentoringRoomMentor";
     }
@@ -141,6 +157,11 @@ public class MentoringRoomController {
             }
         }
         model.addAttribute("posts", posts);
+
+        List<Chat> chatList = chatService.findAllChatByRoomId(room_id);
+
+        model.addAttribute("roomId", room_id);
+        model.addAttribute("chatList", chatList);
 
         return "mentoringRoomBoard";
     }
