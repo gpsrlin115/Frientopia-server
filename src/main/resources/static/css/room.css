@@ -157,8 +157,9 @@ input, textarea {
 
 .chatBox button{
     margin: 0;
-    width: 40px;
-    height: 30px;
+    width: 70px;
+    height: 40px;
+    font-size: 12px;
 }
 
 .form-inline {
@@ -166,7 +167,7 @@ input, textarea {
 }
 
 #message {
-    width: 80%;
+    width: 70%;
 }
 
 .form-group{
@@ -198,6 +199,30 @@ input, textarea {
     font-size: 15px;
 }
 
-#conversation #chatting .own {
+#conversation #chatting .chatting{
+    margin-right: 150px;
+    text-align: left;
+    margin-bottom: 5px;
+    display: inline-block;
+    border-radius: 15px;
+    padding: 7px 15px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    background-color: #f1f0f0;
+    /*max-height: 50px;*/
+}
+
+#conversation #chatting .chatting_own {
+    /*max-width: 150px;*/
+    /*max-height: 50px;*/
+    margin-left: 150px;
+    float: right;
     text-align: right;
+    display: inline-block;
+    border-radius: 15px;
+    padding: 7px 15px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    background-color: #0084FF;
+    color: #fff;
 }

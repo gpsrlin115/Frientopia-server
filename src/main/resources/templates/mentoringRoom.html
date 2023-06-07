@@ -98,7 +98,7 @@
                         <form class="form-inline">
                             <div class="form-group">
                                 <input type="text" id="message" class="form-control" placeholder="메시지 내용">
-                                <button id="send" class="btn btn-default" type="submit">Send</button>
+                                <button id="send" class="btn btn-default" type="submit">보내기</button>
                             </div>
                         </form>
                     </div>
@@ -176,11 +176,11 @@
             for(chat in chatList) {
                 if (chatList[chat].sender == sender) {
                     $("#chatting").append(
-                        "<tr><td class='own'>" + chatList[chat].message + "</td></tr>"
+                        "<div class = 'chatting_own'><tr><td>" + chatList[chat].message + "</td></tr></div>"
                     );
                 } else {
                     $("#chatting").append(
-                        "<tr><td>" + "[" + chatList[chat].sender + "] " + chatList[chat].message + "</td></tr>"
+                        "<div class = 'chatting'><tr><td>" + "[" + chatList[chat].sender + "] " + chatList[chat].message + "</td></tr></div>"
                     );
                 }
             }
@@ -190,9 +190,15 @@
 
     //보낸 채팅 보기
     function showChat(chatMessage) {
-        $("#chatting").append(
-            "<tr><td class='own'>" + chatMessage.message + "</td></tr>"
-        );
+        if (chatMessage.sender == sender) {
+            $("#chatting").append(
+                "<div class = 'chatting_own'><tr><td>" + chatMessage.message + "</td></tr></div>"
+            );
+        } else {
+            $("#chatting").append(
+                "<div class = 'chatting'><tr><td>" + "[" + chatMessage.sender + "] " + chatMessage.message + "</td></tr></div>"
+            );
+        }
         $('.col-md-12').scrollTop($('.col-md-12')[0].scrollHeight);
     }
 
