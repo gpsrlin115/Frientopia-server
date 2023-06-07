@@ -52,14 +52,32 @@
                             <textarea class="form-control" id="content" th:field="*{content}"></textarea>
                         </div>
                         <button type="submit">수정</button>
+                        <button id="deleteButton" type="delete" th:onclick="|location.href='@{/mentoring/room/{room_id}/delete/{id}(id = ${post.id}, room_id = ${room_id})}'|" th:text="삭제"></button>
+                        <button id="undoButton" class="btn btn-secondary" type="undo" th:onclick="|location.href='@{/mentoring/room/{room_id}(room_id = ${room_id})}'|">취소</button>
                     </form>
-                    <button type="delete" th:onclick="|location.href='@{/mentoring/room/{room_id}/delete/{id}(id = ${post.id}, room_id = ${room_id})}'|" th:text="삭제"></button>
-                    <button class="btn btn-secondary" type="undo" th:onclick="|location.href='@{/mentoring/room/{room_id}(room_id = ${room_id})}'|">취소</button>
+
                 </div>
             </div>
         </div>
     </section>
 </div>
+<div id="footer-load" th:replace="layout/footer.html :: footer"></div>
+<script>
+    var deleteButton = document.querySelector('#deleteButton');
+    deleteButton.addEventListener('click', function(event) {
+        // 폼 제출을 막기 위해 event.preventDefault() 호출
+        event.preventDefault();
+        // 필요한 동작을 수행하고자 하는 코드 작성
+        // 예: 삭제 작업 수행
+        alert('글이 삭제되었습니다.');
+    });
+
+    var undoButton = document.querySelector('#undoButton');
+    undoButton.addEventListener('click', function(event) {
+        // 폼 제출을 막기 위해 event.preventDefault() 호출
+        event.preventDefault();
+    });
+</script>
 <!--<script>-->
 <!--    var form = document.querySelector('#updateForm');-->
 
