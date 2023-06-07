@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 
 @RequiredArgsConstructor
 @Service
@@ -31,7 +32,12 @@ public class MentoringMappingService {
 
     @Transactional
     public MentoringMapping SelectByPostAndUser(Posts post, User user){
-        return mentoringMappingRepository.findByPostAndUser(post,user);
+        if(post != null && user != null){
+            if(mentoringMappingRepository.findByPostAndUser(post,user).isPresent()){
+                return mentoringMappingRepository.findByPostAndUser(post,user).get();
+            }
+        }
+        return null;
     }
 
     @Transactional
@@ -43,9 +49,9 @@ public class MentoringMappingService {
                 mentoringMapping.UserAddMentoringMapping(user);
                 mentoringMappingRepository.save(mentoringMapping);
 
-                return mentoringMappingRepository.findByPostAndUser(post, user).getId();
+                return mentoringMappingRepository.findByPostAndUser(post, user).get().getId();
             }
-            return mentoringMappingRepository.findByPostAndUser(post, user).getId();
+            return mentoringMappingRepository.findByPostAndUser(post, user).get().getId();
         }
         return null;
     }

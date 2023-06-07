@@ -8,5 +8,5 @@ import java.util.Optional;
 public interface MentoringMappingRepository extends JpaRepository<MentoringMapping, Long> {
     List<MentoringMapping> findAllByPost(Posts post);
     Optional<MentoringMapping> findAllByUser(User user);
-    MentoringMapping findByPostAndUser(Posts post, User user);
+    Optional<MentoringMapping> findByPostAndUser(Posts post, User user);
 }
