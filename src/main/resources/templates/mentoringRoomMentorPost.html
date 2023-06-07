@@ -38,7 +38,7 @@
         <div class="layout">
             <div class="col-md-12">
                 <div class="col-md-4">
-                    <form id="postForm" method="post" th:action="@{/mentoring/room/{room_id}/mentor/posts(room_id=${room_id})}" th:object="${post}"> <!-- 이부분의 id = postForm -->
+                    <form id="postForm" method="post" th:action="@{/mentoring/room/{room_id}/mentor/posts(room_id=${room_id})}" th:object="${post}" enctype="multipart/form-data"> <!-- 이부분의 id = postForm -->
                         <div class="form-group">
                             <label for="title">제목</label>
                             <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요" th:field="*{title}"><!---->
