@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Setter
@@ -20,6 +21,7 @@ public class BoardSaveRequestDto {
     private String fileName;
     private MentoringRoom mentoringRoom;
     private User user;
+    private MultipartFile file;
 
     public BoardSaveRequestDto(String author) {
         this.author = author;
@@ -35,5 +37,8 @@ public class BoardSaveRequestDto {
                 .fileName(fileName)
                 .mentoringRoomCategory(MentoringRoomCategory.BOARD)
                 .build();
+    }
+    public void addFileName(String storeFileName){
+        this.fileName = storeFileName;
     }
 }
