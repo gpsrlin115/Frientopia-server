@@ -40,7 +40,7 @@ public class MentoringRoomPostsController {
 
         Long post_num = userService.UserToPost(sessionUser, requestDto, room_id);
 
-        return "redirect:/mentoring/room/{room_id}/mentor";
+        return "redirect:/mentoring/room/{room_id}";
     }
 
     @PostMapping("/{room_id}/board/posts")
@@ -54,7 +54,7 @@ public class MentoringRoomPostsController {
 
         Long post_num = userService.UserToPost(sessionUser, requestDto, room_id);
 
-        return "redirect:/mentoring/room/{room_id}/board";
+        return "redirect:/mentoring/room/{room_id}";
     }
 
     @PostMapping("/{room_id}/video/posts")
