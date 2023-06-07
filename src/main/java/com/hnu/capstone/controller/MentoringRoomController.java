@@ -39,15 +39,10 @@ public class MentoringRoomController {
             return "redirect:/mentor-find";
         }
 
-        List<MentoringRoomPostsListResponseDto> posts = new ArrayList<>();
         List<MentoringRoomPostsListResponseDto> allposts = mentoringRoomPostsService.findAllDesc();
+        List<MentoringRoomPostsListResponseDto> posts = new ArrayList<>();
         for (MentoringRoomPostsListResponseDto p: allposts) {
-            if(Objects.equals(p.getCategory(), MentoringRoomCategory.MENTOR)){
-                posts.add(p);
-            }
-        }
-        for (MentoringRoomPostsListResponseDto p: allposts) {
-            if(!Objects.equals(p.getCategory(), MentoringRoomCategory.MENTOR)){
+            if(p.getMentoringRoomId() == room_id){
                 posts.add(p);
             }
         }
@@ -97,6 +92,11 @@ public class MentoringRoomController {
             }
         }
         model.addAttribute("posts", posts);
+
+        List<Chat> chatList = chatService.findAllChatByRoomId(room_id);
+
+        model.addAttribute("roomId", room_id);
+        model.addAttribute("chatList", chatList);
 
         return "mentoringRoomMentor";
     }
@@ -157,6 +157,11 @@ public class MentoringRoomController {
             }
         }
         model.addAttribute("posts", posts);
+
+        List<Chat> chatList = chatService.findAllChatByRoomId(room_id);
+
+        model.addAttribute("roomId", room_id);
+        model.addAttribute("chatList", chatList);
 
         return "mentoringRoomBoard";
     }
