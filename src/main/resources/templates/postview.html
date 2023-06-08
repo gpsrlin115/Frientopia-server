@@ -64,11 +64,14 @@
           <br>
         </div>
       </div>
-
+      <div style="text-align: center">
+        <p th:text="'가격 : ' + ${post.getPoint()} + ' point'"></p>
+        <p th:text="'신청한 멘티 수 : ' + ${menteeNum}+ ' 명'"></p>
+      </div>
       <div class="bt_wrap">
         <button class="btn btn-secondary" type="list" th:onclick="|location.href='@{/mentor-find}'|">목록</button>
         <button th:if="${userEmail == postAuthorEmail}" class="btn btn-secondary" type="update" th:onclick="|location.href='@{/posts/update/{id}(id = ${post.id})}'|" th:text="수정" style="margin-left: 10px"></button>
-        <button th:if="${userEmail != postAuthorEmail} and ${isApply != 1}" class="btn btn-secondary" id="apply" th:onclick="|location.href='@{/api/v1/posts/mapping/{post_id}(post_id = ${post.id})}'|" th:text="신청하기" style="margin-left: 10px"></button>
+        <button th:if="${userEmail != postAuthorEmail} and ${isApply != 1}" class="btn btn-secondary" id="apply" th:text="신청하기" style="margin-left: 10px"></button> <!-- th:onclick="|location.href='@{/api/v1/posts/mapping/{post_id}(post_id = ${post.id})}'|" -->
         <button th:if="${userEmail != postAuthorEmail} and ${isApply == 1}" class="btn btn-secondary" id="isApply" th:text="신청완료" disabled></button>
       </div>
     </div>
@@ -116,11 +119,31 @@
 
 
 
-  const apply = document.getElementById("apply");
+/*  const apply = document.getElementById("apply");
 
   apply.addEventListener('click', () => {
     alert('신청 되었습니다.')
     window.location.href = '/mentor-find';
+  });*/
+
+  const apply = document.getElementById("apply");
+
+  apply.addEventListener('click', () => {
+    fetch('/api/v1/posts/mapping/'+[[${post.id}]]) // 요청을 보내는 URL을 적절히 변경해야 합니다.
+            .then(response => response.text()) // 응답을 텍스트로 변환
+            .then(result => {
+              if (result === '신청완료') {
+                alert('신청이 완료되었습니다.');
+                window.location.href = '/mentor-find';
+              } else if(result === '포인트부족'){
+                alert('포인트가 부족합니다.');
+              } else if (result === '신청실패') {
+                alert('신청이 실패되었습니다.');
+              }
+            })
+            .catch(error => {
+              console.error('에러 발생:', error);
+            });
   });
 
 </script>

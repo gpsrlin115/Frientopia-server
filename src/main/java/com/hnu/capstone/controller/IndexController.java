@@ -131,6 +131,7 @@ public class IndexController {
         model.addAttribute("userPhoneNum", user.getPhoneNum());
         model.addAttribute("userIntroduce", user.getIntroduce());
         model.addAttribute("userRole", user.getRole().name());
+        model.addAttribute("userPoint", user.getPoint());
         return "myPage";
     }
 
@@ -212,6 +213,8 @@ public class IndexController {
             model.addAttribute("isApply", 0);
         }
 
+        model.addAttribute("menteeNum", postsRepository.findById(id).get().getMentoringMappings().size() - 1);
+
         return "postview";
     }
 
@@ -236,5 +239,4 @@ public class IndexController {
         postsService.delete(id);
         return "redirect:/mentor-find";
     }
-
 }
