@@ -5,6 +5,8 @@ import com.hnu.capstone.domain.*;
 import com.hnu.capstone.dto.*;
 import com.hnu.capstone.service.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +28,7 @@ public class PostsApiController {
     private final MentoringRoomService mentoringRoomService;
     private final ChatService chatService;
 
+
     @PostMapping("/api/v1/posts")
     public Long save(@ModelAttribute PostsSaveRequestDto requestDto) throws IOException {
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
@@ -35,12 +38,14 @@ public class PostsApiController {
 
         User mentor = userService.SelectUser(user.getEmail());
 
-        Posts post = new Posts();
+        Posts post;
         if(postsRepository.findById(post_num).isPresent()){
             post = postsRepository.findById(post_num).get();
         }else{
             post = null;
         }
+
+        System.out.println(requestDto.getLatitude());
 
         mentoringMappingService.save(post, mentor);
         mentoringMappingService.updateMentoringRoom(post, mentor);

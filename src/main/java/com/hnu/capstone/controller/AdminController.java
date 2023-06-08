@@ -44,7 +44,7 @@ public class AdminController {
     public String adminUserModify(@PathVariable("email") String email,
                                   @RequestParam(value="major") String major,
                                   @RequestParam(value="age") int age,
-                                  @RequestParam(value="phoneNum") int phoneNum,
+                                  @RequestParam(value="phoneNum") String phoneNum,
                                   @RequestParam(value="introduce") String introduce,
                                   @RequestParam(value="gender") String gen,
                                   @RequestParam(value="role") Role role){

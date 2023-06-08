@@ -36,6 +36,11 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
     implementation group: 'commons-io', name: 'commons-io', version: '2.4'
+    implementation 'commons-fileupload:commons-fileupload:1.5'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools
+    // implementation group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '3.1.0'
+
+
 
     // websocket
     implementation 'org.springframework.boot:spring-boot-starter-websocket'

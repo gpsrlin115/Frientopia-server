@@ -53,14 +53,14 @@
         </div>
         <div class="form-group">
           <label for="inputPhoneNum">전화번호</label>
-          <input type="int" class="form-control" id="inputPhoneNum" name="phoneNum" placeholder="전화번호" th:value="${user.phoneNum}" th:required="true">
+          <input type="text" class="form-control" id="inputPhoneNum" name="phoneNum" pattern="(010)-\d{3,4}-\d{4}" title="형식 010-0000-0000" required="true" th:value="${user.phoneNum}">
         </div>
         <div class="form-group">
           <label for="inputIntroduce">자기소개</label>
           <input type="text" class="form-control" id="inputIntroduce" name="introduce" placeholder="자기소개" th:value="${user.introduce}" th:required="true">
         </div>
-        <button type="submit" class="btn btn-primary" value="update" th:formaction="@{/admin/{email}(email=${user.email})}">수정</button>
-        <button type="submit" class="btn btn-primary" value="delete" th:formaction="@{/admin/{email}/delete(email=${user.email})}">삭제</button>
+        <button type="submit" class="btn btn-secondary" value="update" th:formaction="@{/admin/{email}(email=${user.email})}">수정</button>
+        <button type="submit" class="btn btn-secondary" value="delete" th:formaction="@{/admin/{email}/delete(email=${user.email})}">삭제</button>
       </div>
     </form>
   </section>

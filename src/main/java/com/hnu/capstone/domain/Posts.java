@@ -29,6 +29,16 @@ public class Posts extends BaseTimeEntity {
     @Column
     private String fileName;
 
+    @Column
+    private double latitude;  // 위도
+
+    @Column
+    private double longitude; // 경도
+
+    @Column
+    private String address;   // 멘토링 주소
+
+
     @ManyToOne
     @JoinColumn(name = "user_email")
     private User user;
@@ -40,13 +50,16 @@ public class Posts extends BaseTimeEntity {
     private MentoringRoom mentoringRoom;
 
     @Builder
-    public Posts(Long id, String title, String content, String author, User user, String fileName) {
+    public Posts(Long id, String title, String content, String author, User user, String fileName, double latitude, double longitude, String address) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.author = author;
         this.user = user;
         this.fileName = fileName;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.address = address;
         }
 
     public void update(String title, String content) {

@@ -3,6 +3,7 @@ package com.hnu.capstone.domain;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,7 +13,7 @@ import java.util.UUID;
 
 @Component
 public class FileStore {
-    private String fileDir = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files";
+    public static String fileDir = System.getProperty("user.dir") + "/src/main/resources/static/post_upload/";
 
     /* 전체 파일 경로 */
     public String getFullPath(String fileName){
@@ -46,6 +47,7 @@ public class FileStore {
         /* 새 파일명으로 파일 저장 */
         multipartFile.transferTo(new File(getFullPath(storeFileName)));
 
+
         return new UploadFile(originalFileName, storeFileName);
     }
     /* 확장자명 추출 메서드 */
@@ -67,5 +69,6 @@ public class FileStore {
 
         return storeFileName;
     }
+
 }
 

@@ -61,8 +61,10 @@ public class MentoringRoomController {
 
         MentoringRoom mentoringRoom = mentoringRoomService.findById(room_id);
         model.addAttribute("mentor", mentoringRoom.getUser().getName());
+        model.addAttribute("mentorEmail", mentoringRoom.getUser().getEmail());
 
         model.addAttribute("userName", user.getName());
+        model.addAttribute("userEmail", user.getEmail());
         model.addAttribute("userRole", user.getRole());
 
         return "mentoringRoom";
@@ -78,9 +80,11 @@ public class MentoringRoomController {
         }
         model.addAttribute("userName", user.getName());
         model.addAttribute("userRole", user.getRole());
+        model.addAttribute("userEmail", user.getEmail());
 
         MentoringRoom mentoringRoom = mentoringRoomService.findById(room_id);
         model.addAttribute("mentor", mentoringRoom.getUser().getName());
+        model.addAttribute("mentorEmail", mentoringRoom.getUser().getEmail());
 
         List<MentoringRoomPostsListResponseDto> allposts = mentoringRoomPostsService.findAllDesc();
         List<MentoringRoomPostsListResponseDto> posts = new ArrayList<>();
@@ -143,9 +147,11 @@ public class MentoringRoomController {
         }
         model.addAttribute("userName", user.getName());
         model.addAttribute("userRole", user.getRole());
+        model.addAttribute("userEmail", user.getEmail());
 
         MentoringRoom mentoringRoom = mentoringRoomService.findById(room_id);
         model.addAttribute("mentor", mentoringRoom.getUser().getName());
+        model.addAttribute("mentorEmail", mentoringRoom.getUser().getEmail());
 
         List<MentoringRoomPostsListResponseDto> allposts = mentoringRoomPostsService.findAllDesc();
         List<MentoringRoomPostsListResponseDto> posts = new ArrayList<>();
