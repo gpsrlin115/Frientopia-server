@@ -14,6 +14,7 @@ public class PostsResponseDto {
     private double latitude;  // 위도
     private double longitude; // 경도
     private String address;   // 멘토링 주소
+    private Long point;
 
     public PostsResponseDto(Posts entity) {
         this.id = entity.getId();
@@ -24,5 +25,6 @@ public class PostsResponseDto {
         this.latitude = entity.getLatitude();
         this.longitude = entity.getLongitude();
         this.address = entity.getAddress();
+        this.point = entity.getPoint();
     }
 }
