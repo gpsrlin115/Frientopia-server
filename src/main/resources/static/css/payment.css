@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+
+.amount-buttons {
+    margin-bottom: 20px;
+}
+
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px; /* 버튼들 사이의 빈 공간을 조절합니다 */
+}
+
+.amount-button {
+    flex: 1;
+    padding: 10px;
+    background-color: #F8DD8C; /* 채도를 낮춘 노란색 */
+    color: black;
+    border: none;
+    cursor: pointer;
+    margin-right: 20px; /* 버튼들 사이의 빈 공간을 조절합니다 */
+    border-radius: 8px; /* 버튼의 모서리를 둥글게 */
+    font-family: 'Do Hyeon', sans-serif; /* 카카오톡 글꼴을 적용합니다 */
+    font-size: 18px;
+}
+
+.amount-button.selected {
+    background-color: #EFE3B3;
+}
+
+.payment-container {
+    background-color: #F2F4F5;
+    padding: 20px;
+    border-radius: 0 0 8px 8px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px; /* 원하는 너비로 설정하세요 */
+}
+
+.header {
+    margin-bottom: 30px;
+}
+
+.payment-title {
+    color: #2B6EBB; /* 채도와 명도가 낮은 파란색으로 글자 색상 설정 */
+    font-size: 28px;
+    font-family: 'Do Hyeon', sans-serif; /* 카카오톡 글꼴을 적용합니다 */
+    margin-bottom: 60px; /* 카카오 페이로 결제하기 글자와 버튼들 사이의 거리를 조절합니다 */
+}
+
+.pay-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #6C757D;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 60px; /* 결제하기 버튼 상단의 빈 공간을 조절합니다 */
+    font-family: 'Do Hyeon', sans-serif; /* 카카오톡 글꼴을 적용합니다 */
+    font-size: 18px;
+}
