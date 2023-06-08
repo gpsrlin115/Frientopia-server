@@ -45,7 +45,7 @@ public class User extends BaseTimeEntity {
     private String major;
 
     @Column
-    private long phoneNum;
+    private String phoneNum;
 
     @Column
     private String introduce;
@@ -97,7 +97,7 @@ public class User extends BaseTimeEntity {
         this.role = role;
     }
 
-    public User update(String gen, int age, String major, long phoneNum, String introduce) {
+    public User update(String gen, int age, String major, String phoneNum, String introduce) {
         this.gen = gen;
         this.age = age;
         this.major = major;

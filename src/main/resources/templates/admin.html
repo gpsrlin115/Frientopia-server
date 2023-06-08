@@ -37,7 +37,7 @@
                         <td th:text="${user.name}"></td>
                         <td th:text="${user.email}"></td>
                         <td th:text="${user.role.getTitle()}"></td>
-                        <td><a th:href="@{/admin/{email}(email=${user.email})}"><button class="btn btn-primary">수정</button></a></td>
+                        <td><a th:href="@{/admin/{email}(email=${user.email})}"><button class="btn btn-secondary">수정</button></a></td>
                     </tr>
                 </tbody>
             </table>

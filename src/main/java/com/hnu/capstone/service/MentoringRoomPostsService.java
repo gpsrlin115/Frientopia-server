@@ -5,6 +5,7 @@ import com.hnu.capstone.dto.mentoringroom.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,11 +18,28 @@ public class MentoringRoomPostsService {
 
     @Transactional
     public Long save(MentorSaveRequestDto noticeSaveRequestDto) throws IOException {
+        //파일 존재여부 체크
+        if(!noticeSaveRequestDto.getFile().isEmpty()){
+            /* 파일 저장 */
+            FileStore fileStore = new FileStore();
+            MultipartFile post_file = noticeSaveRequestDto.getFile();
+            UploadFile uploadFile = fileStore.storeFile(post_file);
+            /* 파일명 추가 */
+            noticeSaveRequestDto.addFileName(uploadFile.getStoreFileName());
+        }
         return mentoringRoomPostRepository.save(noticeSaveRequestDto.toEntity()).getId();
     }
 
     @Transactional
     public Long save(BoardSaveRequestDto referenceSaveRequestDto) throws IOException {
+        if(!referenceSaveRequestDto.getFile().isEmpty()){
+            /* 파일 저장 */
+            FileStore fileStore = new FileStore();
+            MultipartFile post_file = referenceSaveRequestDto.getFile();
+            UploadFile uploadFile = fileStore.storeFile(post_file);
+            /* 파일명 추가 */
+            referenceSaveRequestDto.addFileName(uploadFile.getStoreFileName());
+        }
         return mentoringRoomPostRepository.save(referenceSaveRequestDto.toEntity()).getId();
     }
 

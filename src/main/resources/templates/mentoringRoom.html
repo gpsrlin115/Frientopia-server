@@ -41,8 +41,8 @@
             </div>
         </div>
         <div >
-            <button class="btn btn-primary" th:if="${userName} == ${mentor}" th:onclick="|location.href='@{/mentoring/room/{room_id}/mentor/post(room_id=${room_id})}'|">글쓰기</button>
-            <button class="btn btn-primary" th:unless="${userName} == ${mentor}" th:onclick="|location.href='@{/mentoring/room/{room_id}/board/post(room_id=${room_id})}'|">글쓰기</button>
+            <button class="btn btn-primary" th:if="${userEmail} == ${mentorEmail}" th:onclick="|location.href='@{/mentoring/room/{room_id}/mentor/post(room_id=${room_id})}'|">글쓰기</button>
+            <button class="btn btn-primary" th:unless="${userEmail} == ${mentorEmail}" th:onclick="|location.href='@{/mentoring/room/{room_id}/board/post(room_id=${room_id})}'|">글쓰기</button>
         </div>
         <div class="container">
             <ul class="sideBar">
@@ -122,6 +122,7 @@
     var roomId = [[${roomId}]];
     var chatList = [[${chatList}]];
     var sender = [[${userName}]];
+    var senderEmail = [[${userEmail}]];
 
     function setConnected(connected) {
         $("#connect").prop("disabled", connected);
@@ -164,6 +165,7 @@
             stompClient.send("/send/"+roomId, {},
                 JSON.stringify({
                     'sender': sender,
+                    'senderEmail': senderEmail,
                     'message' : $("#message").val()
                 }));
             $("#message").val('');
@@ -174,7 +176,7 @@
     function loadChat(chatList){
         if(chatList != null) {
             for(chat in chatList) {
-                if (chatList[chat].sender == sender) {
+                if (chatList[chat].senderEmail == senderEmail) {
                     $("#chatting").append(
                         "<div class = 'chatting_own'><tr><td>" + chatList[chat].message + "</td></tr></div>"
                     );
@@ -190,7 +192,7 @@
 
     //보낸 채팅 보기
     function showChat(chatMessage) {
-        if (chatMessage.sender == sender) {
+        if (chatMessage.senderEmail == senderEmail) {
             $("#chatting").append(
                 "<div class = 'chatting_own'><tr><td>" + chatMessage.message + "</td></tr></div>"
             );
