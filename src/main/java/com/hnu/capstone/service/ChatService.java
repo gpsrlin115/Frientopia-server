@@ -27,9 +27,9 @@ public class ChatService {
         return roomRepository.save(ChatRoom.createRoom(name));
     }
 
-    public Chat createChat(Long roomId, String sender, String message) {
+    public Chat createChat(Long roomId, String sender, String senderEmail, String message) {
         ChatRoom room = roomRepository.findById(roomId).orElseThrow();  //방 찾기 -> 없는 방일 경우 여기서 예외처리
-        return chatRepository.save(Chat.createChat(room, sender, message));
+        return chatRepository.save(Chat.createChat(room, sender, senderEmail, message));
     }
 
 

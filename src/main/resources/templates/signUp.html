@@ -51,19 +51,18 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputPhoneNum">전화번호</label>
-                                <input type="number" class="form-control" id="inputPhoneNum" name="phoneNum" placeholder="전화번호" value="01011111111" th:required="true">
+                                <input type="text" class="form-control" id="inputPhoneNum" name="phoneNum" pattern="(010)-\d{3,4}-\d{4}" title="형식 010-0000-0000" required="true" value="010-1111-1111">
                             </div>
                             <div class="form-group">
                                 <label for="inputIntroduce">자기소개</label>
                                 <input type="text" class="form-control" id="inputIntroduce" name="introduce" placeholder="자기소개" value="안녕하세요" th:required="true">
                             </div>
-                            <button type="submit" class="btn btn-primary">가입 완료</button>
+                            <button type="submit" class="btn btn-secondary">가입 완료</button>
                         </div>
                     </form>
                 </div>
             </div>
         </section>
-
     </div>
 <div id="footer-load" th:replace="layout/footer.html :: footer"></div>
 </body>

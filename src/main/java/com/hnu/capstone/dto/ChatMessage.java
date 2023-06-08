@@ -15,6 +15,7 @@ public class ChatMessage {
 
     private Long roomId;
     private String sender;
+    private String senderEmail;
     private String message;
     private LocalDateTime sendDate;
 

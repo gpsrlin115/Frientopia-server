@@ -26,10 +26,11 @@ public class ChatController {
     public ChatMessage test(@DestinationVariable Long roomId, ChatMessage message) {
 
         //채팅 저장
-        Chat chat = chatService.createChat(roomId, message.getSender(), message.getMessage());
+        Chat chat = chatService.createChat(roomId, message.getSender(), message.getSenderEmail(), message.getMessage());
         return ChatMessage.builder()
                 .roomId(roomId)
                 .sender(chat.getSender())
+                .senderEmail(chat.getSenderEmail())
                 .message(chat.getMessage())
                 .build();
     }

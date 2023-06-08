@@ -63,6 +63,7 @@ public class MentoringRoomController {
         model.addAttribute("mentor", mentoringRoom.getUser().getName());
 
         model.addAttribute("userName", user.getName());
+        model.addAttribute("userEmail", user.getEmail());
         model.addAttribute("userRole", user.getRole());
 
         return "mentoringRoom";
@@ -78,6 +79,7 @@ public class MentoringRoomController {
         }
         model.addAttribute("userName", user.getName());
         model.addAttribute("userRole", user.getRole());
+        model.addAttribute("userEmail", user.getEmail());
 
         MentoringRoom mentoringRoom = mentoringRoomService.findById(room_id);
         model.addAttribute("mentor", mentoringRoom.getUser().getName());
@@ -143,6 +145,7 @@ public class MentoringRoomController {
         }
         model.addAttribute("userName", user.getName());
         model.addAttribute("userRole", user.getRole());
+        model.addAttribute("userEmail", user.getEmail());
 
         MentoringRoom mentoringRoom = mentoringRoomService.findById(room_id);
         model.addAttribute("mentor", mentoringRoom.getUser().getName());
