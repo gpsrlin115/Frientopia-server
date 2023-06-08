@@ -5,6 +5,7 @@ import com.hnu.capstone.config.SessionUser;
 import com.hnu.capstone.dto.PostsListResponseDto;
 import com.hnu.capstone.dto.PostsSaveRequestDto;
 import com.hnu.capstone.dto.PostsUpdateRequestDto;
+import com.hnu.capstone.service.MentoringMappingService;
 import com.hnu.capstone.service.UserService;
 import com.hnu.capstone.domain.*;
 import com.hnu.capstone.dto.PostsResponseDto;
@@ -12,6 +13,7 @@ import com.hnu.capstone.service.PostsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
+
 
 @RequiredArgsConstructor
 @Controller
@@ -28,6 +31,11 @@ public class IndexController {
     private final HttpSession httpSession;
     private final UserService userService;
     private final PostsRepository postsRepository;
+    private final MentoringMappingService mentoringMappingService;
+
+    // api key 갖고오기
+    @Value("#{config['api.key']}")
+    private String apiKey;
 
     @GetMapping("/")
     public String index(Model model) {
@@ -49,6 +57,26 @@ public class IndexController {
         }
         List<PostsListResponseDto> posts = postsService.findAllDesc();
         model.addAttribute("posts", posts);
+        // CloserFilter 가 켜졌는지 check 1:켜짐 0:꺼짐
+        model.addAttribute("onCloser", 0);
+        return "mentor-find";
+    }
+
+    @PostMapping("/mentor-find/closer")
+    public String mentorFindCloser(@RequestParam(value="latitude") double latitude,
+                                   @RequestParam(value="longitude") double longitude,
+                                   Model model) {
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        if(user != null) {
+            model.addAttribute("userName", user.getName());
+            model.addAttribute("userRole", userService.SelectUser(user.getEmail()).getRole().name());
+        }
+
+        // 유저의 현재 정보를 바탕으로 근거리의 멘토링 포스트만 필터링, 거리는 m 단위 (반경 10km 결과만 검색)
+        List<PostsListResponseDto> posts = postsService.filterPostsByDistance(latitude, longitude, 10000);
+        model.addAttribute("posts", posts);
+        // CloserFilter 가 켜졌는지 check 1:켜짐 0:꺼짐
+        model.addAttribute("onCloser", 1);
         return "mentor-find";
     }
 
@@ -73,7 +101,7 @@ public class IndexController {
     public String signUp(@RequestParam(value="major") String major,
                          @RequestParam(value="age") int age,
                          @RequestParam(value="gender") String gen,
-                         @RequestParam(value="phoneNum") int phoneNum,
+                         @RequestParam(value="phoneNum") String phoneNum,
                          @RequestParam(value="introduce") String introduce){
         SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
 
@@ -109,7 +137,7 @@ public class IndexController {
     @PostMapping("/myPage")
     public String myPage(@RequestParam(value="major") String major,
                          @RequestParam(value="age") int age,
-                         @RequestParam(value="phoneNum") int phoneNum,
+                         @RequestParam(value="phoneNum") String phoneNum,
                          @RequestParam(value="introduce") String introduce){
         SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
 
@@ -156,6 +184,7 @@ public class IndexController {
             model.addAttribute("userName", user.getName());
             model.addAttribute("userRole", userService.SelectUser(user.getEmail()).getRole().name());
         }
+        model.addAttribute("apiKey", apiKey);
         return "post";
     }
 
@@ -174,6 +203,14 @@ public class IndexController {
         model.addAttribute("postId", dto.getId());
         model.addAttribute("post", dto);
         model.addAttribute("postAuthorEmail", postsRepository.findById(id).get().getUser().getEmail());
+        model.addAttribute("apiKey", apiKey);
+
+        // post와 user에 맞는 MentoringMapping을 찾고 존재하면 isApply:1 아니면 isApply:0
+        if(mentoringMappingService.SelectByPostAndUser(postsRepository.findById(id).get(), userService.SelectUser(user.getEmail())) != null){
+            model.addAttribute("isApply", 1);
+        }else{
+            model.addAttribute("isApply", 0);
+        }
 
         return "postview";
     }

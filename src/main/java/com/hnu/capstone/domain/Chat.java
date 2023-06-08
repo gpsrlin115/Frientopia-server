@@ -21,6 +21,8 @@ public class Chat {
 
     private String sender;
 
+    private String senderEmail;
+
     @Column(columnDefinition = "TEXT")
     private String message;
 
@@ -29,9 +31,10 @@ public class Chat {
     private LocalDateTime sendDate;
 
     @Builder
-    public Chat(ChatRoom room, String sender, String message) {
+    public Chat(ChatRoom room, String sender, String senderEmail, String message) {
         this.room = room;
         this.sender = sender;
+        this.senderEmail = senderEmail;
         this.message = message;
         this.sendDate = LocalDateTime.now();
     }
@@ -43,10 +46,11 @@ public class Chat {
      * @param message 내용
      * @return Chat Entity
      */
-    public static Chat createChat(ChatRoom room, String sender, String message) {
+    public static Chat createChat(ChatRoom room, String sender, String senderEmail, String message) {
         return Chat.builder()
                 .room(room)
                 .sender(sender)
+                .senderEmail(senderEmail)
                 .message(message)
                 .build();
     }

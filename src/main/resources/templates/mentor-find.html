@@ -36,6 +36,12 @@
                 <h3>현재 모집중인 멘토링 글</h3>
 <!--                    ROLE 멘토인 유저만 버튼이 보이도록 수정 해야함 -->
                 <button class="btn btn-primary" th:onclick="|location.href='@{/mentor-find/post}'|">등록하기</button>
+                <form action="/mentor-find/closer" method="post">
+                    <input type="hidden" id="latitude" name="latitude">
+                    <input type="hidden" id="longitude" name="longitude">
+                    <button th:if="${onCloser} == 0" type="submit" class="btn btn-outline-primary" style="float: right">내 주위 멘토링만 보기</button>
+                    <button th:if="${onCloser} == 1" id="mentorFindButton" type="button" class="btn btn-outline-primary" th:onclick="|location.href='@{/mentor-find}'|" style="float: right">모든 멘토링 보기</button>
+                </form>
             </div>
         </div>
         <div id="board-list">
@@ -46,6 +52,7 @@
                         <th scope="col" class="th-num">번호</th>
                         <th scope="col" class="th-title">제목</th>
                         <th scope="col" class="th-author">작성자</th>
+                        <th scope="col" class="th-address">멘토링 지역</th>
                         <th scope="col" class="th-date">날짜</th>
                     </tr>
                     </thead>
@@ -56,6 +63,7 @@
                             <a th:href="@{/posts/view/{id}(id = ${post.getId()})}" th:text="${post.getTitle()}"></a>
                         </th>
                         <td th:text="${post.getAuthor()}"></td>
+                        <td th:text="${post.getAddress()}"></td>
                         <td th:text="${post.getModifiedDate()}"></td>
                     </tr>
                     </tbody>
@@ -73,5 +81,30 @@
             </h2>
         </div>
     </footer>
+
+
+    <script>
+        // 현재 위치(위도, 경도)를 가져오는 함수
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                console.log("Geolocation is not supported by this browser.");
+            }
+        }
+        function showPosition(position) {
+            document.getElementById("latitude").value = position.coords.latitude;
+            document.getElementById("longitude").value = position.coords.longitude;
+            //getAddressFromCoordinates(position.coords.latitude, position.coords.longitude);
+        }
+        getLocation();
+
+        // mentorFindButton을 누를 시 event
+        var undoButton = document.querySelector('#mentorFindButton');
+        undoButton.addEventListener('click', function(event) {
+            // 폼 제출을 막기 위해 event.preventDefault() 호출
+            event.preventDefault();
+        });
+    </script>
 </body>
 </html>
