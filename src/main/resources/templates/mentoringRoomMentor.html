@@ -40,7 +40,7 @@
             <h3 th:text="${mentor} + ' 멘토의 멘토링 룸'"></h3>
         </div>
     </div>
-    <div th:if="${userName} == ${mentor}">
+    <div th:if="${userEmail} == ${mentorEmail}">
         <button class="btn btn-primary"  th:onclick="|location.href='@{/mentoring/room/{room_id}/mentor/post(room_id=${room_id})}'|">글쓰기</button>
     </div>
     <div class="container">
