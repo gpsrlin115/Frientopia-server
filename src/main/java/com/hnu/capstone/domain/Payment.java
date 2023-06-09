@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Payment {
+public class Payment extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,12 +21,20 @@ public class Payment {
     @Column(nullable = false)
     private Long amount;
 
+    @Column(nullable = false)
+    private String impUID;
+
+    @Column(nullable = false)
+    private String merchantUID;
+
 
     @Builder
-    public Payment(Long id, User user, Long amount) {
+    public Payment(Long id, User user, Long amount, String impUID, String merchantUID) {
         this.id = id;
         this.user = user;
         this.amount = amount;
+        this.impUID = impUID;
+        this.merchantUID = merchantUID;
     }
 
     public void setUser(User user){

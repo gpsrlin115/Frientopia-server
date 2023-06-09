@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.io.Console;
 
 @RequiredArgsConstructor
 @Controller
@@ -29,10 +30,10 @@ public class PayController {
 
 
     @Value("#{config['iamport.apiKey']}")
-    private String apiKey;
+    private String imp_key;
 
     @Value("#{config['iamport.apiSecret']}")
-    private String apiSecret;
+    private String imp_secret;
 
 
     @GetMapping("")
@@ -42,16 +43,11 @@ public class PayController {
         return "payment";
     }
 
-    @PostMapping("/success")
-    public String paymentSuccess(@RequestBody PaymentSuccessDto paymentSuccessDto){
-        paymentSuccessDto.setUser(userService.SelectUser(paymentSuccessDto.getBuyerEmail()));
-        Long paymentID = payService.save(paymentSuccessDto);
-        if(paymentID != null){
-            Payment payment = payService.findById(paymentID);
-            payment.getUser().addPoint(payment.getAmount());
-            userService.UpdateUser(payment.getUser());
-        }
+    @GetMapping("/cancel")
+    public String paymentCancle(@RequestParam("impUID") String impUID, Model model){
+        Payment payment = payService.findByImpUID(impUID);
+        model.addAttribute("payment", payment);
 
-        return "payment";
+        return "paymentCancel";
     }
 }
