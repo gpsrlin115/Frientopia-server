@@ -102,7 +102,7 @@ public class User extends BaseTimeEntity {
         this.email = email;
         this.picture = picture;
         this.role = role;
-        this.point = 0L;
+        this.point = 5000L;
     }
 
     public User update(String gen, int age, String major, String phoneNum, String introduce) {
