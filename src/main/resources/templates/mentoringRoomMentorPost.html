@@ -52,7 +52,7 @@
                             <textarea class="form-control" id="content" name="content" placeholder="내용을 입력하세요" th:field="*{content}"></textarea> <!---->
                         </div>
                         <label for="postFile">업로드 사진 선택</label>
-                        <input th:class="file-selector-button" type="file" id="postFile" th:name="file">
+                        <input th:class="file-selector-button" type="file" id="postFile" th:name="file" th:accept="${'.jpg,.png,.gif,.jpeg'}"/>
                         <button class="btn btn-primary" type="submit">등록</button>
                         <button id="undoButton" class="btn btn-secondary" type="undo" th:onclick="|location.href='@{/mentoring/room/{room_id}/mentor(room_id=${room_id})}'|">취소</button>
                     </form>
