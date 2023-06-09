@@ -47,7 +47,7 @@
           </dl>
         </div>
         <div class="cont">
-          <img th:src="|@{/post_upload}/${post.fileName}|"/>
+          <img th:if="${post.fileName != null}" th:src="|@{/post_upload}/${post.fileName}|"/>
           <p th:text="${post.content}"></p>
         </div>
       </div>

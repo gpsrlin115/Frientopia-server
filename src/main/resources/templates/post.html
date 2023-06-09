@@ -53,7 +53,7 @@
                         </div>
                         <div>
                             <label for="postFile">업로드 사진 선택</label>
-                            <input th:class="file-selector-button" type="file" id="postFile" th:name="file">
+                            <input th:class="file-selector-button" type="file" id="postFile" th:name="file" th:accept="${'.jpg,.png,.gif,.jpeg'}">
                         </div>
                         <button class="btn btn-primary" type="submit">등록</button>
                         <button id="undoButton" class="btn btn-secondary" type="undo" th:onclick="|location.href='@{/mentor-find}'|">취소</button>
