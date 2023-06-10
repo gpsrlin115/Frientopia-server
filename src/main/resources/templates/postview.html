@@ -72,7 +72,7 @@
         <button class="btn btn-secondary" type="list" th:onclick="|location.href='@{/mentor-find}'|">목록</button>
         <button th:if="${userEmail == postAuthorEmail}" class="btn btn-secondary" type="update" th:onclick="|location.href='@{/posts/update/{id}(id = ${post.id})}'|" th:text="수정" style="margin-left: 10px"></button>
         <button th:if="${userEmail != postAuthorEmail} and ${isApply != 1}" class="btn btn-secondary" id="apply" th:text="신청하기" style="margin-left: 10px"></button> <!-- th:onclick="|location.href='@{/api/v1/posts/mapping/{post_id}(post_id = ${post.id})}'|" -->
-        <button th:if="${userEmail != postAuthorEmail} and ${isApply == 1}" class="btn btn-secondary" id="isApply" th:text="신청완료" disabled></button>
+        <button th:if="${userEmail != postAuthorEmail} and ${isApply == 1}" class="btn btn-secondary" id="isApply" th:text="신청완료" style="margin-left: 10px" disabled></button>
       </div>
     </div>
   </section>
