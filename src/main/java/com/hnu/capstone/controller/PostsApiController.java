@@ -98,10 +98,24 @@ public class PostsApiController {
             post = null;
         }
 
+        if( user.getPoint() < post.getPoint() ){ // 유저의 point가 post에 지정된 point보다 작으면
+            return "포인트부족";
+        }
+
         Long mm = mentoringMappingService.save(post, user);
         Long um = mentoringMappingService.updateMentoringRoom(post, user);
 
         if (mm != null && um != null){
+            if( user.getEmail() == post.getUser().getEmail() ){
+                return "신청완료";
+            }
+
+            // 포인트 계산 이후 db 업데이트
+            user.subPoint(post.getPoint());
+            post.getUser().addPoint(post.getPoint());
+
+            userService.UpdateUser(user);
+            userService.UpdateUser(post.getUser());
             return "신청완료";
         }
         return "신청실패";

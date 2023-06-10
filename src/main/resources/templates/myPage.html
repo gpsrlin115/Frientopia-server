@@ -51,11 +51,57 @@
                         </div>
                         <button type="submit" class="btn btn-secondary" value="update" formaction="/myPage">수정</button>
                         <button type="submit" class="btn btn-secondary" value="delete" formaction="/myPage/unregister">탈퇴</button>
+
+                        <br><br><br><br>
+                        <hr style="border-top: 2px solid black; margin: 20px 0;">
+                        <br>
+                        <div>
+                            <div class="form-group">
+                                <label for="myPoint">현재 보유 포인트 : </label>
+                                <input type="hidden" class="form-control" id="myPoint" name="myPoint" th:text="${userPoint} + ' 원'">
+                            </div>
+                            <button type="button" class="btn btn-danger" id="payment">충전하러가기</button>
+                        </div>
+                        <br><br><br>
+                        <div>
+                            <div class="form-group">
+                                <label for="impUID"> * 환불은 최근 한 건만 가능합니다. </label>
+                                <input type="hidden" id="impUID" name="impUID" th:value="${impUID}"/>
+                                <button th:if="${impUID} != null" type="button" class="btn btn-danger" id="cancelPay">환불하러가기</button>
+                                <button th:if="${impUID} == null" type="button" class="btn btn-danger" id="disableCancelPay" disabled>환불하러가기</button>
+                            </div>
+                        </div>
                     </div>
                 </form>
+
         </section>
     </div>
 <!--footer-->
 <div id="footer-load" th:replace="layout/footer.html :: footer"></div>
+
+<script>
+    const button = document.getElementById('payment');
+
+    button.addEventListener('click', () => {
+        const url = '/payment'; // 원하는 링크의 URL을 지정해주세요
+        const windowName = '프렌토피아 결제'; // 새 창의 이름을 지정해주세요
+        const windowFeatures = 'width=450, height=600'; // 새 창의 속성을 지정해주세요
+
+        window.open(url, windowName, windowFeatures);
+    });
+</script>
+
+<script th:inline="javascript">
+    const cancelbutton = document.getElementById('cancelPay');
+
+    cancelbutton.addEventListener('click', () => {
+        const impUID = document.getElementById('impUID').value; // impUID 값이 서버에서 정상적으로 할당되는지 확인해주세요.
+
+        const url = '/payment/cancel?impUID=' + encodeURIComponent(impUID);
+        const newWindow = window.open(url, '프렌토피아 결제 취소', 'width=450,height=600');
+        newWindow.focus();
+    });
+</script>
+
 </body>
 </html>

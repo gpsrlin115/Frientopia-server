@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>프렌토피아 결제하기</title>
+  <script
+          type="text/javascript"
+          src="https://code.jquery.com/jquery-1.12.4.min.js"
+  ></script>
+  <script
+          type="text/javascript"
+          src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"
+  ></script>
+  <script
+          type="text/javascript"
+          src="https://unpkg.com/axios/dist/axios.min.js"
+  ></script>
+
+  <script
+          src="https://code.jquery.com/jquery-3.3.1.min.js"
+          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+          crossorigin="anonymous"
+  ></script>
+  <link th:href="@{/css/payment.css}" rel="stylesheet">
+</head>
+<body>
+<div class="payment-container">
+  <div class="header">
+    <h2 class="payment-title">카카오 페이로 결제하기</h2>
+  </div>
+  <div class="amount-buttons">
+    <div class="button-row">
+      <button class="amount-button">1000원</button>
+      <button class="amount-button">3000원</button>
+    </div>
+    <div class="button-row">
+      <button class="amount-button">5000원</button>
+      <button class="amount-button">10000원</button>
+    </div>
+    <div class="button-row">
+      <button class="amount-button">15000원</button>
+      <button class="amount-button">20000원</button>
+    </div>
+    <div class="button-row">
+      <button class="amount-button">30000원</button>
+      <button class="amount-button">50000원</button>
+    </div>
+  </div>
+  <button class="pay-button">결제하기</button>
+</div>
+<input type="hidden" id="amount" />
+<input type="hidden" th:value="${buyer.getEmail()}" id="buyerEmail" />
+<input type="hidden" th:value="${buyer.getName()}" id="buyerName" />
+
+<script>
+  const amountButtons = document.querySelectorAll('.amount-button');
+  const payButton = document.querySelector('.pay-button');
+  const amountInput = document.querySelector('#amount');
+
+  let selectedButton = null;
+
+  // 버튼 클릭 이벤트 처리
+  amountButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      if (selectedButton) {
+        selectedButton.classList.remove('selected');
+      }
+      selectedButton = button;
+      selectedButton.classList.add('selected');
+    });
+  });
+
+  // 결제하기 버튼 클릭 이벤트 처리
+  payButton.addEventListener('click', () => {
+    if (!selectedButton) {
+      alert('결제할 금액을 선택해주세요.');
+      return;
+    }
+    const selectedAmount = selectedButton.textContent;
+    amountInput.value = selectedAmount;
+    mypayment(selectedAmount);
+  });
+
+
+  function mypayment(amount) {
+    // const myAmount = Number(document.getElementById("amount").value);
+    const myAmount = amount;
+    const buyerEmail = document.getElementById("buyerEmail").value;
+    const buyerName = document.getElementById("buyerName").value;
+
+    const IMP = window.IMP; // 생략 가능
+    IMP.init("imp55582407"); // Example: imp00000000
+    IMP.request_pay(
+            {
+              // param
+              pg: "kakaopay",                     // 카카오 페이 이용
+              pay_method: "card",
+              name: "프렌토피아 포인트",            // 상품 이름
+              amount: myAmount,                   // 가격
+              buyer_email: buyerEmail,            // 구매자 이메일
+              buyer_name: buyerName,                // 구매자 이름
+              m_redirect_url: "",                 // 모바일 결제후 리다이렉트될 주소!!
+            },
+            async (rsp) => {
+              // callback
+              if (rsp.success) {
+                // 결제 성공시
+                // 결제 성공 후 서버로 데이터 전송
+                const data = {
+                  amount: rsp.paid_amount,
+                  buyerEmail: rsp.buyer_email,
+                  merchantUID : rsp.merchant_uid,   // 상품 거래 번호
+                  impUID : rsp.imp_uid              // 고유 번호
+                };  // "/payment/success"로 post할 데이터
+                alert("결제가 성공적으로 완료되었습니다.");
+                await axios.post("/payment/success", data);
+                window.close(); // 창 종료
+              } else {
+                // 결제 실패시
+                alert(`결제에 실패하였습니다. 에러 내용: ${rsp.error_msg}`);
+              }
+            }
+    );
+  }
+</script>
+</body>
+</html>

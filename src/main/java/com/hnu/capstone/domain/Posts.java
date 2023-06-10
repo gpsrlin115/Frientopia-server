@@ -38,6 +38,9 @@ public class Posts extends BaseTimeEntity {
     @Column
     private String address;   // 멘토링 주소
 
+    @Column
+    private Long point;       // 신청 시 가격
+
 
     @ManyToOne
     @JoinColumn(name = "user_email")
@@ -60,6 +63,7 @@ public class Posts extends BaseTimeEntity {
         this.latitude = latitude;
         this.longitude = longitude;
         this.address = address;
+        this.point = 100L;
         }
 
     public void update(String title, String content) {
