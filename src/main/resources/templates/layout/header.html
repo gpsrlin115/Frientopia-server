@@ -19,6 +19,7 @@
                         <li th:if="${userRole} == 'ADMIN'"><a th:href="@{/admin}">관리페이지</a></li>
                         <li> | </li>
                         <li th:if="${userName} == null"><a th:href="@{/oauth2/authorization/google}">로그인</a></li>
+                        <li th:if="${userName} == null"><a th:href="@{/oauth2/authorization/naver}">네이버 로그인</a></li>
                         <li th:if="${userName} != null" th:text="${userName} + '님, 환영합니다!'"></li>
                         <li th:if="${userName} != null"><a th:href="@{/logout}">로그아웃</a></li>
                     </ul>
