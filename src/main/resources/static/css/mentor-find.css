@@ -60,6 +60,10 @@ section.notice {
     text-align: center;
 }
 
+.board-table .th-address {
+    width: 200px;
+}
+
 .board-table .th-date {
     width: 200px;
 }
@@ -77,7 +81,6 @@ section.notice {
     padding-left: 28px;
     padding-right: 14px;
     border-top: 1px solid #e7e7e7;
-    text-align: left;
 }
 
 .board-table tbody th p{
