@@ -51,6 +51,9 @@ public class User extends BaseTimeEntity {
     private String introduce;
 
     @Column
+    private Long point;
+
+    @Column
     private double ratingScore;
 
     @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
@@ -64,6 +67,9 @@ public class User extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<MentoringRoom> mentoringRoom = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private List<Payment> payments = new ArrayList<>();
 
     public void PostAddUser(PostsSaveRequestDto post){
         post.setUser(this);
@@ -89,12 +95,14 @@ public class User extends BaseTimeEntity {
         post.setUser(this);
     }
 
+
     @Builder
     public User(String name, String email, String picture, Role role) {
         this.name = name;
         this.email = email;
         this.picture = picture;
         this.role = role;
+        this.point = 5000L;
     }
 
     public User update(String gen, int age, String major, String phoneNum, String introduce) {
@@ -111,6 +119,28 @@ public class User extends BaseTimeEntity {
         this.role = role;
 
         return this;
+    }
+
+    public User addPoint(Long addPoint){
+        // addPoint가 음수일 시 null;
+        if( addPoint < 0 ){
+            return null;
+        }
+        this.point = this.point + addPoint;
+
+        return this;
+    }
+
+    public User subPoint(Long subPoint){
+        // addPoint가 음수일 시 null;
+        if( subPoint < 0 ){
+            return null;
+        } else if( subPoint > this.point ){  // addPoint가 유저의 현재 포인트보다 크면 null return
+            return null;
+        } else {
+            this.point = this.point - subPoint;
+            return this;
+        }
     }
 
     public String getRoleKey() {

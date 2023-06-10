@@ -6,6 +6,7 @@ import com.hnu.capstone.dto.PostsListResponseDto;
 import com.hnu.capstone.dto.PostsSaveRequestDto;
 import com.hnu.capstone.dto.PostsUpdateRequestDto;
 import com.hnu.capstone.service.MentoringMappingService;
+import com.hnu.capstone.service.PayService;
 import com.hnu.capstone.service.UserService;
 import com.hnu.capstone.domain.*;
 import com.hnu.capstone.dto.PostsResponseDto;
@@ -32,6 +33,7 @@ public class IndexController {
     private final UserService userService;
     private final PostsRepository postsRepository;
     private final MentoringMappingService mentoringMappingService;
+    private final PayService payService;
 
     // api key 갖고오기
     @Value("#{config['api.key']}")
@@ -131,6 +133,14 @@ public class IndexController {
         model.addAttribute("userPhoneNum", user.getPhoneNum());
         model.addAttribute("userIntroduce", user.getIntroduce());
         model.addAttribute("userRole", user.getRole().name());
+        model.addAttribute("userPoint", user.getPoint());
+        Payment payment = new Payment();
+        List<Payment> payments = payService.findByUserEmail(user.getEmail());
+        for (Payment p : payments) {
+            payment = p;
+        }
+        model.addAttribute("impUID", payment.getImpUID());
+        model.addAttribute("impUIDAmount", payment.getAmount());
         return "myPage";
     }
 
@@ -212,6 +222,8 @@ public class IndexController {
             model.addAttribute("isApply", 0);
         }
 
+        model.addAttribute("menteeNum", postsRepository.findById(id).get().getMentoringMappings().size() - 1);
+
         return "postview";
     }
 
@@ -236,5 +248,4 @@ public class IndexController {
         postsService.delete(id);
         return "redirect:/mentor-find";
     }
-
 }
