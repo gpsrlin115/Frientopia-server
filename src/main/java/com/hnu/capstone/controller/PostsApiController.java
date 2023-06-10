@@ -52,7 +52,7 @@ public class PostsApiController {
 
         chatService.createRoom(mentor.getName());
 
-        return post_num;
+        return postsService.save(requestDto);
     }
 
     @PutMapping("/api/v1/posts/{id}")
