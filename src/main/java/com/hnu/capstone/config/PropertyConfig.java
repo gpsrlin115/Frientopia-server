@@ -11,7 +11,7 @@ public class PropertyConfig {
     @Bean(name = "config")
     public PropertiesFactoryBean propertiesFactoryBean() throws Exception {
         PropertiesFactoryBean propertiesFactoryBean = new PropertiesFactoryBean();
-        ClassPathResource classPathResource = new ClassPathResource("/config.properties");
+        ClassPathResource classPathResource = new ClassPathResource("/application-api.properties");
 
         propertiesFactoryBean.setLocation(classPathResource);
 
