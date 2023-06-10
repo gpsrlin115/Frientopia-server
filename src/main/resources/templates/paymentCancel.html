@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>프렌토피아 결제 취소</title>
+</head>
+<body>
+<h3>프렌토피아 포인트 결제 취소</h3>
+<p th:text="'결제 번호 : '+ ${payment.merchantUID}"></p>
+<p th:text="'구매자 이메일 : '+ ${payment.getUser().getEmail()}"></p>
+<p th:text="'구매자 이름 : '+ ${payment.getUser().getName()}"></p>
+<p th:text="'구매자의 현재 보유 포인트 : '+ ${payment.getUser().getPoint()} + ' point'"></p>
+<p th:text="'취소 금액 : '+ ${payment.getAmount()} + ' 원'"></p>
+<p th:text="'구매일 : '+ ${payment.getCreatedDate()}"></p>
+<button class="btn btn-secondary" onclick="cancelPay()">환불하기</button>
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script>
+  function cancelPay() {
+      $.ajax({
+          url: "/payment/cancel",
+          type: "POST",
+          contentType: "application/json",
+          data: JSON.stringify({
+              impUID: "[[${payment.getImpUID()}]]",
+              reason: "테스트 결제 환불"
+          }),
+          success: function(response) {
+              // AJAX 요청이 성공했을 때 실행되는 코드
+              // response는 서버로부터 받은 JSON 데이터입니다.
+              alert(response);
+              window.close(); // 창 종료
+          },
+          error: function(response, jqXHR, textStatus, errorThrown) {
+              alert("취소에 실패했습니다.");
+              console.log("AJAX 요청 실패");
+              console.log(jqXHR.status);      // HTTP 상태 코드
+              console.log(textStatus);        // 에러 상태 텍스트
+              console.log(errorThrown);       // 에러 발생 원인
+              window.close(); // 창 종료
+          }
+      });
+  }
+</script>
+</body>
+</html>

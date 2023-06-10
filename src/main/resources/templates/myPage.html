@@ -62,6 +62,15 @@
                             </div>
                             <button type="button" class="btn btn-danger" id="payment">충전하러가기</button>
                         </div>
+                        <br><br><br>
+                        <div>
+                            <div class="form-group">
+                                <label for="impUID"> * 환불은 최근 한 건만 가능합니다. </label>
+                                <input type="hidden" id="impUID" name="impUID" th:value="${impUID}"/>
+                                <button th:if="${impUID} != null" type="button" class="btn btn-danger" id="cancelPay">환불하러가기</button>
+                                <button th:if="${impUID} == null" type="button" class="btn btn-danger" id="disableCancelPay" disabled>환불하러가기</button>
+                            </div>
+                        </div>
                     </div>
                 </form>
 
@@ -79,6 +88,18 @@
         const windowFeatures = 'width=450, height=600'; // 새 창의 속성을 지정해주세요
 
         window.open(url, windowName, windowFeatures);
+    });
+</script>
+
+<script th:inline="javascript">
+    const cancelbutton = document.getElementById('cancelPay');
+
+    cancelbutton.addEventListener('click', () => {
+        const impUID = document.getElementById('impUID').value; // impUID 값이 서버에서 정상적으로 할당되는지 확인해주세요.
+
+        const url = '/payment/cancel?impUID=' + encodeURIComponent(impUID);
+        const newWindow = window.open(url, '프렌토피아 결제 취소', 'width=450,height=600');
+        newWindow.focus();
     });
 </script>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>결제하기</title>
+  <title>프렌토피아 결제하기</title>
   <script
           type="text/javascript"
           src="https://code.jquery.com/jquery-1.12.4.min.js"
@@ -94,7 +94,7 @@
               // param
               pg: "kakaopay",                     // 카카오 페이 이용
               pay_method: "card",
-              name: "프렌토피아 포인트 충전",         // 상품 이름
+              name: "프렌토피아 포인트",            // 상품 이름
               amount: myAmount,                   // 가격
               buyer_email: buyerEmail,            // 구매자 이메일
               buyer_name: buyerName,                // 구매자 이름
@@ -104,18 +104,16 @@
               // callback
               if (rsp.success) {
                 // 결제 성공시
-                // 구매자 이메일과 결제 완료된 구매자 이메일 비교
-                if (rsp.buyer_email === buyerEmail) {
-                  // 결제 성공 후 서버로 데이터 전송
-                  const data = {
-                    amount: rsp.paid_amount,
-                    buyerEmail: rsp.buyer_email,
-                  };  // "/payment/success"로 post할 데이터
-                  alert("결제가 성공적으로 완료되었습니다.");
-                  await axios.post("/payment/success", data);
-                } else {
-                  alert("결제 정보가 일치하지 않습니다.");
-                }
+                // 결제 성공 후 서버로 데이터 전송
+                const data = {
+                  amount: rsp.paid_amount,
+                  buyerEmail: rsp.buyer_email,
+                  merchantUID : rsp.merchant_uid,   // 상품 거래 번호
+                  impUID : rsp.imp_uid              // 고유 번호
+                };  // "/payment/success"로 post할 데이터
+                alert("결제가 성공적으로 완료되었습니다.");
+                await axios.post("/payment/success", data);
+                window.close(); // 창 종료
               } else {
                 // 결제 실패시
                 alert(`결제에 실패하였습니다. 에러 내용: ${rsp.error_msg}`);
