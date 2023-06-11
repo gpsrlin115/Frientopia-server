@@ -83,6 +83,12 @@ button {
     right: 50px;
 }
 
+#compiler {
+    position: fixed;
+    bottom: 50px;
+    right: 260px;
+}
+
 input, textarea {
     width: 439px;
     height: 27px;

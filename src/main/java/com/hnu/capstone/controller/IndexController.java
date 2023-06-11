@@ -12,7 +12,6 @@ import com.hnu.capstone.domain.*;
 import com.hnu.capstone.dto.PostsResponseDto;
 import com.hnu.capstone.service.PostsService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -247,5 +246,10 @@ public class IndexController {
     public String postsDelete(@PathVariable Long id) {
         postsService.delete(id);
         return "redirect:/mentor-find";
+    }
+
+    @GetMapping("/compiler")
+    public String view() {
+        return "compiler";
     }
 }
