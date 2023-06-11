@@ -108,8 +108,9 @@
         document.getElementById("latitude").value = position.coords.latitude;
         document.getElementById("longitude").value = position.coords.longitude;
         getAddressFromCoordinates(position.coords.latitude, position.coords.longitude);
-        initMap(position);
+        initMap(position.coords.latitude, position.coords.longitude);
     }
+    initMap(36.35455891749108, 127.42087105738436);
     getLocation();
 
 
@@ -145,10 +146,35 @@
     }
 
     // 지도에서 지역 선택
-    function initMap(position) {
+    function initMap(lat, long) {
+        var latitude = lat;
+        var longitude = long;
+        document.getElementById("latitude").value = lat;
+        document.getElementById("longitude").value = long;
 
-        var latitude = position.coords.latitude;
-        var longitude = position.coords.longitude;
+        // Reverse Geocoding API를 사용하여 위치 정보 가져오기
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ location: { lat: lat, lng: long } }, function(results, status) {
+            if (status === 'OK') {
+                if (results[0]) {
+                    // 시와 구 정보를 가져와서 설정
+                    var clickedCity, clickedDistrict;
+                    for (var i = 0; i < results[0].address_components.length; i++) {
+                        var component = results[0].address_components[i];
+                        if (component.types.includes('administrative_area_level_1')) {
+                            clickedCity = component.long_name;
+                        }
+                        if (component.types.includes('sublocality_level_1')) {
+                            clickedDistrict = component.long_name;
+                        }
+                    }
+                    var locationName = clickedCity + ' ' + (clickedDistrict || '');
+                    document.getElementById('locationName').value = locationName;
+                }
+            } else {
+                console.error('Geocode was not successful for the following reason: ' + status);
+            }
+        });
 
         var mapOptions = {
             center: { lat: latitude, lng: longitude },
