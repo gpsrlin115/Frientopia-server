@@ -86,6 +86,9 @@
     <script>
         // 현재 위치(위도, 경도)를 가져오는 함수
         function getLocation() {
+            // 기본 위치를 한남대학교로 지정
+            document.getElementById("latitude").value = 36.35455891749108;
+            document.getElementById("longitude").value = 127.42087105738436;
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(showPosition);
             } else {
