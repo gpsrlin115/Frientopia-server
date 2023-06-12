@@ -21,8 +21,6 @@ import java.util.Map;
 public class CompileBuilder {
     // 프로젝트 home directory 경로
     private final String path = CapstoneApplication.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-    // private final String path = "C:/Users/sktel/Desktop/test/compile/";
-    // private final String path = "/compile/";
     //private final String path = "C:/Users/USER/IdeaProjects/spring_web_ide/compiler/compileEX/";
 
     @SuppressWarnings({ "resource", "deprecation" })
