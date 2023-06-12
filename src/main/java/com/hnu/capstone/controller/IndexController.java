@@ -208,7 +208,7 @@ public class IndexController {
             model.addAttribute("userEmail", user.getEmail());
         }
         ClassPathResource resource = new ClassPathResource("post_upload/");
-        System.out.println(resource);
+        // System.out.println(resource);
         PostsResponseDto dto = postsService.findById(id);
         model.addAttribute("fileStore", resource);
         model.addAttribute("postId", dto.getId());

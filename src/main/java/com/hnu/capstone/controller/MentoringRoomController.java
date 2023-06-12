@@ -1,21 +1,23 @@
 package com.hnu.capstone.controller;
 
+import com.amazonaws.services.s3.AmazonS3Client;
 import com.hnu.capstone.config.SessionUser;
-import com.hnu.capstone.dto.mentoringroom.MentoringRoomPostsListResponseDto;
-import com.hnu.capstone.dto.mentoringroom.MentoringRoomPostsResponseDto;
-import com.hnu.capstone.dto.mentoringroom.MentoringRoomPostsUpdateRequestDto;
-import com.hnu.capstone.dto.mentoringroom.MentorSaveRequestDto;
-import com.hnu.capstone.service.*;
 import com.hnu.capstone.domain.*;
+import com.hnu.capstone.dto.mentoringroom.MentorSaveRequestDto;
+import com.hnu.capstone.dto.mentoringroom.MentoringRoomPostsListResponseDto;
+import com.hnu.capstone.dto.mentoringroom.MentoringRoomPostsUpdateRequestDto;
+import com.hnu.capstone.service.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @RequiredArgsConstructor
 @RequestMapping("/mentoring/room")
@@ -28,6 +30,7 @@ public class MentoringRoomController {
     private final MentoringRoomService mentoringRoomService;
     private final MentoringRoomPostsService mentoringRoomPostsService;
     private final ChatService chatService;
+    private final AmazonS3Client amazonS3Client;
 
     @GetMapping("/{room_id}")
     public String MentoringRoomForm(@PathVariable Long room_id, Model model){
@@ -113,6 +116,7 @@ public class MentoringRoomController {
         if(result != 1L && result != 2L){
             return "redirect:/mentor-find";
         }
+
         model.addAttribute("userName", user.getName());
         model.addAttribute("userRole", user.getRole());
         model.addAttribute("post", new MentorSaveRequestDto(user.getName()));
@@ -134,6 +138,8 @@ public class MentoringRoomController {
         MentoringRoomPost dto = mentoringRoomPostsService.findById(id);
         model.addAttribute("postId", dto.getId());
         model.addAttribute("post", dto);
+
+        model.addAttribute("s3file", amazonS3Client.getUrl("frientopia", "post_upload/"+dto.getFileName()));
         return "mentoringRoomMentorView";
     }
 
@@ -201,6 +207,8 @@ public class MentoringRoomController {
         MentoringRoomPost dto = mentoringRoomPostsService.findById(id);
         model.addAttribute("postId", dto.getId());
         model.addAttribute("post", dto);
+
+        model.addAttribute("s3file", amazonS3Client.getUrl("frientopia", "post_upload/"+dto.getFileName()));
 
         return "mentoringRoomBoardView";
     }

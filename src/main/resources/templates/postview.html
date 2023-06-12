@@ -48,7 +48,7 @@
         </div>
         <div class="cont">
           <img class="postImg" th:if="${post.fileName != null}" th:src="${s3file}"/>
-          <p th:text="${post.content}"></p>
+          <p th:utext="${post.content.replaceAll('\n', '<br/>')}"></p>
         </div>
         <div>
           <br>

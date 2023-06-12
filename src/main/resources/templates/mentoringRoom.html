@@ -65,8 +65,8 @@
                         <tr th:each="posts, stat : ${allPosts}">
 <!--                            <td th:text="${posts.getId()}"></td>-->
                             <th>
-                                <a th:if="${posts.getAuthor()} == ${mentor}" th th:href="@{/mentoring/room/{roomId}/mentor/posts/view/{id} (roomId = ${posts.getMentoringRoomId()}, id = ${posts.getId()})}" th:text="'[멘토] ' + ${posts.getTitle()}"></a>
-                                <a th:unless="${posts.getAuthor()} == ${mentor}" th th:href="@{/mentoring/room/{roomId}/board/posts/view/{id} (roomId = ${posts.getMentoringRoomId()}, id = ${posts.getId()})}" th:text="${posts.getTitle()}"></a>
+                                <a th:if="${posts.getUser().getEmail()} == ${mentorEmail}" th th:href="@{/mentoring/room/{roomId}/mentor/posts/view/{id} (roomId = ${posts.getMentoringRoomId()}, id = ${posts.getId()})}" th:text="'[멘토] ' + ${posts.getTitle()}"></a>
+                                <a th:unless="${posts.getUser().getEmail()} == ${mentorEmail}" th th:href="@{/mentoring/room/{roomId}/board/posts/view/{id} (roomId = ${posts.getMentoringRoomId()}, id = ${posts.getId()})}" th:text="${posts.getTitle()}"></a>
                             </th>
                             <td th:text="${posts.getAuthor()}"></td>
                             <td th:text="${posts.getModifiedDate()}"></td>
