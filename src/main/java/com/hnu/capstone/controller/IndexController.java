@@ -1,6 +1,7 @@
 package com.hnu.capstone.controller;
 
 
+import com.amazonaws.services.s3.AmazonS3Client;
 import com.hnu.capstone.config.SessionUser;
 import com.hnu.capstone.dto.PostsListResponseDto;
 import com.hnu.capstone.dto.PostsSaveRequestDto;
@@ -12,7 +13,6 @@ import com.hnu.capstone.domain.*;
 import com.hnu.capstone.dto.PostsResponseDto;
 import com.hnu.capstone.service.PostsService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -34,6 +34,7 @@ public class IndexController {
     private final PostsRepository postsRepository;
     private final MentoringMappingService mentoringMappingService;
     private final PayService payService;
+    private final AmazonS3Client amazonS3Client;
 
     // api key 갖고오기
     @Value("#{config['api.key']}")
@@ -221,6 +222,7 @@ public class IndexController {
         }else{
             model.addAttribute("isApply", 0);
         }
+        model.addAttribute("s3file", amazonS3Client.getUrl("frientopia", "post_upload/"+dto.getFileName()));
 
         model.addAttribute("menteeNum", postsRepository.findById(id).get().getMentoringMappings().size() - 1);
 
@@ -247,5 +249,10 @@ public class IndexController {
     public String postsDelete(@PathVariable Long id) {
         postsService.delete(id);
         return "redirect:/mentor-find";
+    }
+
+    @GetMapping("/compiler")
+    public String view() {
+        return "compiler";
     }
 }
