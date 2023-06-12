@@ -26,7 +26,7 @@ public class CompileBuilder {
     // 프로젝트 home directory 경로
     // private final String path = CapstoneApplication.class.getProtectionDomain().getCodeSource().getLocation().getPath();
     // private final String path = "C:/Users/USER/IdeaProjects/spring_web_ide/compiler/compileEX/";
-    private final String path = "file:/home/ec2-user/app/step1/temp";
+    private final String path = "file:/home/ec2-user/app/step1/temp/";
 
     @SuppressWarnings({ "resource", "deprecation" })
     public Object compileCode(String body) throws Exception {
