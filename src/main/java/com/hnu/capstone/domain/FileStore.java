@@ -1,18 +1,32 @@
 package com.hnu.capstone.domain;
 
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.CannedAccessControlList;
+import com.amazonaws.services.s3.model.PutObjectRequest;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Component
+@RequiredArgsConstructor
 public class FileStore {
+
+    @Value("${cloud.aws.s3.bucket}")
+    private String bucketName;
+
+    private final AmazonS3Client amazonS3Client;
+
+
     public static String fileDir = System.getProperty("user.dir") + "/src/main/resources/static/post_upload/";
 
     /* 전체 파일 경로 */
@@ -45,11 +59,31 @@ public class FileStore {
         String storeFileName = createStoreFileName(originalFileName);
 
         /* 새 파일명으로 파일 저장 */
-        multipartFile.transferTo(new File(getFullPath(storeFileName)));
+        //multipartFile.transferTo(new File(getFullPath(storeFileName)));
+        uploadToS3(storeFileName, multipartFile);
+        System.out.println(amazonS3Client.getUrl("frientopia", storeFileName));
 
 
-        return new UploadFile(originalFileName, storeFileName);
+        return new UploadFile(originalFileName, storeFileName); //store~ : 경로+UUID화된파일이름
     }
+
+    private void uploadToS3(String fileName, MultipartFile multipartFile) throws IOException {
+        String filePath = "post_upload/" + fileName;
+        //File file = new File(getFullPath(fileName));
+
+        File file = convert(multipartFile)
+                .orElseThrow(() -> new IllegalArgumentException("MultipartFile -> File로 전환이 실패했습니다."));
+
+        amazonS3Client.putObject(new PutObjectRequest(bucketName, filePath, file)
+                .withCannedAcl(CannedAccessControlList.PublicRead));
+        // 로컬에 저장된 파일 삭제
+        if (file.delete()) {
+            System.out.println("File delete success");
+        } else {
+            System.out.println("File delete fail");
+        }
+    }
+
     /* 확장자명 추출 메서드 */
     private String extractExtension(String originalFileName){
         int position = originalFileName.lastIndexOf(".");//확장자명 위치
@@ -70,5 +104,18 @@ public class FileStore {
         return storeFileName;
     }
 
+    private Optional<File> convert(MultipartFile file) throws IOException {
+        File convertFile = new File(file.getOriginalFilename());
+        if(convertFile.createNewFile()) {
+            try (FileOutputStream fos = new FileOutputStream(convertFile)) {
+                fos.write(file.getBytes());
+            }
+            return Optional.of(convertFile);
+        }
+
+        return Optional.empty();
+    }
+
 }
+
 

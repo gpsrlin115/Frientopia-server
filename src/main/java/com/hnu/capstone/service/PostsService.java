@@ -21,6 +21,7 @@ public class PostsService {
     private final PostsRepository postsRepository;
     private final MentoringRoomService mentoringRoomService;
     private final MentoringMappingService mentoringMappingService;
+    private final FileStore fileStore;
 
     @Transactional
     public Long save(PostsSaveRequestDto requestDto) throws IOException {
@@ -28,7 +29,7 @@ public class PostsService {
         //파일 존재여부 체크
         if(!requestDto.getFile().isEmpty()){
             /* 파일 저장 */
-            FileStore fileStore = new FileStore();
+            //FileStore fileStore = new FileStore();
             MultipartFile post_file = requestDto.getFile();
             UploadFile uploadFile = fileStore.storeFile(post_file);
             /* 파일명 추가 */

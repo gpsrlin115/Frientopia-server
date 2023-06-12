@@ -115,4 +115,11 @@ button {
     line-height: 160%;
     font-size: 1.4rem;
     min-height: 400px;
+    max-width: 500px;
+}
+
+.cont .postImg {
+    max-width: 500px;
+    max-height: 500px;
+    margin-bottom: 20px;
 }
