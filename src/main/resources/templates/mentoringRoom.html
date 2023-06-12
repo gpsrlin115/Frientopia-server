@@ -79,6 +79,9 @@
         <div id="chatToggle">
             <button class="trigger">채팅</button>
         </div>
+        <div id="compiler">
+            <button class="trigger" onclick="open_compiler()">코드 실행기</button>
+        </div>
         <div class="modal">
             <div class="modal-content">
                 <span class="close-button">&times;</span>
@@ -236,5 +239,14 @@
 
     trigger.addEventListener("click", toggleModal);
     closeButton.addEventListener("click", toggleModal);
+</script>
+<script>
+    function open_compiler(){
+        const url = '/compiler';
+        const windowName = '프렌토피아 결제';
+        const windowFeatures = 'width=800, height=1000';
+
+        window.open(url, windowName, windowFeatures);
+    }
 </script>
 </html>

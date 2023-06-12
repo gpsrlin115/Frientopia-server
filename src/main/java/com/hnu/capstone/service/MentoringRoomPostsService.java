@@ -15,13 +15,14 @@ import java.util.stream.Collectors;
 @Service
 public class MentoringRoomPostsService {
     private final MentoringRoomPostRepository mentoringRoomPostRepository;
+    private final FileStore fileStore;
 
     @Transactional
     public Long save(MentorSaveRequestDto noticeSaveRequestDto) throws IOException {
         //파일 존재여부 체크
         if(!noticeSaveRequestDto.getFile().isEmpty()){
             /* 파일 저장 */
-            FileStore fileStore = new FileStore();
+
             MultipartFile post_file = noticeSaveRequestDto.getFile();
             UploadFile uploadFile = fileStore.storeFile(post_file);
             /* 파일명 추가 */
@@ -34,7 +35,7 @@ public class MentoringRoomPostsService {
     public Long save(BoardSaveRequestDto referenceSaveRequestDto) throws IOException {
         if(!referenceSaveRequestDto.getFile().isEmpty()){
             /* 파일 저장 */
-            FileStore fileStore = new FileStore();
+            //FileStore fileStore = new FileStore();
             MultipartFile post_file = referenceSaveRequestDto.getFile();
             UploadFile uploadFile = fileStore.storeFile(post_file);
             /* 파일명 추가 */

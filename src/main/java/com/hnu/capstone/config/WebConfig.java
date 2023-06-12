@@ -9,6 +9,6 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/post_upload/**")
-                .addResourceLocations("file:C:\\Users\\ygy01\\IdeaProjects\\capstone\\src\\main/resources/static/post_upload/");
+                .addResourceLocations("file:/Users/sungjinkim/IdeaProjects/Frientopia-server/src/main/resources/static/post_upload/");
     }
 }
