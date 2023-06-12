@@ -1,5 +1,6 @@
 package com.hnu.capstone.controller;
 
+import com.amazonaws.services.s3.AmazonS3Client;
 import com.hnu.capstone.config.SessionUser;
 import com.hnu.capstone.domain.MentoringMappingRepository;
 import com.hnu.capstone.domain.PostsRepository;
@@ -28,6 +29,7 @@ public class MentoringRoomPostsController {
     private final MentoringMappingRepository mentoringMappingRepository;
     private final MentoringRoomService mentoringRoomService;
     private final MentoringRoomPostsService mentoringRoomPostsService;
+    private final AmazonS3Client amazonS3Client;
 
     @PostMapping("/{room_id}/mentor/posts")
     public String saveNotice(@PathVariable Long room_id, @ModelAttribute MentorSaveRequestDto requestDto) throws IOException {

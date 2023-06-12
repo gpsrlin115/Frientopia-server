@@ -3,6 +3,7 @@ package com.hnu.capstone.dto.mentoringroom;
 import com.hnu.capstone.domain.MentoringRoomCategory;
 import com.hnu.capstone.domain.MentoringRoomPost;
 import com.hnu.capstone.domain.Posts;
+import com.hnu.capstone.domain.User;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -14,6 +15,7 @@ public class MentoringRoomPostsListResponseDto {
     private MentoringRoomCategory category;
     private String title;
     private String author;
+    private User user;
     private Long mentoringRoomId;
     private LocalDateTime modifiedDate;
 
@@ -26,6 +28,7 @@ public class MentoringRoomPostsListResponseDto {
         this.id = entity.getId();
         this.title = entity.getTitle();
         this.author = entity.getAuthor();
+        this.user = entity.getUser();
         this.modifiedDate = entity.getModifiedDate();
         this.category = entity.getMentoringRoomCategory();
         this.mentoringRoomId = entity.getMentoringRoom().getId();

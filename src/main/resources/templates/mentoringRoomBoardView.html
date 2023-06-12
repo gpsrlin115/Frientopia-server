@@ -47,8 +47,9 @@
           </dl>
         </div>
         <div class="cont">
-          <img th:if="${post.fileName != null}" th:src="|@{/post_upload}/${post.fileName}|"/>
-          <p th:text="${post.content}"></p>
+          <!-- <img th:if="${post.fileName != null}" th:src="|@{/post_upload}/${post.fileName}|"/> -->
+          <img class="postImg" th:if="${post.fileName != null}" th:src="${s3file}"/>
+          <p th:utext="${post.content.replaceAll('\n', '<br/>')}"></p>
         </div>
       </div>
       <div class="bt_wrap">
