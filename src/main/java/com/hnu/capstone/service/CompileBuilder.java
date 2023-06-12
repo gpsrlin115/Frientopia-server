@@ -75,12 +75,12 @@ public class CompileBuilder {
             // Syetem error stream 원상태로 전환
             System.setErr(origErr);
 
-            if(sourceFile.exists())
+/*            if(sourceFile.exists())
                 sourceFile.delete();
             if(classFile.exists())
                 classFile.delete();
             if(newFolder.exists())
-                newFolder.delete();
+                newFolder.delete();*/
         }
     }
 
