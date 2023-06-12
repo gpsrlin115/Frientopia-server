@@ -22,31 +22,21 @@ import java.util.Map;
 
 @Slf4j
 @Component
-@RequiredArgsConstructor
 public class CompileBuilder {
     // 프로젝트 home directory 경로
-    // private final AmazonS3Client amazonS3Client;
-    // final String compilePath = "compile/";
     private final String path = CapstoneApplication.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-    // private final String path = "C:/Users/sktel/Desktop/test/compile/";
-    // private final String path = "/compile/";
     //private final String path = "C:/Users/USER/IdeaProjects/spring_web_ide/compiler/compileEX/";
-
-
 
     @SuppressWarnings({ "resource", "deprecation" })
     public Object compileCode(String body) throws Exception {
         String uuid = UUIDUtil.createUUID();
         String uuidPath = path + uuid + "/";
-        // String uuidPath = uuid + "/";
 
         // Source를 이용한 java file 생성
         File newFolder = new File(uuidPath);
         File sourceFile = new File(uuidPath + "DynamicClass.java");
         File classFile = new File(uuidPath + "DynamicClass.class");
-        // File newFolder = new File(amazonS3Client.getBucketLocation("frientopia")+uuidPath);
-        // File sourceFile = new File(amazonS3Client.getBucketLocation("frientopia")+uuidPath+"DynamicClass.java");
-        // File classFile = new File(amazonS3Client.getBucketLocation("frientopia")+uuidPath+"DynamicClass.class");
+
         Class<?> cls = null;
 
         // compile System err console 조회용 변수
@@ -54,7 +44,7 @@ public class CompileBuilder {
         PrintStream origErr = System.err;
 
         try {
-            // newFolder.mkdir();
+            newFolder.mkdir();
             new FileWriter(sourceFile).append(body).close();
 
             // 만들어진 Java 파일을 컴파일
@@ -65,7 +55,6 @@ public class CompileBuilder {
 
             // compile 진행
             int compileResult = compiler.run(null, null, null, sourceFile.getPath());
-            // int compileResult = compiler.run(null, null, null, String.valueOf(amazonS3Client.getUrl("frientopia", uuidPath+"DynamicClass.java")));
             // compile 실패인 경우 에러 로그 반환
             if(compileResult == 1) {
                 return err.toString();
@@ -73,7 +62,6 @@ public class CompileBuilder {
 
             // 컴파일된 Class를 Load
             URLClassLoader classLoader = URLClassLoader.newInstance(new URL[] {new File(uuidPath).toURI().toURL()});
-            // URLClassLoader classLoader = URLClassLoader.newInstance(new URL[] {amazonS3Client.getUrl("frientopia", uuidPath)});
             cls = Class.forName("DynamicClass", true, classLoader);
 
             // Load한 Class의 Instance를 생성
