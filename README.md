@@ -51,12 +51,5 @@
 ## 사용기술
 ![realstack](https://github.com/Jae-Young98/Frientopia-server/assets/86467141/fc5c0229-b66c-40c5-b76f-be9b637c1102)
 
-### Frontend
-### thymeleaf(html), css, javascript
-<img src="https://img.shields.io/badge/thymeleaf-005F0F?style=for-the-badge&logo=thymeleaf&logoColor=white">
-- 백엔드에서 바로 데이터를 넘겨 받을 수 있는 타임리프를 선택하여 생산성 향상, 직관성 높은 색상 선택 및 디자인으로 접근성 향상
-
-
-
-
-
+## 관련 포스팅
+### 작성중
