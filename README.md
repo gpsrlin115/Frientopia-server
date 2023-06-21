@@ -53,3 +53,6 @@
 
 ## 관련 포스팅
 ### 작성중
+
+## 참고서적
+[스프링부트와 AWS로 혼자 구현하는 웹 서비스]([https://lynmp.com](https://product.kyobobook.co.kr/detail/S000001019679)https://product.kyobobook.co.kr/detail/S000001019679)
