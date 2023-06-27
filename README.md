@@ -54,7 +54,7 @@
 
 ## 관련 포스팅
 [첫번째 프로젝트 완성과 회고](https://velog.io/@ygy0102/Spring-Boot-%EC%B2%AB%EB%B2%88%EC%A7%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%99%84%EC%84%B1%EA%B3%BC-%ED%9A%8C%EA%B3%A0)    
-**기술 관련 포스팅은 작성 중입니다.**
+**기술 관련 포스팅은 작성 중입니다!**
 
 ## 참고서적
 [스프링부트와 AWS로 혼자 구현하는 웹 서비스](https://product.kyobobook.co.kr/detail/S000001019679)
