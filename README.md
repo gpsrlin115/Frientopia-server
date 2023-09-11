@@ -52,9 +52,6 @@
 ## 사용기술
 ![realstack](https://github.com/Jae-Young98/Frientopia-server/assets/86467141/fc5c0229-b66c-40c5-b76f-be9b637c1102)
 
-## 관련 포스팅
-[첫번째 프로젝트 완성과 회고](https://velog.io/@ygy0102/Spring-Boot-%EC%B2%AB%EB%B2%88%EC%A7%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%99%84%EC%84%B1%EA%B3%BC-%ED%9A%8C%EA%B3%A0)    
-[STOMP를 이용한 실시간 채팅 및 채팅방 동적 생성](https://velog.io/@ygy0102/Spring-Boot-STOMP%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%8B%A4%EC%8B%9C%EA%B0%84-%EC%B1%84%ED%8C%85-%EB%B0%8F-%EC%B1%84%ED%8C%85%EB%B0%A9-%EB%8F%99%EC%A0%81-%EC%83%9D%EC%84%B1)   
 
 ## 참고서적
 [스프링부트와 AWS로 혼자 구현하는 웹 서비스](https://product.kyobobook.co.kr/detail/S000001019679)
