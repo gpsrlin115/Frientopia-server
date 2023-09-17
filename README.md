@@ -1,4 +1,4 @@
-# Frientopia | 한남대학교 캡스톤디자인
+# Frientopia | 캡스톤디자인
 2023년도 1학기 캡스톤디자인 프렌토피아 팀의<br/>
 교내 멘토링 매칭 서비스 플랫폼입니다. <br/>
 **기술 및 프로젝트에 관한 상세한 설명은 [블로그](https://velog.io/@ygy0102/Spring-Boot-%EC%B2%AB%EB%B2%88%EC%A7%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%99%84%EC%84%B1%EA%B3%BC-%ED%9A%8C%EA%B3%A0)를 참고 해주세요!**
