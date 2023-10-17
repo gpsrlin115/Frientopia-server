@@ -39,3 +39,6 @@ out/
 application-oauth.properties
 *.log
 /src/main/resources/application-db.properties
+/src/main/resources/application-oauth.properties.properties
+/src/main/resources/application.properties
+/src/main/resources/config.properties
